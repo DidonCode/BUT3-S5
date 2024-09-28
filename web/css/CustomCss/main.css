@@ -1,0 +1,83 @@
+:root 
+{
+    /* Couleurs */
+    --clrGrey1: #C2C2C2;
+    --clrGrey2: #EEEAEA;
+    --clWhite1: #FFFF;
+    --clrYellow: #F4D35E;
+    --clrOrange: #EE964B;
+    --clrBlue1: #19647E;
+
+    /* Tailles des arondis des bordures */
+    --rounded1: 0.7rem;
+
+    /* Tailles des textes */
+    --textBtnSize: small;
+}
+
+/* Couleurs */
+.clYellow {
+    background-color: var(--clrYellow);
+}
+
+.clGrey1 {
+    background-color: var(--clrGrey1);
+}
+
+.clGrey2 {
+    background-color: var(--clrGrey2);
+}
+
+.clBlue1 {
+    background-color: var(--clrBlue1);
+}
+
+.clWhite1 {
+    background-color: var(--clWhite1);
+}
+
+.clWhite1 {
+    background-color: var(--clWhite1);
+}
+
+/* Bordures */
+.clRounded1 {
+    border-radius: var(--rounded1);
+}
+
+
+/* Taille des textes Boutons */
+.clTextBtn {
+    font-size: var(--textBtnSize);
+    font-weight: 500;
+}
+
+/* Taille des boutons du menu page d'accueil (non connecté) */
+.clBtnMenuSize {
+    width: 125px;
+    height: 40px;
+}
+
+.clMenu button {
+    padding: 0.1rem 10%;
+    line-height: 1.3em;
+}
+
+.clMenuBtnMgEnd {
+    margin-right: 25px;
+}
+
+.clMgTopLogo {
+    margin-top: 13px;
+}
+
+@font-face {
+    font-family: roboto;
+    src: url(../Fonts/roboto/Roboto-Bold.ttf);
+}
+
+.clLogoText {
+
+    color: var(--clrOrange);
+    font-family: 'roboto';
+}
