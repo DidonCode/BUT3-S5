@@ -1,0 +1,2 @@
+npx changeset version
+npm run format

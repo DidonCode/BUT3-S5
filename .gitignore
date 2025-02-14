@@ -1,5 +1,5 @@
 Présentation Butify.pdf
 Rapport Butify.pdf
 
-docker/node_modules
-tests/api/node_modules
+node_modules
+coverage
