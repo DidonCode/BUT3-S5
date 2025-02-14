@@ -1,4 +1,1 @@
-var searchData=
-[
-  ['butify_0',['Documentation API Butify',['../index.html',1,'']]]
-];
+var searchData = [['butify_0', ['Documentation API Butify', ['../index.html', 1, '']]]];

@@ -22,27 +22,33 @@
 
  @licend  The above is the entire license notice for the JavaScript code in this file
 */
-var NAVTREE =
-[
-  [ "Butify", "index.html", [
-    [ "Classes", "annotated.html", [
-      [ "Liste des classes", "annotated.html", "annotated_dup" ],
-      [ "Index des classes", "classes.html", null ],
-      [ "Membres de classe", "functions.html", [
-        [ "Tout", "functions.html", null ],
-        [ "Fonctions", "functions_func.html", null ]
-      ] ]
-    ] ],
-    [ "Fichiers", "files.html", [
-      [ "Liste des fichiers", "files.html", "files_dup" ]
-    ] ]
-  ] ]
+var NAVTREE = [
+	[
+		'Butify',
+		'index.html',
+		[
+			[
+				'Classes',
+				'annotated.html',
+				[
+					['Liste des classes', 'annotated.html', 'annotated_dup'],
+					['Index des classes', 'classes.html', null],
+					[
+						'Membres de classe',
+						'functions.html',
+						[
+							['Tout', 'functions.html', null],
+							['Fonctions', 'functions_func.html', null],
+						],
+					],
+				],
+			],
+			['Fichiers', 'files.html', [['Liste des fichiers', 'files.html', 'files_dup']]],
+		],
+	],
 ];
 
-var NAVTREEINDEX =
-[
-"annotated.html"
-];
+var NAVTREEINDEX = ['annotated.html'];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';
 var SYNCOFFMSG = 'cliquez pour activer la synchronisation du panel';

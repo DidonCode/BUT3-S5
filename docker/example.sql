@@ -2505,25 +2505,6 @@ CREATE TABLE IF NOT EXISTS `youtube` (
   PRIMARY KEY (`value`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `youtube`
---
-
-INSERT INTO `youtube` (`value`, `exedeed`, `date`) VALUES
-('AIzaSyAQfQZwo-yHJ81CX_fudooaVy1uGH92H1M', 0, '2025-02-02'),
-('AIzaSyAzxI0C3l0I9dwT04ECU2-4Z3Gyg6ONIRI', 0, '2025-02-02'),
-('AIzaSyB0QQjBDl05NI9-Qk34n_PKovkf6rJHK0I', 0, '2025-02-02'),
-('AIzaSyB6kSbrP0WrCyBtGVPRXEVm5i5t9Ryi3Aw', 0, '2025-02-02'),
-('AIzaSyBRfw1xTrAE-032sqvnLFYA6GTsAj6ZW4E', 0, '2025-02-02'),
-('AIzaSyBUFqeNPPlBzCprCJorRhoXE5HCK0GqpRY', 0, '2025-02-02'),
-('AIzaSyBvlh9iZsbUGjIPTadkmmMwdqpkvkgFMzE', 0, '2025-02-02'),
-('AIzaSyClRfzVD6UL50bd6SRqUhahQOIfg1teZKc', 0, '2025-02-02'),
-('AIzaSyCQXPewd3M8Wkn8f9g7aZtu7_WI-NvhFEI', 0, '2025-02-02'),
-('AIzaSyCzF56C-OdlEl0g-p2EPpynPj_tNvQfTMs', 0, '2025-02-02'),
-('AIzaSyD1U5Vf4FRH0YmEZcF_lfZ0GuF8ABDOBmE', 0, '2025-02-02'),
-('AIzaSyDg0bxPdtzcCr65h3KyxrzBZpVe8H9wFhw', 0, '2025-02-02'),
-('AIzaSyDl1b7Pg2CPl04cJzBYwrQGc1Jzf4Hk45Y', 0, '2025-02-02'),
-('AIzaSyDv_TymydGmoTZwB9glKiaIcDgzYLb9viI', 0, '2025-02-02');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

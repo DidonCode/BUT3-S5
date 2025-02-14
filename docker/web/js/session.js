@@ -1,82 +1,82 @@
-let token = localStorage.getItem("token");
-let user = localStorage.getItem("user");
+let token = localStorage.getItem('token');
+let user = localStorage.getItem('user');
 
-if(token){
-	if(user) user = JSON.parse(user);
-    setInterval(async () => { await sessionToken(); }, 1800000);
+if (token) {
+	if (user) user = JSON.parse(user);
+	setInterval(async () => {
+		await sessionToken();
+	}, 1800000);
 }
 
-async function sessionCreate(loginToken, loginUser){
+async function sessionCreate(loginToken, loginUser) {
 	token = loginToken;
-	localStorage.setItem("token", loginToken);
+	localStorage.setItem('token', loginToken);
 
 	user = loginUser;
-	localStorage.setItem("user", loginUser);
+	localStorage.setItem('user', loginUser);
 
-    window.location.href = "/web/home";
+	window.location.href = '/web/home';
 }
 
-function sessionDestroy(){
-    if(token){
-    	let formData = new FormData();
+function sessionDestroy() {
+	if (token) {
+		let formData = new FormData();
 
-    	formData.append('token', token);
-        formData.append('type', "disconnect");
+		formData.append('token', token);
+		formData.append('type', 'disconnect');
 
-        apiCall("api/user/account", formData, async function(data) {
-            if(data != "") {
-                const parsedData = JSON.parse(data);
+		apiCall('api/user/account', formData, async function (data) {
+			if (data != '') {
+				const parsedData = JSON.parse(data);
 
-                if (parsedData != null){
+				if (parsedData != null) {
+					if (parsedData['error'] != undefined) {
+						routeError(parsedData['error']);
+					}
+				}
+			}
+		});
+	}
 
-                    if(parsedData['error'] != undefined){
-                        routeError(parsedData['error']);
-                    }
-                }
-            }
-        });
-    }
+	localStorage.removeItem('token');
+	localStorage.removeItem('user');
 
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+	sessionStorage.clear();
 
-    sessionStorage.clear();
-
-    window.location.href = "/web/login.php";
+	window.location.href = '/web/login.php';
 }
 
-async function sessionToken(){
-    let formData = new FormData();
+async function sessionToken() {
+	let formData = new FormData();
 
-    formData.append('token', token);
-    formData.append('type', 'new');
+	formData.append('token', token);
+	formData.append('type', 'new');
 
-    await apiCall("api/user/account", formData, async function(data) {
-        if(data != "") {
-            const parsedData = JSON.parse(data);
+	await apiCall('api/user/account', formData, async function (data) {
+		if (data != '') {
+			const parsedData = JSON.parse(data);
 
-            if (parsedData != null){
-
-                if(parsedData['error'] != undefined){
-                    routeError(parsedData['error']);
-                }else{
-                    sessionUpdate(parsedData.user, parsedData.token);
-                }
-            }
-        }
-    });
+			if (parsedData != null) {
+				if (parsedData['error'] != undefined) {
+					routeError(parsedData['error']);
+				} else {
+					sessionUpdate(parsedData.user, parsedData.token);
+				}
+			}
+		}
+	});
 }
 
-function sessionUpdate(newUser, newToken){
-    localStorage.setItem("user", JSON.stringify(newUser));
-    user = newUser;
+function sessionUpdate(newUser, newToken) {
+	localStorage.setItem('user', JSON.stringify(newUser));
+	user = newUser;
 
-    if(token != null){
-        localStorage.setItem("token", token);
-        token = newToken;
-    }
+	if (token != null) {
+		localStorage.setItem('token', token);
+		token = newToken;
+	}
 }
 
-function sessionExist(){
+function sessionExist() {
 	return token != null && token != undefined && user != null && user != undefined;
 }

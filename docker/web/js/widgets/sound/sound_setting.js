@@ -1,69 +1,61 @@
-const soundSetting = document.getElementById("sound-setting");
-const soundSettingClose = document.getElementById("sound-setting-close");
-const soundSettingPlaylist = document.getElementById("sound-setting-playlist");
+const soundSetting = document.getElementById('sound-setting');
+const soundSettingClose = document.getElementById('sound-setting-close');
+const soundSettingPlaylist = document.getElementById('sound-setting-playlist');
 
-function makeSoundSetting(callback){
-    soundSetting.style.display = "block";
+function makeSoundSetting(callback) {
+	soundSetting.style.display = 'block';
 
-    soundSettingClose.onclick = function(){
-        soundSetting.style.display = "none";
-    }
+	soundSettingClose.onclick = function () {
+		soundSetting.style.display = 'none';
+	};
 
-    const load = document.createElement("div");
-    load.classList.add("loader", "m-auto");
+	const load = document.createElement('div');
+	load.classList.add('loader', 'm-auto');
 
-    soundSettingPlaylist.innerHTML = "";
-    soundSettingPlaylist.append(load);
+	soundSettingPlaylist.innerHTML = '';
+	soundSettingPlaylist.append(load);
 
-    let formData = new FormData();
-    
-    formData.append("token", token);
+	let formData = new FormData();
 
-    apiCall("api/user/playlist", formData, async function(data) {
-        if(data != "") {
-            const parsedData = JSON.parse(data);
+	formData.append('token', token);
 
-            if(parsedData['error'] !== undefined){
-                console.log(parsedData['error']);
-            }
-            else{
-                soundSettingPlaylist.innerHTML = "";
+	apiCall('api/user/playlist', formData, async function (data) {
+		if (data != '') {
+			const parsedData = JSON.parse(data);
 
-                if(parsedData.length == 0) {
-                    const message = document.createElement("p");
-                    message.classList.add("contrast-text", "text-center");
-                    message.innerText = "Vous n'avez pas encore de playlist";
+			if (parsedData['error'] !== undefined) {
+				console.log(parsedData['error']);
+			} else {
+				soundSettingPlaylist.innerHTML = '';
 
-                    soundSettingPlaylist.append(message);
-                }
+				if (parsedData.length == 0) {
+					const message = document.createElement('p');
+					message.classList.add('contrast-text', 'text-center');
+					message.innerText = "Vous n'avez pas encore de playlist";
 
-                parsedData.map((playlist) => {
-                    ( async () => {
-                        const card = new PlaylistCard(
-                            playlist.id, 
-                            playlist.image, 
-                            playlist.title, 
-                            playlist.description, 
-                            playlist.owner, 
-                            false
-                        );
+					soundSettingPlaylist.append(message);
+				}
 
-                        soundSettingPlaylist.append(await card.getSkeleton());
-                        card.makeCard();
+				parsedData.map((playlist) => {
+					(async () => {
+						const card = new PlaylistCard(playlist.id, playlist.image, playlist.title, playlist.description, playlist.owner, false);
 
-                        card.playlistCard.href = "";
-                        card.playlistCard.onclick = function(e){
-                            e.preventDefault();
+						soundSettingPlaylist.append(await card.getSkeleton());
+						card.makeCard();
 
-                            callback(playlist.id);
+						card.playlistCard.href = '';
+						card.playlistCard.onclick = function (e) {
+							e.preventDefault();
 
-                            soundSetting.style.display = "none";
-                        }
+							callback(playlist.id);
 
-                        card.playlistCardPlus.remove();
-                    })();
-                })
-            }
-        }
-    });
+							soundSetting.style.display = 'none';
+						};
+
+						card.playlistCardPlus.remove();
+					})();
+				});
+			}
+		}
+	});
 }

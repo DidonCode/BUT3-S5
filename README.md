@@ -8,9 +8,13 @@
 
 ## Installation:
 
+    Global: npm install
+
+    Docker: npm run docker
+    ou
     Docker(./docker): docker-compose up --build -d
 
-    Tests(./tests/api): npm install && npm run test
+    Tests: npm run tests
 
     Mobile(./mobile): Suivre le tutoriel.
 
@@ -38,7 +42,7 @@
 
 ## Base de donnée:
 
-Utilisation de l'interface pour le [SCRIPTING (Docker)](http://localhost:8080/web/scripting/index.php). Où importer le fichier butify.sql dans la base de données.
+Utilisation de l'interface pour le [SCRIPTING (Docker)](http://localhost:8080/web/scripting/index.php). Où importer le fichier ./docker/example.sql dans la base de données.
 
 ## Information de connexion:
 

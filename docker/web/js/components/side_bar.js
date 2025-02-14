@@ -1,88 +1,85 @@
-const sideBarPlaylist = document.getElementById("personal-playlist-side-bar");
-const sideBarNewPlaylist = document.getElementById("personal-new-playlist");
-const sideBarEdit = document.getElementById("sideBarMusicEdit");
+const sideBarPlaylist = document.getElementById('personal-playlist-side-bar');
+const sideBarNewPlaylist = document.getElementById('personal-new-playlist');
+const sideBarEdit = document.getElementById('sideBarMusicEdit');
 
-function addPlaylistSideBar(image, link){
-    let playlistLink = document.createElement("a");
-    playlistLink.href = link;
-    playlistLink.onclick = function(){
-        route(event);
-    }
+function addPlaylistSideBar(image, link) {
+	let playlistLink = document.createElement('a');
+	playlistLink.href = link;
+	playlistLink.onclick = function () {
+		route(event);
+	};
 
-    let playlistImg = document.createElement("img");
-    
-    playlistImg.src = image;
-    
-    playlistImg.classList.add("mt-1", "mb-1", "mx-auto", "clRounded1", "img-fluid", "nav-bar-playlist");
+	let playlistImg = document.createElement('img');
 
-    playlistLink.appendChild(playlistImg);
-    sideBarPlaylist.appendChild(playlistLink);
+	playlistImg.src = image;
+
+	playlistImg.classList.add('mt-1', 'mb-1', 'mx-auto', 'clRounded1', 'img-fluid', 'nav-bar-playlist');
+
+	playlistLink.appendChild(playlistImg);
+	sideBarPlaylist.appendChild(playlistLink);
 }
 
-function loadPlaylistSideBar(){
-    let formData = new FormData();
-        
-    formData.append("token", token);
+function loadPlaylistSideBar() {
+	let formData = new FormData();
 
-    apiCall("api/user/playlist", formData, async function(data) {
-        if(data != "") {
-            const parsedData = JSON.parse(data);
+	formData.append('token', token);
 
-            if (parsedData != null) {
-                if(parsedData['error']){
-                    routeError(parsedData['error']);
-                    return;
-                }
-                else{
-                    sideBarPlaylist.querySelectorAll("a").forEach((playlist) => {
-                        playlist.remove();
-                    });
+	apiCall('api/user/playlist', formData, async function (data) {
+		if (data != '') {
+			const parsedData = JSON.parse(data);
 
-                    addPlaylistSideBar("http://localhost:8081/storage/playlist/liked.png", "/web/collection?id=liked");
+			if (parsedData != null) {
+				if (parsedData['error']) {
+					routeError(parsedData['error']);
+					return;
+				} else {
+					sideBarPlaylist.querySelectorAll('a').forEach((playlist) => {
+						playlist.remove();
+					});
 
-                    parsedData.forEach((playlist) => {
-                        addPlaylistSideBar(playlist.image, "/web/collection?id=" + playlist.id);
-                    });
-                }
-            }
-        }
-    });
+					addPlaylistSideBar('http://localhost:8081/storage/playlist/liked.png', '/web/collection?id=liked');
+
+					parsedData.forEach((playlist) => {
+						addPlaylistSideBar(playlist.image, '/web/collection?id=' + playlist.id);
+					});
+				}
+			}
+		}
+	});
 }
 
-sideBarNewPlaylist.onclick = function(){
+sideBarNewPlaylist.onclick = function () {
+	if (!sessionExist()) {
+		sessionDestroy();
+		return;
+	}
 
-    if(!sessionExist()) {
-        sessionDestroy();
-        return;
-    }
+	function addPlaylist(title, description, visibility) {
+		let formData = new FormData();
 
-    function addPlaylist(title, description, visibility){
-        let formData = new FormData();
+		formData.append('title', title);
+		formData.append('description', description);
+		formData.append('public', visibility);
+		formData.append('token', token);
 
-        formData.append("title", title);
-        formData.append("description", description);
-        formData.append("public", visibility);
-        formData.append("token", token);
+		apiCall('api/user/playlist', formData, async function (data) {
+			if (data != '') {
+				const parsedData = JSON.parse(data);
 
-        apiCall("api/user/playlist", formData, async function(data) {
-            if(data != "") {
-                const parsedData = JSON.parse(data);
+				if (parsedData != null) {
+					if (parsedData['error'] != undefined) {
+						routeError(parsedData['error']);
+					} else {
+						loadPlaylistSideBar();
+						window.location.href = '/web/collection?id=' + parsedData.id;
+						route(event);
+					}
+				}
+			}
+		});
+	}
 
-                if (parsedData != null) {
-                    if(parsedData['error'] != undefined){
-                        routeError(parsedData['error']);
-                    }
-                    else{
-                        loadPlaylistSideBar();
-                        window.location.href = "/web/collection?id=" + parsedData.id;
-                        route(event);
-                    }
-                }
-            }
-        });
-    }
+	makeCreatePlaylistPopup(addPlaylist);
+};
 
-    makeCreatePlaylistPopup(addPlaylist);
-}
-
-if(sessionExist()) loadPlaylistSideBar();
+if (sessionExist()) loadPlaylistSideBar();

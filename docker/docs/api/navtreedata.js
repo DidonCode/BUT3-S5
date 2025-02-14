@@ -22,29 +22,35 @@
 
  @licend  The above is the entire license notice for the JavaScript code in this file
 */
-var NAVTREE =
-[
-  [ "Butify", "index.html", [
-    [ "Documentation API Butify", "index.html", "index" ],
-    [ "README", "md__r_e_a_d_m_e.html", null ],
-    [ "Structures de données", "annotated.html", [
-      [ "Structures de données", "annotated.html", "annotated_dup" ],
-      [ "Index des structures de données", "classes.html", null ],
-      [ "Champs de donnée", "functions.html", [
-        [ "Tout", "functions.html", null ],
-        [ "Fonctions", "functions_func.html", null ]
-      ] ]
-    ] ],
-    [ "Fichiers", "files.html", [
-      [ "Liste des fichiers", "files.html", "files_dup" ]
-    ] ]
-  ] ]
+var NAVTREE = [
+	[
+		'Butify',
+		'index.html',
+		[
+			['Documentation API Butify', 'index.html', 'index'],
+			['README', 'md__r_e_a_d_m_e.html', null],
+			[
+				'Structures de données',
+				'annotated.html',
+				[
+					['Structures de données', 'annotated.html', 'annotated_dup'],
+					['Index des structures de données', 'classes.html', null],
+					[
+						'Champs de donnée',
+						'functions.html',
+						[
+							['Tout', 'functions.html', null],
+							['Fonctions', 'functions_func.html', null],
+						],
+					],
+				],
+			],
+			['Fichiers', 'files.html', [['Liste des fichiers', 'files.html', 'files_dup']]],
+		],
+	],
 ];
 
-var NAVTREEINDEX =
-[
-"annotated.html"
-];
+var NAVTREEINDEX = ['annotated.html'];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';
 var SYNCOFFMSG = 'cliquez pour activer la synchronisation du panel';

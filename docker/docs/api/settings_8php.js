@@ -1,4 +1,1 @@
-var settings_8php =
-[
-    [ "Settings", "class_settings.html", null ]
-];
+var settings_8php = [['Settings', 'class_settings.html', null]];
