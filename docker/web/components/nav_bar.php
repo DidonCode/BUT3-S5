@@ -23,7 +23,7 @@
         <div class="col-4">
             <div class="d-flex justify-content-end h-100">
                 <div id="user-login" class="my-auto">
-                    <a href="/web/login" class="btn action clRounded1 text-dark clTextBtn my-auto">Se connecter</a>
+                    <a href="/web/login.php" class="btn action clRounded1 text-dark clTextBtn my-auto">Se connecter</a>
                 </div>
 
                 <div id="user-connected" class="my-auto" hidden>

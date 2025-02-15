@@ -109,6 +109,12 @@ const routes = {
 		css: '/web/css/Butify/pages/music/collection.css',
 		js: '/web/js/pages/music/collection.js',
 	},
+	"/web/subscription": {
+        title: "Abonnements",
+        html: "/web/pages/subscription.php",
+        css: "/web/css/Butify/pages/subscription.css",
+        js: "/web/js/pages/subscription.js" 
+    }
 };
 
 function routeError(error) {
