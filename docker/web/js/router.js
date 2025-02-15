@@ -91,6 +91,12 @@ const routes = {
 		title: 'Écoute',
 		html: '/web/pages/music/play.php',
 	},
+	"/web/swipe": { 
+        title: "Swipe", 
+        html: "/web/pages/music/swipe.php", 
+        css: "/web/css/Butify/pages/music/swipe.css",
+        js: "/web/js/pages/music/swipe.js"
+    },
 	'/web/exposure': {
 		title: 'Artiste',
 		html: '/web/pages/music/exposure.php',
