@@ -112,8 +112,8 @@
 				"email" => $this->email,
 				"pseudo" => $this->pseudo,
 				"grade" => $this->grade,
-				"image" => Settings::$HOST_NAME.$this->image,
-				"banner" => Settings::$HOST_NAME.$this->banner,
+				"image" => Settings::$STORAGE_HOST_NAME.$this->image,
+				"banner" => Settings::$STORAGE_HOST_NAME.$this->banner,
 				"public" => $this->public,
 				"artist" => $this->artist
 			);
@@ -131,8 +131,8 @@
 				"id" => $user['id'],
 				"email" => $user['email'],
 				"pseudo" => $user['pseudo'],
-				"image" => Settings::$HOST_NAME.$user['image'],
-				"banner" => Settings::$HOST_NAME.$user['banner'],
+				"image" => Settings::$STORAGE_HOST_NAME.$user['image'],
+				"banner" => Settings::$STORAGE_HOST_NAME.$user['banner'],
 				"public" => $user['public']
 			);
 		}

@@ -276,7 +276,7 @@
 				if(count($playlistData) == 0) throw new Exception("Playlist not exit", 404);
 				
 				if(isset($image)){
-					if($playlistData[0]['image'] != "/storage/playlist/default.png") unlink(Settings::$HOST_NAME.$playlistData[0]['image']);
+					if($playlistData[0]['image'] != "/storage/playlist/default.png") unlink(Settings::$STORAGE_HOST_NAME.$playlistData[0]['image']);
 
 					$imageFileName = basename($image['name']);
 	        		$imageFileExtension = strtolower(pathinfo($imageFileName, PATHINFO_EXTENSION));
@@ -285,7 +285,7 @@
 					if(!in_array($imageFileExtension, Settings::$AUTHORIZED_IMAGE_EXT)) throw new Exception("Error file extension not accepted: ".$imageFileExtension, 1);
 					if($image['size'] > Settings::$MAX_UPLOAD_SIZE) throw new Exception("Error file too big size.", 2);
 
-					$imageFilePath = Settings::$HOST_NAME."/storage/playlist/".$id.".".$imageFileExtension;
+					$imageFilePath = Settings::$STORAGE_HOST_NAME."/storage/playlist/".$id.".".$imageFileExtension;
 					$imageDatabasePath = "/storage/playlist/".$id.".".$imageFileExtension;
 
 					if(move_uploaded_file($imageFileTmpPath, $imageFilePath)){
@@ -380,7 +380,7 @@
 
 				if(count($playlistData) == 0) throw new Exception("Playlist not exit", 404);
 
-				if($playlistData[0]['image'] != "/storage/playlist/default.png") unlink(Settings::$HOST_NAME.$playlistData[0]['image']);
+				if($playlistData[0]['image'] != "/storage/playlist/default.png") unlink(Settings::$STORAGE_HOST_NAME.$playlistData[0]['image']);
 
 				$request = $pdoDatabase->prepare("DELETE FROM playlist_sound WHERE playlist = ?");
 				$request->execute(array($id));

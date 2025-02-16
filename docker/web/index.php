@@ -26,6 +26,7 @@
 		<link rel="stylesheet" type="text/css" href="css/Butify/widgets/artist/artist_card.css">
 		
 		<script src="https://www.youtube.com/iframe_api"></script>
+		<script src="https://js.stripe.com/v3/"></script>
 
 		<script src="js/session.js"></script>
 	</head>

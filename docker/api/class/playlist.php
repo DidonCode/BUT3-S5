@@ -90,7 +90,7 @@
 				"owner" => $this->owner,
 				"title" => $this->title,
 				"description" => $this->description,
-				"image" => str_starts_with($this->image, "/storage") ? Settings::$HOST_NAME.$this->image : $this->image,
+				"image" => str_starts_with($this->image, "/storage") ? Settings::$STORAGE_HOST_NAME.$this->image : $this->image,
 				"public" => $this->public
 			);
 		}

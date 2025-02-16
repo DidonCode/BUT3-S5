@@ -1,0 +1,8 @@
+.changeset
+.git
+.husky
+coverage
+node_modules
+
+docker/docs
+docker/api/libs

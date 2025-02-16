@@ -85,7 +85,7 @@
 						$user['id'],
 						'Musiques "J\'aime"',
 						'Vos titre "j\'aime"',
-						Settings::$HOST_NAME."/storage/playlist/liked.png",
+						Settings::$STORAGE_HOST_NAME."/storage/playlist/liked.png",
 						0
 					);
 					$playlist = $playlist->toString();

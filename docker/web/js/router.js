@@ -91,12 +91,12 @@ const routes = {
 		title: 'Écoute',
 		html: '/web/pages/music/play.php',
 	},
-	"/web/swipe": { 
-        title: "Swipe", 
-        html: "/web/pages/music/swipe.php", 
-        css: "/web/css/Butify/pages/music/swipe.css",
-        js: "/web/js/pages/music/swipe.js"
-    },
+	'/web/swipe': {
+		title: 'Swipe',
+		html: '/web/pages/music/swipe.php',
+		css: '/web/css/Butify/pages/music/swipe.css',
+		js: '/web/js/pages/music/swipe.js',
+	},
 	'/web/exposure': {
 		title: 'Artiste',
 		html: '/web/pages/music/exposure.php',
@@ -109,12 +109,12 @@ const routes = {
 		css: '/web/css/Butify/pages/music/collection.css',
 		js: '/web/js/pages/music/collection.js',
 	},
-	"/web/subscription": {
-        title: "Abonnements",
-        html: "/web/pages/subscription.php",
-        css: "/web/css/Butify/pages/subscription.css",
-        js: "/web/js/pages/subscription.js" 
-    }
+	'/web/subscription': {
+		title: 'Abonnements',
+		html: '/web/pages/subscription.php',
+		css: '/web/css/Butify/pages/subscription.css',
+		js: '/web/js/pages/subscription.js',
+	},
 };
 
 function routeError(error) {
