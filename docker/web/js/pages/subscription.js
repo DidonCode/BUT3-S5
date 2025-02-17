@@ -46,7 +46,7 @@
 
 	setInterval(createSparkle, 100);
 
-	const stripe = Stripe("pk_test_51Qrwg3Pfaun29rdGpVgrLJ05OiWc5cdGZwgcMDMI5xrj9ldN3v84cMRPz2fN46CgplClCqg3IcA0eA5zVCsIfdat00i48vXkYT"); // Remplace par ta clé publique
+	const stripe = Stripe("pk_test_51Qrwg3Pfaun29rdGpVgrLJ05OiWc5cdGZwgcMDMI5xrj9ldN3v84cMRPz2fN46CgplClCqg3IcA0eA5zVCsIfdat00i48vXkYT");
 
 	premium.getElementsByClassName("btn")[0].onclick = async function(){
 		let formData = new FormData();

@@ -63,6 +63,21 @@ services:
         networks:
             - butify_network
 
+    stripe:
+        image: stripe/stripe-cli:latest
+        container_name: stripe
+        command: [
+            "listen", 
+            "--api-key", 
+            "sk_test_51Qrwg3Pfaun29rdGXHdIxIQAkp83EvJkx4FRk8nM712omkqWjCtRswf82W76K62Etuj3jnvObrM4JXHNGPo1ER1300W3rxLKzI", 
+            "--forward-to", 
+            "http://api:80/api/user/subscription"
+        ]
+        depends_on:
+            - api
+        networks:
+            - butify_network
+
     docs:
         image: nginx:alpine
         container_name: docs

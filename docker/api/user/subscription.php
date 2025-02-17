@@ -24,7 +24,7 @@
                 'payment_method_types' => ['card'],
                 'mode' => 'subscription',
                 'line_items' => [[
-                    'price' => $_POST['priceId'], // Utilise l'ID du plan Stripe
+                    'price' => $_POST['priceId'],
                     'quantity' => 1,
                 ]],
                 'success_url' => Settings::$STRIPE_SUCCESS,
