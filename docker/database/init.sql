@@ -34,7 +34,7 @@ CREATE TABLE `report_artist` (
   `id` int NOT NULL,
   `user` int NOT NULL,
   `artist` int NOT NULL,
-  `reason_artist` varchar(50) NOT NULL,
+  `reason` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -46,7 +46,7 @@ CREATE TABLE `report_playlist` (
   `id` int NOT NULL,
   `user` int NOT NULL,
   `playlist` int NOT NULL,
-  `reason_playlist` varchar(50) NOT NULL,
+  `reason` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -57,6 +57,7 @@ CREATE TABLE `report_playlist` (
 CREATE TABLE `report_reason` (
   `id` int NOT NULL,
   `reason` varchar(255) NOT NULL,
+  `type` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -68,7 +69,7 @@ CREATE TABLE `report_sound` (
   `id` int NOT NULL,
   `user` int NOT NULL,
   `sound` int NOT NULL,
-  `reason` varchar(50) NOT NULL,
+  `reason` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
