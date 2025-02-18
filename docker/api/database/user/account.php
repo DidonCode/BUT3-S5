@@ -271,7 +271,7 @@
 				}
 
 				if(isset($image)) {
-					if($user['image'] != "/storage/user/profile/default.png") unlink(Settings::$STORAGE_HOST_NAME.$user['image']);
+					if($user['image'] != "/storage/user/profile/default.png") unlink("../..".$user['image']);
 
 					$imageFileName = basename($image['name']);
 	        		$imageFileExtension = strtolower(pathinfo($imageFileName, PATHINFO_EXTENSION));
@@ -280,7 +280,7 @@
 					if(!in_array($imageFileExtension, Settings::$AUTHORIZED_IMAGE_EXT)) throw new Exception("Error file extension not accepted: ".$imageFileExtension, 4);
 					if($image['size'] > Settings::$MAX_UPLOAD_SIZE) throw new Exception("Error file too big size.", 5);
 
-					$imageFilePath = Settings::$STORAGE_HOST_NAME."/storage/user/profile/".$user['id'].".".$imageFileExtension;
+					$imageFilePath = "../../storage/user/profile/".$user['id'].".".$imageFileExtension;
 					$imageDatabasePath = "/storage/user/profile/".$user['id'].".".$imageFileExtension;
 
 					if(move_uploaded_file($imageFileTmpPath, $imageFilePath)){
@@ -295,7 +295,7 @@
 				}
 
 				if(isset($banner)) {
-					if($user['banner'] != "/storage/user/banner/default.png") unlink(Settings::$STORAGE_HOST_NAME.$user['banner']);
+					if($user['banner'] != "/storage/user/banner/default.png") unlink("../..".$user['banner']);
 
 					$bannerFileName = basename($banner['name']);
 	        		$bannerFileExtension = strtolower(pathinfo($bannerFileName, PATHINFO_EXTENSION));
@@ -304,7 +304,7 @@
 					if(!in_array($bannerFileExtension, Settings::$AUTHORIZED_IMAGE_EXT)) throw new Exception("Error file extension not accepted: ".$bannerFileExtension, 4);
 					if($banner['size'] > Settings::$MAX_UPLOAD_SIZE) throw new Exception("Error file too big size.", 5);
 
-					$bannerFilePath = Settings::$STORAGE_HOST_NAME."/storage/user/banner/".$user['id'].".".$bannerFileExtension;
+					$bannerFilePath = "../../storage/user/banner/".$user['id'].".".$bannerFileExtension;
 					$bannerDatabasePath = "/storage/user/banner/".$user['id'].".".$bannerFileExtension;
 
 					if(move_uploaded_file($bannerFileTmpPath, $bannerFilePath)){
