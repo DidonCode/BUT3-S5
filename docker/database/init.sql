@@ -27,6 +27,53 @@ USE butify;
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `report_artist`
+--
+
+CREATE TABLE `report_artist` (
+  `id` int NOT NULL,
+  `user` int NOT NULL,
+  `artist` int NOT NULL,
+  `reason_artist` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Structure de la table `report_playlist`
+--
+
+CREATE TABLE `report_playlist` (
+  `id` int NOT NULL,
+  `user` int NOT NULL,
+  `playlist` int NOT NULL,
+  `reason_playlist` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Structure de la table `report_reason`
+--
+
+CREATE TABLE `report_reason` (
+  `id` int NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Structure de la table `report_sound`
+--
+
+CREATE TABLE `report_sound` (
+  `id` int NOT NULL,
+  `user` int NOT NULL,
+  `sound` int NOT NULL,
+  `reason` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+--
 -- Structure de la table `activity`
 --
 
