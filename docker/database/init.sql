@@ -27,11 +27,31 @@ USE butify;
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `pseudo` varchar(255) NOT NULL,
+  `grade` int NOT NULL DEFAULT '0',
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '/storage/user/profile/default.png',
+  `banner` varchar(255) NOT NULL DEFAULT '/storage/user/banner/default.png',
+  `public` tinyint(1) NOT NULL DEFAULT '0',
+  `artist` tinyint NOT NULL,
+  `expire` date DEFAULT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
 -- Structure de la table `report_artist`
 --
 
 CREATE TABLE `report_artist` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user` int NOT NULL,
   `artist` int NOT NULL,
   `reason` varchar(255) NOT NULL,
@@ -43,7 +63,7 @@ CREATE TABLE `report_artist` (
 --
 
 CREATE TABLE `report_playlist` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user` int NOT NULL,
   `playlist` int NOT NULL,
   `reason` varchar(255) NOT NULL,
@@ -55,7 +75,7 @@ CREATE TABLE `report_playlist` (
 --
 
 CREATE TABLE `report_reason` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `reason` varchar(255) NOT NULL,
   `type` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
@@ -66,7 +86,7 @@ CREATE TABLE `report_reason` (
 --
 
 CREATE TABLE `report_sound` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user` int NOT NULL,
   `sound` int NOT NULL,
   `reason` varchar(255) NOT NULL,
@@ -86,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `activity` (
   `date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=2676 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Structure de la table `like_artist`
@@ -99,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `like_artist` (
   `artist` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Structure de la table `like_playlist`
@@ -112,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `like_playlist` (
   `playlist` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Structure de la table `like_sound`
@@ -125,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `like_sound` (
   `sound` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Structure de la table `playlist`
@@ -141,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `playlist` (
   `public` tinyint NOT NULL,
   PRIMARY KEY (`id`),
   KEY `owner` (`owner`)
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Structure de la table `playlist_collaborator`
@@ -156,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `playlist_collaborator` (
   PRIMARY KEY (`id`),
   KEY `playlist` (`playlist`),
   KEY `collaborator` (`collaborator`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Structure de la table `playlist_sound`
@@ -169,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `playlist_sound` (
   `sound` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `playlist` (`playlist`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Structure de la table `sound`
@@ -185,27 +205,23 @@ CREATE TABLE IF NOT EXISTS `sound` (
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `artist` (`artist`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Structure de la table `user`
+-- Structure de la table `subscription`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `pseudo` varchar(255) NOT NULL,
-  `grade` int NOT NULL DEFAULT '0',
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '/storage/user/profile/default.png',
-  `banner` varchar(255) NOT NULL DEFAULT '/storage/user/banner/default.png',
-  `public` tinyint(1) NOT NULL DEFAULT '0',
-  `artist` tinyint NOT NULL,
-  `expire` date DEFAULT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `subscription`;
+CREATE TABLE IF NOT EXISTS `subscription` (
+  `user` int not null,
+  `type` int null,
+  `created_at` date null,
+  `price` float null,
+  `update_at` date null,
+  `session` varchar(255) not null,
+  PRIMARY KEY (`user`),
+  KEY `user` (`user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Structure de la table `youtube`

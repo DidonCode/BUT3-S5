@@ -8,11 +8,14 @@
 
 ## Installation:
 
-    Global: npm install
+    npm install
 
-    Docker: npm run docker
-    ou
-    Docker(./docker): docker-compose up --build -d
+    Windows:
+        npm run docker
+
+    Linux:
+        cd docker
+        docker compose up --build -d
 
     Tests: npm run tests
 

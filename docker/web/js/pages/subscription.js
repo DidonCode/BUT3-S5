@@ -51,6 +51,7 @@
 	premium.getElementsByClassName("btn")[0].onclick = async function(){
 		let formData = new FormData();
 		formData.append("priceId", "price_1Qt7KWPfaun29rdGUCACU0xz");
+		formData.append("token", token);
 
 		apiCall("api/user/subscription", formData, async function(data) {
 			if (data != '') {
