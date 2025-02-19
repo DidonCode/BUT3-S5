@@ -91,7 +91,7 @@
 				"artist" => $this->artist,
 				"type" => $this->type,
 				"image" => str_starts_with($this->image, "/storage") ? Settings::$STORAGE_HOST_NAME.$this->image : $this->image,
-				"link" => str_starts_with($this->image, "/storage") ? Settings::$STORAGE_HOST_NAME.$this->link : $this->link
+				"link" => str_starts_with($this->link, "/storage") ? Settings::$STORAGE_HOST_NAME.$this->link : $this->link
 			);
 		}
 		

@@ -1,6 +1,6 @@
 class User {
 	constructor(id, email, pseudo, grade, image, banner, isPublic, artist) {
-		this.id = id.toString();
+		this.id = id;
 		this.email = email;
 		this.pseudo = pseudo;
 		this.grade = grade;
