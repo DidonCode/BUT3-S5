@@ -72,6 +72,7 @@ const routes = {
 	'/web/account': {
 		title: 'Compte',
 		html: '/web/pages/user/account.php',
+		css: '/web/css/Butify/pages/user/account.css',
 		js: '/web/js/pages/user/account.js',
 	},
 

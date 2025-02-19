@@ -1,6 +1,5 @@
-<div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-12 col-md-4">
+<div class="mx-auto" style="width: 50%;">
+  <div>
     <div class="d-flex justify-content-between">
       <h3 class="contrast-text">Mon compte</h3>
     </div>
@@ -32,8 +31,8 @@
       <div>
         <h5 class="contrast-text my-3">Mes informations</h5>
       </div>
-      <div class="">     
-        <div class="">
+      <div>     
+        <div>
           <div class="mb-3 mt-3">
             <label for="pseudo" class="form-label contrast-text">Pseudonyme :</label>
             <input type="text" class="form-control" id="pseudo" placeholder="" name="pseudo">
@@ -55,5 +54,17 @@
       </div>
     </form>
   </div>
-  <div class="col-md-4"></div>
+  <div>
+    <div class="d-flex justify-content-between">
+      <h3 class="contrast-text">Mon Abonnement</h3>
+    </div>
+    
+    <div class="subscription">
+        <i class="fa-thin fa-headphones"></i>
+        <div>
+            <h3 class="subscription-title">Premium</h3>
+            <h6 class="subscription-description contrast-text">expire le: 15-01-3435</h6>
+        </div>
+        <button class="subscription-cancel">Annuler</button>
+  </div>
 </div>
