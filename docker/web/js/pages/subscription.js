@@ -1,7 +1,6 @@
 (() => {
-
-	const basic = document.getElementById("basic");
-	const premium = document.getElementById("premium");
+	const basic = document.getElementById('basic');
+	const premium = document.getElementById('premium');
 
 	function createSparkle() {
 		const box = document.getElementById('premium');
@@ -46,19 +45,19 @@
 
 	setInterval(createSparkle, 100);
 
-	const stripe = Stripe("pk_test_51Qrwg3Pfaun29rdGpVgrLJ05OiWc5cdGZwgcMDMI5xrj9ldN3v84cMRPz2fN46CgplClCqg3IcA0eA5zVCsIfdat00i48vXkYT");
+	const stripe = Stripe('pk_test_51Qrwg3Pfaun29rdGpVgrLJ05OiWc5cdGZwgcMDMI5xrj9ldN3v84cMRPz2fN46CgplClCqg3IcA0eA5zVCsIfdat00i48vXkYT');
 
-	premium.getElementsByClassName("btn")[0].onclick = async function(){
+	premium.getElementsByClassName('btn')[0].onclick = async function () {
 		let formData = new FormData();
-		formData.append("priceId", "price_1Qt7KWPfaun29rdGUCACU0xz");
-		formData.append("token", token);
+		formData.append('priceId', 'price_1Qt7KWPfaun29rdGUCACU0xz');
+		formData.append('token', token);
 
-		apiCall("api/user/subscription", formData, async function(data) {
+		apiCall('api/user/subscription', formData, async function (data) {
 			if (data != '') {
 				const parsedData = JSON.parse(data);
 
 				await stripe.redirectToCheckout({ sessionId: parsedData });
 			}
 		});
-	}
+	};
 })();

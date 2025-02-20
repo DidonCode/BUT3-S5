@@ -1,6 +1,7 @@
 .like-swipe {
 	border-radius: 100%;
 	padding: 8px 7px 7px 7px;
+	background-color: #F7CBCB;
 }
 
 .rounded-img {
@@ -14,7 +15,6 @@
 	top: 0;
 	left: 0;
 }
-
 
 .liked-song {
 	animation: toLeft 1s forwards;
@@ -34,4 +34,17 @@
 	100% {
 		transform: rotate(-10deg);
 	}
+}
+
+.cancel-color {
+	color:#808080
+}
+
+.like-color {
+	color:#E80000
+}
+
+.swipe-img-container {
+	position:relative;
+	width:225px;
 }
