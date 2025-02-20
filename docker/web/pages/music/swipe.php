@@ -1,9 +1,10 @@
-<div class="col-md-4"></div>
-<div id="" class="mx-auto col-12 col-md-4">
-    <h2 class="text-center mb-3">Viva la vida</h2>
-    <div class="text-center">
-        <img class="rounded-img" src="/web/images/Tests/viva-la-vida.jpg" alt="Image de couverture musique Viva la vida" id="first-song">
-        <img class="rounded-img secondSong" src="/web/images/Tests/viva-la-vida.jpg" alt="Image de couverture musique Viva la vida">
+<div id="" class="mx-auto">
+    <h2 class="text-center mb-3" id="song-title">Viva la vida</h2>
+    <div class="mx-auto " style="position:relative;width:225px;">
+        <img class="rounded-img" src="/web/images/Tests/viva-la-vida.jpg" alt="Image de couverture musique Viva la vida"
+            id="first-song">
+        <img class="rounded-img secondSong text-center" src="/web/images/Tests/viva-la-vida.jpg"
+            alt="Image de couverture musique Viva la vida">
     </div>
     <div class="text-center mt-4">
         <button class="btn mr-5" id="dislike-swipe">
@@ -14,4 +15,3 @@
         </button>
     </div>
 </div>
-<div></div>

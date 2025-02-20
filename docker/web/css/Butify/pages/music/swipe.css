@@ -5,16 +5,16 @@
 
 .rounded-img {
 	border-radius: 20px;
+	width: 225px;
+	height: 225px;
 }
-.secondSong, .thirdSong {
+.secondSong {
 	position: absolute;
-	top: 50px;
-	left: 5px;
+	z-index: -1;
+	top: 0;
+	left: 0;
 }
 
-.secondSong {
-	z-index: -100;
-}
 
 .liked-song {
 	animation: toLeft 1s forwards;
@@ -25,9 +25,13 @@
 }
 
 @keyframes toLeft {
-	100% {transform: rotate(10deg);}
+	100% {
+		transform: rotate(10deg);
+	}
 }
 
 @keyframes toRight {
-	100% {transform: rotate(-10deg);}
+	100% {
+		transform: rotate(-10deg);
+	}
 }
