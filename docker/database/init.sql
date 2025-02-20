@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `sound` (
 DROP TABLE IF EXISTS `subscription`;
 CREATE TABLE IF NOT EXISTS `subscription` (
   `user` int not null,
-  `type` int null,
+  `type` varchar(255) null,
   `created_at` date null,
   `price` float null,
   `update_at` date null,

@@ -69,18 +69,6 @@
 			$result = array_values(array_unique($result, SORT_REGULAR));
 
 			Http::sendResponse(201, $result);
-			
-			// if(is_numeric($_POST['sound'])){
-			// 	$sound = DatabaseSound::byId($_POST['sound']);
-
-			// 	// $soundsArtist = DatabaseSound::byArtist($sound['artist'], 0, 5);
-			// }else{
-			// 	$sound = YoutubeSound::byId($_POST['sound']);
-
-			// 	// $soundsArtist = YoutubeSound::byArtist($sound['artist'], 0, 5);
-			// }
-
-			// Http::sendResponse(201, array($sound));
 		} catch(Exception $e){
 			Http::sendError($e);
 		}
