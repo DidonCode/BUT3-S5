@@ -78,7 +78,7 @@
 				"id" => $this->id,
 				"pseudo" => $this->pseudo,
 				"image" => str_starts_with($this->image, "/storage") ? Settings::$STORAGE_HOST_NAME.$this->image : $this->image,
-                "banner" => str_starts_with($this->image, "/storage") ? Settings::$STORAGE_HOST_NAME.$this->banner : $this->banner,
+                "banner" => str_starts_with($this->banner, "/storage") ? Settings::$STORAGE_HOST_NAME.$this->banner : $this->banner,
                 "public" => $this->public
 			);
 		}

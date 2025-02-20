@@ -1,6 +1,6 @@
 class Member {
 	constructor(id, email, pseudo, image, banner, isPublic) {
-		this.id = id.toString();
+		this.id = id;
 		this.email = email;
 		this.pseudo = pseudo;
 		this.image = image;
@@ -14,7 +14,7 @@ class Member {
 		if (!this.pseudo || typeof this.pseudo !== 'string') return false;
 		if (!this.image || typeof this.image !== 'string') return false;
 		if (!this.banner || typeof this.banner !== 'string') return false;
-		if ((this.isPublic != 0 && this.isPublic != 1) || typeof this.isPublic !== 'number') return false;
+		if ((parseInt(this.isPublic) != 0 && parseInt(this.isPublic) != 1) || typeof this.isPublic !== 'string') return false;
 
 		return true;
 	}

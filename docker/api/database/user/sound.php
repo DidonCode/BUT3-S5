@@ -61,10 +61,10 @@
 						$request->execute(array($id, $title, $user['id'], 0, $imageDatabasePath, $audioDatabasePath));
 						
 						$sound = new Sound(
-							$id,
+							strval($id),
 							$title,
 							$user['id'],
-							0,
+							"0",
 							$imageDatabasePath,
 							$audioDatabasePath
 						);
@@ -133,10 +133,10 @@
 						$request->execute(array($id, $title, $user['id'], 1, $imageDatabasePath, $fileDatabasePath));
 
 						$sound = new Sound(
-							$id,
+							strval($id),
 							$title,
 							$user['id'],
-							0,
+							"0",
 							"",
 							$fileDatabasePath
 						);
@@ -202,7 +202,7 @@
 
 			try{
 				try{
-					if(!unlink($sound['image']) && !unlink($sound['link'])) return false;
+					if(!unlink("../..".parse_url($sound['image'], PHP_URL_PATH)) && !unlink("../..".parse_url($sound['link'], PHP_URL_PATH))) return false;
 
 					$request = $pdoDatabase->prepare("DELETE FROM like_sound WHERE sound = ?");
 					$request->execute(array($sound['id']));

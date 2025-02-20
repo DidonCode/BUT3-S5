@@ -1,7 +1,10 @@
 class Artist {
 	constructor(id, pseudo, image, banner, isPublic) {
-		this.id = id.toString();
-		(this.pseudo = pseudo), (this.image = image), (this.banner = banner), (this.isPublic = isPublic);
+		this.id = id;
+		this.pseudo = pseudo;
+		this.image = image;
+		this.banner = banner; 
+		this.isPublic = isPublic;
 	}
 
 	isValid() {
@@ -9,7 +12,7 @@ class Artist {
 		if (!this.pseudo || typeof this.pseudo !== 'string') return false;
 		if (!this.image || typeof this.image !== 'string') return false;
 		if (!this.banner || typeof this.banner !== 'string') return false;
-		if ((this.isPublic != 0 && this.isPublic != 1) || typeof this.isPublic !== 'number') return false;
+		if ((this.isPublic != 0 && this.isPublic != 1) || typeof this.isPublic !== 'string') return false;
 
 		return true;
 	}
