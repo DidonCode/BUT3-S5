@@ -4,6 +4,46 @@
 		return;
 	}
 
+	const subscriptionContainer = document.getElementById('subscription-container');
+	const subscription = document.getElementById('subscription');
+
+	const url = window.location.search;
+	const urlParams = new URLSearchParams(url);
+	const checkout = urlParams.get('checkout');
+
+	if (checkout == 'completed') {
+		console.log("Bravo merci pour l'achat");
+		sessionToken();
+	}
+
+	if (user['subscription'] != null) {
+		const subscriptionTitle = document.getElementById('subscription-title');
+		const subscriptionDescription = document.getElementById('subscription-description');
+		const subscriptionCancel = document.getElementById('subscription-cancel');
+
+		subscription.classList.add(user['subscription']['type']);
+		subscriptionTitle.innerText = user['subscription']['type'];
+		subscriptionDescription.innerText = user['subscription']['updateAt'];
+
+		subscriptionCancel.onclick = function () {};
+	} else {
+		subscription.remove();
+
+		const viewSubscription = document.createElement('div');
+		viewSubscription.classList.add('text-center', 'mt-5');
+
+		const addSubscription = document.createElement('button');
+		addSubscription.classList.add('btn', 'clRounded1', 'action', 'px-4');
+		addSubscription.innerText = 'Voir';
+		addSubscription.onclick = function (event) {
+			event.target.href = '/web/subscription';
+			route(event);
+		};
+
+		viewSubscription.append(addSubscription);
+		subscriptionContainer.append(viewSubscription);
+	}
+
 	/**
 	 * @brief constantes du formulaire
 	 */

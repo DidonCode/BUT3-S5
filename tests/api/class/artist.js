@@ -3,7 +3,7 @@ class Artist {
 		this.id = id;
 		this.pseudo = pseudo;
 		this.image = image;
-		this.banner = banner; 
+		this.banner = banner;
 		this.isPublic = isPublic;
 	}
 

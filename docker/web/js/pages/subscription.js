@@ -1,6 +1,28 @@
 (() => {
+<<<<<<< Updated upstream
 	const basic = document.getElementById('basic');
 	const premium = document.getElementById('premium');
+=======
+
+	const free = document.getElementById("free-buy");
+	const basic = document.getElementById("basic-buy");
+	const premium = document.getElementById("premium-buy");
+	const loading = document.getElementById("subscription-loading");
+
+	if(user['subscription'] != null){
+		if(user['subscription']['type'] === "premium"){
+			basic.setAttribute("disabled", "");
+			premium.setAttribute("disabled", "");
+			premium.innerText = "possédé";
+		}else{
+			basic.setAttribute("disabled", "");
+			basic.innerText = "possédé";
+			premium.innerText = "amélioré";
+		}
+	}else{
+		free.innerText = "possédé";
+	}
+>>>>>>> Stashed changes
 
 	function createSparkle() {
 		const box = document.getElementById('premium');
@@ -45,19 +67,45 @@
 
 	setInterval(createSparkle, 100);
 
+<<<<<<< Updated upstream
 	const stripe = Stripe('pk_test_51Qrwg3Pfaun29rdGpVgrLJ05OiWc5cdGZwgcMDMI5xrj9ldN3v84cMRPz2fN46CgplClCqg3IcA0eA5zVCsIfdat00i48vXkYT');
 
 	premium.getElementsByClassName('btn')[0].onclick = async function () {
 		let formData = new FormData();
 		formData.append('priceId', 'price_1Qt7KWPfaun29rdGUCACU0xz');
 		formData.append('token', token);
+=======
+	function createSession(subscription){
+		if (!sessionExist()) {
+			sessionDestroy();
+			return;
+		}
+
+		loading.removeAttribute("hidden");
+
+		let formData = new FormData();
+
+		formData.append("subscription", subscription);
+		formData.append("token", token);
+>>>>>>> Stashed changes
 
 		apiCall('api/user/subscription', formData, async function (data) {
 			if (data != '') {
 				const parsedData = JSON.parse(data);
 
-				await stripe.redirectToCheckout({ sessionId: parsedData });
+				await Stripe(parsedData['key']).redirectToCheckout({ sessionId: parsedData['session'] });
+
 			}
+
+			loading.setAttribute("hidden", "");
 		});
+<<<<<<< Updated upstream
 	};
 })();
+=======
+	}
+
+	premium.onclick = () => createSession("premium");
+	basic.onclick = () => createSession("basic");
+})();
+>>>>>>> Stashed changes

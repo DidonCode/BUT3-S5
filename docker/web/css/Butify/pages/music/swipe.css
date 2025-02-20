@@ -1,7 +1,7 @@
 .like-swipe {
 	border-radius: 100%;
 	padding: 8px 7px 7px 7px;
-	background-color: #F7CBCB;
+	background-color: #f7cbcb;
 }
 
 .rounded-img {
@@ -37,14 +37,14 @@
 }
 
 .cancel-color {
-	color:#808080
+	color: #808080;
 }
 
 .like-color {
-	color:#E80000
+	color: #e80000;
 }
 
 .swipe-img-container {
-	position:relative;
-	width:225px;
+	position: relative;
+	width: 225px;
 }

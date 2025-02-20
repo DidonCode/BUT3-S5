@@ -13,10 +13,11 @@
 		* @param $user Information de l'utilisateur
 		* @return \Stripe\Checkout\Session Session stripe pour l'achat
 		*
-		* @brief Crée une session d'achat stripe est stock l'id pour retouvé l'achat dans le webhook
+		* @brief Crée une session d'achat Stripe et stocke l'id pour retrouver l'achat dans le webhook
 		* @exception PDOException La requête échoue
+        * @exception \Stripe\Exception\ApiErrorException Erreur de l'api Stripe
 		*/
-        static function createSession($user, $priceId){
+        static function createSession($user, $name, $priceId){
             global $pdoDatabase;
 
             try {
@@ -28,9 +29,9 @@
                         'quantity' => 1,
                     ]],
                     'success_url' => Settings::$STRIPE_SUCCESS,
-                    'cancel_url' => Settings::$STRIPRE_CANCEL,
+                    'cancel_url' => Settings::$STRIPE_CANCEL,
                     'metadata' => [
-                        'priceId' => $priceId,
+                        'name' => $name,
                     ]
                 ]);  
                 
@@ -38,7 +39,7 @@
                 $request->execute(array($user['id'], $session->id));
 
                 return $session;
-            } catch(Exception $e){
+            } catch(\Stripe\Exception\ApiErrorException $e){
 				throw new Exception("Error to create stripe session".$e->getMessage(), 500);
 			}
         }
@@ -48,28 +49,55 @@
         * @param $createdAt Date de création
         * @param $price Prix payé pour l'abonnement
         * @param $updateAt Date d'expiration ou renouvellement
-        * @param $session Identifiant de la session d'achat strip
+        * @param $sessionId Identifiant de la session d'achat Stripe
+        * @param $paymentId Identifiant du payement de l'achat Stripe
+        * @param $subscriptionId Identifiant de l'abonnement de l'achat Stripe
 		* @return bool Confirme si l'exécution a réussi
 		*
-		* @brief Mise a jour les informations de l'abonnement aprés le payment de l'utilisateur
+		* @brief Mise à jour des informations de l'abonnement après le paiement de l'utilisateur
 		* @exception PDOException La requête échoue
 		*/
-        static function create($type, $createdAt, $price, $updateAt, $session){
+        static function create($type, $createdAt, $price, $updateAt, $sessionId, $paymentId, $subscriptionId){
             global $pdoDatabase;
 
             try{
-                $request = $pdoDatabase->prepare("UPDATE subscription SET type = ?, created_at = ?, price = ?, update_at = ? WHERE session = ?");
-                $request->execute(array($type, $createdAt, $price, $updateAt, $session));
+                $request = $pdoDatabase->prepare("UPDATE subscription SET type = ?, created_at = ?, price = ?, update_at = ?, payment = ?, subscription = ? WHERE session = ?");
+                $request->execute(array($type, $createdAt, $price, $updateAt, $paymentId, $subscriptionId, $sessionId));
 
                 return true;
             } catch(PDOException $e){
-                throw new Exception("Error to create subscription for session: ".$session.". ".$e->getMessage(), 500);
+                throw new Exception("Error to create subscription for session: ".$sessionId.". ".$e->getMessage(), 500);
             }
         }
 
         /**
 		* @param $user Information de l'utilisateur
-		* @return array Une classe subscription sous la forme d'un tableau associatif
+		* @return bool Renvoie si l'abonnement a bien été annulé
+		*
+		* @brief Annule l'abonnement de l'utilisateur
+		* @exception PDOException La requête échoue
+        * @exception \Stripe\Exception\ApiErrorException Erreur de l'api Stripe
+		*/
+        static function cancel($user){
+            global $pdoDatabase;
+
+            try{
+                $request = $pdoDatabase->prepare("SELECT subscription FROM subscription WHERE user = ?");
+                $request->execute(array($user['id']));
+                $subscriptionId = $request->fetchAll()[0][0];
+
+                $subscription = \Stripe\Subscription::retrieve($subscriptionId);
+                $subscription->cancel();
+
+                return true;
+            } catch(\Stripe\Exception\ApiErrorException $e){
+                throw new Exception("Error to cancel subscription for user: ".$user['id'].". ".$e->getMessage(), 500);
+            }
+        }
+
+        /**
+		* @param $user Information de l'utilisateur
+		* @return Subscription Une classe subscription sous la forme d'un tableau associatif
 		*
 		* @brief Renvoie l'abonnement en cours ou expiré de l'utilisateur
 		* @exception PDOException La requête échoue
@@ -83,9 +111,9 @@
                 $subscriptionData = $request->fetchAll();
 
                 if(count($subscriptionData) >= 1) {
-                    $subscription = Subscription::toClass($subscriptionData[0]);
+                    if(!isset($subscriptionData[0]['type'], $subscriptionData[0]['created_at'], $subscriptionData[0]['price'], $subscriptionData[0]['update_at'])) return null;
 
-                    if(!$subscription->isExpired()) return $subscription->toString();
+                    return Subscription::toClass($subscriptionData[0]);
                 }
 
                 return null;

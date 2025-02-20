@@ -33,16 +33,7 @@
 						$expire = new DateTime(date("Y")."-".date("m")."-".date("d"));
 						$expire->modify("+".Settings::$SESSION_EXPIRE." days");
 
-						$user = new User(
-							$userData['id'],
-							$userData['email'],
-							$userData['pseudo'],
-							$userData['grade'],
-							$userData['image'],
-							$userData['banner'],
-							$userData['public'],
-							$userData['artist']
-						);
+						$user = User::toClass($userData, DatabaseUserSubscription::get(array("id" => $userData["id"])));
 						
 						$request = $pdoDatabase->prepare("UPDATE user SET token = ?, expire = ? WHERE id = ?");
 						$request->execute(array($token, $expire->format('Y-m-d'), $user->getId()));
@@ -105,16 +96,7 @@
 				
 				if(count($userData) == 0) throw new Exception("Error to get user account after creation.", 400);
 
-				$user = new User(
-					$userData[0]['id'],
-					$userData[0]['email'],
-					$userData[0]['pseudo'],
-					$userData[0]['grade'],
-					$userData[0]['image'],
-					$userData[0]['banner'],
-					$userData[0]['public'],
-					$userData[0]['artist']
-				);
+				$user = User::toClass($userData, null);
 
 				$token = DatabaseUserAccount::generateToken();
 				DatabaseUserAccount::updateToken($user->toString(), $token);

@@ -215,10 +215,12 @@ DROP TABLE IF EXISTS `subscription`;
 CREATE TABLE IF NOT EXISTS `subscription` (
   `user` int not null,
   `type` varchar(255) null,
-  `created_at` date null,
+  `created_at` datetime null,
   `price` float null,
-  `update_at` date null,
+  `update_at` datetime null,
   `session` varchar(255) not null,
+  `payment` varchar(255) null,
+  `subscription` varchar(255) null,
   PRIMARY KEY (`user`),
   KEY `user` (`user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

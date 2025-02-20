@@ -20,31 +20,34 @@
 
     \Stripe\Stripe::setApiKey(Settings::$STRIPE_SECRET);
 
-    $subscriptions = array(
-        "price_1Qt7KWPfaun29rdGUCACU0xz" => "premium",
-        "price" => "basic"
-    );
-
-    if(count(array_keys($_POST)) == 1){
-        $payload = @file_get_contents('php://input');
-    }
-
-    if(count(array_keys($_POST)) == 2 AND isset($_POST['priceId'], $_POST['token'])){
+    if(count(array_keys($_POST)) == 2 AND isset($_POST['subscription'], $_POST['token'])){
 
         try{
-            if(empty($_POST['priceId']) || empty($_POST['token'])) throw new Exception("Argument not valid", 400);
+            if(empty($_POST['subscription']) || empty($_POST['token'])) throw new Exception("Argument not valid", 400);
 
             $user = DatabaseUserAccount::get($_POST['token']);
 
 			if(!isset($user)) throw new Exception("Invalid token", 403);
             
-            if(!$subscriptions[$_POST['priceId']]) throw new Exception("Product not valid", 400);
+            $product = Settings::$STRIPE_PRODUCTS[$_POST['subscription']];
 
-            if(!DatabaseUserSubscription::get($user)) throw new Exception("You have already subscription", 200);
+            if(!$product) throw new Exception("Product not valid", 400);
 
-            $session = DatabaseUserSubscription::createSession($user, $_POST['priceId']);
+            $subscription = DatabaseUserSubscription::get(user: $user);
 
-            Http::sendResponse(201, $session->id);
+            if($subscription) {
+                if(!isset(Settings::$STRIPE_PRODUCTS[$subscription->getType()]['upgrading']) && !$subscription->isChangeable()) throw new Exception("You have already subscription", 200);
+                //remboursement
+            }
+
+            $session = DatabaseUserSubscription::createSession($user, $_POST['subscription'], $product['priceId']);
+
+            $subscription = array(
+                "key" => Settings::$STRIPE_CLIENT,
+                "session" => $session->id
+            );
+
+            Http::sendResponse(201, $subscription);
         }catch(Exception $e){
             Http::sendError($e);
         }
@@ -70,7 +73,11 @@
         return;
     }
 
-    if(isset($payload)){
+    if(count(array_keys($_POST)) == 0){
+        $payload = @file_get_contents('php://input');
+
+        if(!isset($payload)) return;
+
         try{
             $event = json_decode($payload, true);
 
@@ -81,6 +88,10 @@
 
             switch ($eventType) {
                 case 'checkout.session.completed':
+                    $productName = $eventData['metadata']['name'];
+
+                    if(!isset(Settings::$STRIPE_PRODUCTS[$productName])) throw new Exception("Error this product not exist: ".$productName, 400);
+
                     $createdDate = new DateTime();
                     $createdDate->setTimestamp($eventData['created']);
 
@@ -88,12 +99,17 @@
                     $updatedData->setTimestamp($eventData['created']);
                     $updatedData->modify("+1 month");
 
+                    $paymentId = $eventData['payment_intent'];
+                    $subscriptionId = $eventData['subscription'];
+
                     DatabaseUserSubscription::create(
-                        $subscriptions[$eventData['metadata']['priceId']],
-                        $createdDate->format('Y-m-d'), 
+                        $productName,
+                        $createdDate->format('Y-m-d H:i'), 
                         $eventData['amount_total'] / 100, 
-                        $updatedData->format('Y-m-d'), 
-                        $eventData['id']
+                        $updatedData->format('Y-m-d H:i'), 
+                        $eventData['id'],
+                        $paymentId,
+                        $subscriptionId
                     );
 
                     break;

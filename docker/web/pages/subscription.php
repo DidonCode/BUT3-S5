@@ -15,7 +15,7 @@
                 <h5 class="price-period">par mois</h5>
             </div>
             <div class="pricing-button-wrapper">
-                <button class="btn action clRounded1">OBTENIR</button>
+                <button id="free-buy" class="btn action clRounded1" disabled>OBTENIR</button>
             </div>
             <div class="pricing-options">
                 <h5 class="options-title">Options</h5>
@@ -46,7 +46,7 @@
                 <h5 class="price-period">par mois</h5>
             </div>
             <div class="pricing-button-wrapper">
-                <button class="btn action clRounded1">OBTENIR</button>
+                <button id="premium-buy" class="btn action clRounded1">OBTENIR</button>
             </div>
             <div class="pricing-options">
                 <h5 class="options-title">Options</h5>
@@ -77,7 +77,7 @@
                 <h5 class="price-period">par mois</h5>
             </div>
             <div class="pricing-button-wrapper">
-                <button class="btn action clRounded1">OBTENIR</button>
+                <button id="basic-buy" class="btn action clRounded1">OBTENIR</button>
             </div>
             <div class="pricing-options">
                 <h5 class="options-title">Options</h5>
@@ -90,5 +90,11 @@
                 </ul>
             </div>
         </div>
+    </div>
+</div>
+
+<div id="subscription-loading" hidden>
+    <div>
+        <div class="loader"></div>  
     </div>
 </div>

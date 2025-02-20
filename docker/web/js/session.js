@@ -71,8 +71,8 @@ function sessionUpdate(newUser, newToken) {
 	localStorage.setItem('user', JSON.stringify(newUser));
 	user = newUser;
 
-	if (token != null) {
-		localStorage.setItem('token', token);
+	if (newToken != null) {
+		localStorage.setItem('token', newToken);
 		token = newToken;
 	}
 }

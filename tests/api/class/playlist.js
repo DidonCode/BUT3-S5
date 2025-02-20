@@ -1,10 +1,10 @@
 class Playlist {
 	constructor(id, owner, title, description, image, isPublic) {
-		this.id = id; 
+		this.id = id;
 		this.owner = owner;
 		this.title = title;
 		this.description = description;
-		this.image = image; 
+		this.image = image;
 		this.isPublic = isPublic;
 	}
 

@@ -2,13 +2,15 @@
 
 	require_once("../database/connect/database.php");
 
-	include_once("../class/user.php");
-
 	include_once("../class/http.php");
+
+	include_once("../class/user.php");
+	include_once("../class/subscription.php");
 
 	include_once("../settings.php");
 	
 	include_once("../database/user/account.php");
+	include_once("../database/user/subscription.php");
 
 	header("Access-Control-Allow-Origin: *");
 	header("Access-Control-Allow-Methods: POST");
@@ -189,7 +191,13 @@
 			if($_POST['type'] == "new"){
 				$token = DatabaseUserAccount::generateToken();
 				DatabaseUserAccount::updateToken($user, $token);
-				Http::sendResponse(201, array("token" => $token, "user" => User::toClass($user)->toString()));
+
+				$user = array(
+					"token" => $token, 
+					"user" => User::toClass($user, DatabaseUserSubscription::get($user))->toString()
+				);
+
+				Http::sendResponse(201, $user);
 				return;
 			}
 

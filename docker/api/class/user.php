@@ -17,8 +17,9 @@
 		private $banner;
 		private $public;
 		private $artist;
+		private $subscription;
 
-		function __construct($id, $email, $pseudo, $grade, $image, $banner, $public, $artist){
+		function __construct($id, $email, $pseudo, $grade, $image, $banner, $public, $artist, $subscription){
 			$this->id = $id;
 			$this->email = $email;
 			$this->pseudo = $pseudo;
@@ -27,6 +28,7 @@
 			$this->banner = $banner;
 			$this->public = $public;
 			$this->artist = $artist;
+			$this->subscription = $subscription;
 		}
 
 		/**
@@ -102,6 +104,15 @@
 		}
 
 		/**
+		* @return Subscription
+		*
+		* @brief Renvoie l'abonnement de l'utilisateur
+		*/
+		function getSubscription(){
+			return $this->subscription;
+		}
+
+		/**
 		* @return array
 		*
 		* @brief Renvoie les données de l'utilisateur
@@ -115,7 +126,8 @@
 				"image" => Settings::$STORAGE_HOST_NAME.$this->image,
 				"banner" => Settings::$STORAGE_HOST_NAME.$this->banner,
 				"public" => $this->public,
-				"artist" => $this->artist
+				"artist" => $this->artist,
+				"subscription" => !isset($this->subscription) ? null : $this->subscription->toString()
 			);
 		}
 
@@ -133,7 +145,8 @@
 				"pseudo" => $user['pseudo'],
 				"image" => Settings::$STORAGE_HOST_NAME.$user['image'],
 				"banner" => Settings::$STORAGE_HOST_NAME.$user['banner'],
-				"public" => $user['public']
+				"public" => $user['public'],
+				"subscription" => $user['subscription']
 			);
 		}
 
@@ -151,7 +164,8 @@
 				$this->image,
 				$this->banner,
 				$this->public,
-				$this->artist
+				$this->artist,
+				$this->subscription
 			);
 		}
 
@@ -162,7 +176,7 @@
 		*
 		* @brief Renvoie un nouvel utilisateur à partir des données
 		*/
-		static function toClass($user){
+		static function toClass($user, $subscription){
 			return new User(
 				$user['id'],
 				$user['email'],
@@ -171,7 +185,8 @@
 				$user['image'],
 				$user['banner'],
 				$user['public'],
-				$user['artist']
+				$user['artist'],
+				$subscription
 			);
 		}
 	}

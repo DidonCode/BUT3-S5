@@ -25,9 +25,24 @@
 			$this->session = $session;
 		}
 
+		/**
+		* @return bool
+		*
+		* @brief Renvoie si l'abonnement est expiré
+		*/
         function isExpired(){
-            $expired = date_diff($this->createdAt, $this->updateAt);
-            return !intval($expired->format('%R%a')) >= 0;
+			$now = new DateTime(date("Y-m-d H:m:s"));
+            return $this->updateAt->getTimestamp() < $now->getTimestamp();
+        }
+
+		/**
+		* @return bool
+		*
+		* @brief Renvoie si l'abonnement peut être encore échangé
+		*/
+        function isChangeable(){
+			$now = new DateTime(date("Y-m-d H:m:s"));
+            return $this->createdAt->getTimestamp() < $now->getTimestamp() + 3600;
         }
 
 		/**
@@ -91,12 +106,9 @@
 		*/
 		function toString(){
 			return array(
-				"user" => $this->user,
 				"type" => $this->type,
-				"createdAt" => $this->createdAt,
-				"price" => $this->price,
-				"updateAt" => $this->updateAt,
-				"session" => $this->session
+				"createdAt" => $this->createdAt->format("Y-m-d H:i:s"),
+				"updateAt" => $this->updateAt->format("Y-m-d H:i:s"),
 			);
 		}
 		
@@ -121,7 +133,7 @@
 		* 
 		* @return Subscription
 		*
-		* @brief Renvoie une nouveau abonnement à partir des données
+		* @brief Renvoie un nouvel abonnement à partir des données
 		*/
         static function toClass($subscription){
             return new Subscription(

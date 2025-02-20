@@ -158,7 +158,7 @@ describe("Tests de l'API Butify (user)", () => {
 		expect(response.status).toBe(200);
 
 		const data = await response.json();
-		
+
 		expect(data).toBe(true);
 	});
 

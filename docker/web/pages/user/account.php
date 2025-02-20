@@ -1,9 +1,8 @@
-<div class="mx-auto" style="width: 50%;">
+<div id="account" class="mx-auto mt-4">
   <div>
-    <div class="d-flex justify-content-between">
-      <h3 class="contrast-text">Mon compte</h3>
+    <div>
+      <h3 class="contrast-text mb-4">Mon compte</h3>
     </div>
-    <br>
     <div class="d-flex justify-content-between">
       <div>
         <img id="idProfileImg" src="/storage/user/profile/default.png" alt="Photo de profil" style="width:100px; aspect-ratio:1" class="rounded-circle">
@@ -54,17 +53,18 @@
       </div>
     </form>
   </div>
-  <div>
-    <div class="d-flex justify-content-between">
-      <h3 class="contrast-text">Mon Abonnement</h3>
+
+  <div id="subscription-container" class="mt-5">
+    <div>
+      <h3 class="contrast-text mb-4">Mon Abonnement</h3>
     </div>
     
-    <div class="subscription">
+    <div id="subscription">
         <i class="fa-thin fa-headphones"></i>
         <div>
-            <h3 class="subscription-title">Premium</h3>
-            <h6 class="subscription-description contrast-text">expire le: 15-01-3435</h6>
+            <h3 id="subscription-title">Premium</h3>
+            <h6 id="subscription-description" class="contrast-text">expire le: 15-01-3435</h6>
         </div>
-        <button class="subscription-cancel">Annuler</button>
-  </div>
+        <button id="subscription-cancel">Annuler</button>
+    </div>
 </div>
