@@ -33,11 +33,10 @@
 
             if(!$product) throw new Exception("Product not valid", 400);
 
-            $subscription = DatabaseUserSubscription::get(user: $user);
+            $subscription = DatabaseUserSubscription::get($user);
 
             if($subscription) {
                 if(!isset(Settings::$STRIPE_PRODUCTS[$subscription->getType()]['upgrading']) && !$subscription->isChangeable()) throw new Exception("You have already subscription", 200);
-                //remboursement
             }
 
             $session = DatabaseUserSubscription::createSession($user, $_POST['subscription'], $product['priceId']);
@@ -54,18 +53,24 @@
 
         return;
     }
-    if(count(array_keys($_POST)) == 1 AND isset($_POST['token'])){
+    if(count(array_keys($_POST)) == 2 AND isset($_POST['action'], $_POST['token'])){
 
         try{
-            if(empty($_POST['token'])) throw new Exception("Argument not valid", 400);
+            if(empty($_POST['action']) OR empty($_POST['token']) OR !filter_var($_POST['action'], FILTER_VALIDATE_INT)) throw new Exception("Argument not valid", 400);
 
             $user = DatabaseUserAccount::get($_POST['token']);
 
 			if(!isset($user)) throw new Exception("Invalid token", 403);
             
-            $subscription = DatabaseUserSubscription::get($user);
+            if($_POST['action'] == 2){
+                $subscription = DatabaseUserSubscription::get($user);
+                Http::sendResponse(200, $subscription);
+            }
 
-            Http::sendResponse(200, $subscription);
+            if($_POST['action'] == 1){
+                $result = DatabaseUserSubscription::cancel($user);
+                Http::sendResponse(200, $result);
+            }
         }catch(Exception $e){
             Http::sendError($e);
         }
@@ -89,6 +94,7 @@
             switch ($eventType) {
                 case 'checkout.session.completed':
                     $productName = $eventData['metadata']['name'];
+                    $userId = $eventData['metadata']['user'];
 
                     if(!isset(Settings::$STRIPE_PRODUCTS[$productName])) throw new Exception("Error this product not exist: ".$productName, 400);
 
@@ -101,6 +107,15 @@
 
                     $paymentId = $eventData['payment_intent'];
                     $subscriptionId = $eventData['subscription'];
+
+                    // $user = DatabaseUserAccount::byId($userId);
+                    // $subscription = DatabaseUserSubscription::get($user);
+
+                    // if($subscription->isChangeable()){
+                    //     //remboursement
+                    //     DatabaseUserSubscription::cancel($user);
+                        
+                    // }
 
                     DatabaseUserSubscription::create(
                         $productName,

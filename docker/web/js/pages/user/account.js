@@ -25,7 +25,21 @@
 		subscriptionTitle.innerText = user['subscription']['type'];
 		subscriptionDescription.innerText = user['subscription']['updateAt'];
 
-		subscriptionCancel.onclick = function () {};
+		subscriptionCancel.onclick = function () {
+			console.log("oui");
+			let formData = new FormData();
+
+			formData.append('action', 1);
+			formData.append('token', token);
+
+			apiCall("/api/user/subscription", formData, async function(data) {
+				if (data != '') {
+					const parsedData = JSON.parse(data);
+	
+					if(parsedData) subscription.remove();
+				}
+			});
+		};
 	} else {
 		subscription.remove();
 

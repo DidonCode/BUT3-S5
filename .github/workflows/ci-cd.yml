@@ -1,0 +1,30 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Installation de NPM
+        uses: actions/setup-node@v3
+        with:
+          python-version: '18'
+
+      - name: Installation de NPM dans le projet
+        run: npm install
+
+      - name: Lancement de docker
+        run: npm run docker & sleep 10
+
+      - name: Lancement des tests API
+        run: npm run test
+
+      - name: Arrêt de Docker
+        run: docker-compose down

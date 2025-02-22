@@ -32,6 +32,7 @@
                     'cancel_url' => Settings::$STRIPE_CANCEL,
                     'metadata' => [
                         'name' => $name,
+                        'user' => $user['id'],
                     ]
                 ]);  
                 
@@ -89,9 +90,14 @@
                 $subscription = \Stripe\Subscription::retrieve($subscriptionId);
                 $subscription->cancel();
 
+                $request = $pdoDatabase->prepare("DELETE FROM subscription WHERE user = ?");
+                $request->execute(array($user['id']));
+
                 return true;
             } catch(\Stripe\Exception\ApiErrorException $e){
                 throw new Exception("Error to cancel subscription for user: ".$user['id'].". ".$e->getMessage(), 500);
+            } catch(PDOException $e){
+                throw new Exception("Error to get or remove subscription for user: ".$user['id'].". ".$e->getMessage(), 500);
             }
         }
 

@@ -168,7 +168,6 @@ async function loadedClear() {
 
 	dynamicallyLoadedScripts.forEach((script) => {
 		script.remove();
-		delete script;
 	});
 	dynamicallyLoadedScripts = [];
 }

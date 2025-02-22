@@ -1,2 +1,4 @@
+npx eslint 
+npx changeset add
 npx changeset version
 npm run format
