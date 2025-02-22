@@ -9,13 +9,7 @@
 ## Installation:
 
     npm install
-
-    Windows:
-        npm run docker
-
-    Linux:
-        cd docker
-        docker compose up --build -d
+    npm run docker
 
     Tests: npm run tests
 
