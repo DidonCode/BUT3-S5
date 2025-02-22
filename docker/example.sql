@@ -24,20 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `activity`
---
-
-DROP TABLE IF EXISTS `activity`;
-CREATE TABLE IF NOT EXISTS `activity` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user` int NOT NULL,
-  `sound` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=2676 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
 -- Déchargement des données de la table `activity`
 --
 
@@ -2131,21 +2117,6 @@ INSERT INTO `activity` (`id`, `user`, `sound`, `date`) VALUES
 (2674, 1, 'WpF2CNxpjgc', '2025-02-02'),
 (2675, 1, 'WpF2CNxpjgc', '2025-02-02');
 
--- --------------------------------------------------------
-
---
--- Structure de la table `like_artist`
---
-
-DROP TABLE IF EXISTS `like_artist`;
-CREATE TABLE IF NOT EXISTS `like_artist` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user` int NOT NULL,
-  `artist` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 --
 -- Déchargement des données de la table `like_artist`
 --
@@ -2172,21 +2143,6 @@ INSERT INTO `like_artist` (`id`, `user`, `artist`) VALUES
 (26, 5, 'UCBzxtDhnU8J59TKvhUIOYGA'),
 (27, 39, 'UCcOkA2Xmk1valTOWSyKyp4g');
 
--- --------------------------------------------------------
-
---
--- Structure de la table `like_playlist`
---
-
-DROP TABLE IF EXISTS `like_playlist`;
-CREATE TABLE IF NOT EXISTS `like_playlist` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user` int NOT NULL,
-  `playlist` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 --
 -- Déchargement des données de la table `like_playlist`
 --
@@ -2201,21 +2157,6 @@ INSERT INTO `like_playlist` (`id`, `user`, `playlist`) VALUES
 (22, 16, 'PLSBWvYm8t6uZL-eO7oPxZfEBHhCrun9Nw'),
 (23, 2, '3'),
 (25, 5, 'PLz6byVsQfHmKXamAvU-6A0g4Hl9L86O6d');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `like_sound`
---
-
-DROP TABLE IF EXISTS `like_sound`;
-CREATE TABLE IF NOT EXISTS `like_sound` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user` int NOT NULL,
-  `sound` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `like_sound`
@@ -2253,24 +2194,6 @@ INSERT INTO `like_sound` (`id`, `user`, `sound`) VALUES
 (56, 39, 'ubZrAmRxy_M'),
 (69, 39, 'fJ9rUzIMcZQ');
 
--- --------------------------------------------------------
-
---
--- Structure de la table `playlist`
---
-
-DROP TABLE IF EXISTS `playlist`;
-CREATE TABLE IF NOT EXISTS `playlist` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `owner` int NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '/storage/playlist/default.png',
-  `public` tinyint NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `owner` (`owner`)
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 --
 -- Déchargement des données de la table `playlist`
 --
@@ -2298,23 +2221,6 @@ INSERT INTO `playlist` (`id`, `owner`, `title`, `description`, `image`, `public`
 (111, 1, 'Test', 'Test', '/storage/playlist/default.png', 0),
 (116, 37, 'T\'es bug de merde la', 'Casse les couilles ', '/storage/playlist/default.png', 0);
 
--- --------------------------------------------------------
-
---
--- Structure de la table `playlist_collaborator`
---
-
-DROP TABLE IF EXISTS `playlist_collaborator`;
-CREATE TABLE IF NOT EXISTS `playlist_collaborator` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `playlist` int NOT NULL,
-  `collaborator` int NOT NULL,
-  `modify` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `playlist` (`playlist`),
-  KEY `collaborator` (`collaborator`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 --
 -- Déchargement des données de la table `playlist_collaborator`
 --
@@ -2333,21 +2239,6 @@ INSERT INTO `playlist_collaborator` (`id`, `playlist`, `collaborator`, `modify`)
 (44, 17, 8, 1),
 (45, 26, 20, 1),
 (46, 24, 8, 1);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `playlist_sound`
---
-
-DROP TABLE IF EXISTS `playlist_sound`;
-CREATE TABLE IF NOT EXISTS `playlist_sound` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `playlist` int NOT NULL,
-  `sound` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `playlist` (`playlist`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `playlist_sound`
@@ -2404,24 +2295,6 @@ INSERT INTO `playlist_sound` (`id`, `playlist`, `sound`) VALUES
 (68, 73, 'ubZrAmRxy_M'),
 (69, 73, '28');
 
--- --------------------------------------------------------
-
---
--- Structure de la table `sound`
---
-
-DROP TABLE IF EXISTS `sound`;
-CREATE TABLE IF NOT EXISTS `sound` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `artist` int NOT NULL,
-  `type` smallint NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '/storage/sound/default.png',
-  `link` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `artist` (`artist`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 --
 -- Déchargement des données de la table `sound`
 --
@@ -2434,28 +2307,6 @@ INSERT INTO `sound` (`id`, `title`, `artist`, `type`, `image`, `link`) VALUES
 (28, 'Squid Game Jazz', 1, 0, '/storage/sound/image/28.jpg', '/storage/sound/file/28.mp3'),
 (30, 'Something new', 1, 1, '/storage/sound/image/30.png', '/storage/sound/file/30.mp4'),
 (31, 'Le docker de la SAE', 1, 0, '/storage/sound/image/31.png', '/storage/sound/file/31.mp3');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `pseudo` varchar(255) NOT NULL,
-  `grade` int NOT NULL DEFAULT '0',
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '/storage/user/profile/default.png',
-  `banner` varchar(255) NOT NULL DEFAULT '/storage/user/banner/default.png',
-  `public` tinyint(1) NOT NULL DEFAULT '0',
-  `artist` tinyint NOT NULL,
-  `expire` date DEFAULT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `user`
@@ -2490,20 +2341,6 @@ INSERT INTO `user` (`id`, `email`, `password`, `pseudo`, `grade`, `image`, `bann
 (36, 'samirabien@outlook.com', '$2y$10$e4jZhYoL5Wm6g7/c26GYxOGVRn4AWx2KzJdCmeRuCDJ4ZX5MQ5uiW', 'Samira Bien', 0, '/storage/user/profile/default.png', '/storage/user/banner/default.png', 0, 0, '2025-02-04', '24ffaba319b66c2707ec612d7ee95f5a'),
 (37, 'Mobile@mobile.fr', '$2y$10$A3zW4jQyuO9skSX28tbkvuQWeDvwujtpr8dPfxjRV3xiPhlZ5FAWu', 'Mobile', 0, '/storage/user/profile/default.png', '/storage/user/banner/default.png', 0, 1, '2025-02-06', NULL),
 (39, 'aa@gmail.com', '$2y$10$D4zi2YsHIRqgfxP/nmUM/u9JxLUnVe3nT.l2WuKCFmkaZOjR8eUkO', 'Dacta', 0, '/storage/user/profile/39.png', '/storage/user/banner/default.png', 0, 1, '2025-02-07', 'e1cda832c39ab94bcacb585939483c14');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `youtube`
---
-
-DROP TABLE IF EXISTS `youtube`;
-CREATE TABLE IF NOT EXISTS `youtube` (
-  `value` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `exedeed` tinyint NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`value`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 COMMIT;
 

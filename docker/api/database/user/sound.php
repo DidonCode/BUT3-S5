@@ -37,8 +37,8 @@
         		$imageFileExtension = strtolower(pathinfo($imageFileName, PATHINFO_EXTENSION));
 				$imageFileTmpPath = $image['tmp_name'];
 
-				if(!in_array($imageFileExtension, Settings::$AUTHORIZED_IMAGE_EXT)) throw new Exception("Error file extension not accepted: ".$imageFileExtension, 4);
-				if($image['size'] > Settings::$MAX_UPLOAD_SIZE) throw new Exception("Error file too big size.", 5);
+				if(!in_array($imageFileExtension, Settings::$AUTHORIZED_IMAGE_EXT)) throw new Exception("Error image extension not accepted: ".$imageFileExtension, 4);
+				if($image['size'] > Settings::$MAX_UPLOAD_SIZE) throw new Exception("Error image file too big size.", 5);
 
 				$imageFilePath = "../../storage/sound/image/".$id.".".$imageFileExtension;
 				$imageDatabasePath = "/storage/sound/image/".$id.".".$imageFileExtension;
@@ -49,13 +49,13 @@
         		$audioFileExtension = strtolower(pathinfo($audioFileName, PATHINFO_EXTENSION));
 				$audioFileTmpPath = $audio['tmp_name'];
 
-				if(!in_array($audioFileExtension, Settings::$AUTHORIZED_AUDIO_EXT)) throw new Exception("Error file extension not accepted: ".$audioFileExtension, 6);
-				if($audio['size'] > Settings::$MAX_UPLOAD_SIZE) throw new Exception("Error file too big size.", 7);
+				if(!in_array($audioFileExtension, Settings::$AUTHORIZED_AUDIO_EXT)) throw new Exception("Error audio file extension not accepted: ".$audioFileExtension, 6);
+				if($audio['size'] > Settings::$MAX_UPLOAD_SIZE) throw new Exception("Error audio file too big size.", 7);
 
 				$audioFilePath = "../../storage/sound/file/".$id.".".$audioFileExtension;
 				$audioDatabasePath = "/storage/sound/file/".$id.".".$audioFileExtension;
 
-				if(move_uploaded_file($imageFileTmpPath, $imageFilePath) && move_uploaded_file($audioFileTmpPath, $audioFilePath)){
+				if(move_uploaded_file($audioFileTmpPath, $audioFilePath) AND move_uploaded_file($imageFileTmpPath, $imageFilePath)){
 					try{
 						$request = $pdoDatabase->prepare("INSERT INTO sound VALUES (?, ?, ?, ?, ?, ?)");
 						$request->execute(array($id, $title, $user['id'], 0, $imageDatabasePath, $audioDatabasePath));
@@ -109,8 +109,8 @@
         		$imageFileExtension = strtolower(pathinfo($imageFileName, PATHINFO_EXTENSION));
 				$imageFileTmpPath = $image['tmp_name'];
 
-				if(!in_array($imageFileExtension, Settings::$AUTHORIZED_IMAGE_EXT)) throw new Exception("Error file extension not accepted: ".$imageFileExtension, 4);
-				if($image['size'] > Settings::$MAX_UPLOAD_SIZE) throw new Exception("Error file too big size.", 5);
+				if(!in_array($imageFileExtension, Settings::$AUTHORIZED_IMAGE_EXT)) throw new Exception("Error image file extension not accepted: ".$imageFileExtension, 4);
+				if($image['size'] > Settings::$MAX_UPLOAD_SIZE) throw new Exception("Error image file too big size.", 5);
 
 				$imageFilePath = "../../storage/sound/image/".$id.".".$imageFileExtension;
 				$imageDatabasePath = "/storage/sound/image/".$id.".".$imageFileExtension;
@@ -121,13 +121,13 @@
         		$fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 				$fileTmpPath = $video['tmp_name'];
 
-				if(!in_array($fileExtension, Settings::$AUTHORIZED_VIDEO_EXT)) throw new Exception("Error file extension not accepted: ".$fileExtension, 6);
-				if($video['size'] > Settings::$MAX_UPLOAD_SIZE) throw new Exception("Error file too big size.", 7);
+				if(!in_array($fileExtension, Settings::$AUTHORIZED_VIDEO_EXT)) throw new Exception("Error video file extension not accepted: ".$fileExtension, 6);
+				if($video['size'] > Settings::$MAX_UPLOAD_SIZE) throw new Exception("Error video file too big size.", 7);
 
 				$filePath = "../../storage/sound/file/".$id.".".$fileExtension;
 				$fileDatabasePath = "/storage/sound/file/".$id.".".$fileExtension;
 
-				if(move_uploaded_file($imageFileTmpPath, $imageFilePath) && move_uploaded_file($fileTmpPath, $filePath)){
+				if(move_uploaded_file($fileTmpPath, $filePath) AND move_uploaded_file($imageFileTmpPath, $imageFilePath)){
 					try{
 						$request = $pdoDatabase->prepare("INSERT INTO sound VALUES (?, ?, ?, ?, ?, ?)");
 						$request->execute(array($id, $title, $user['id'], 1, $imageDatabasePath, $fileDatabasePath));

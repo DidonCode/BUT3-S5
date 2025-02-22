@@ -15,13 +15,13 @@ jobs:
       - name: Installation de NPM
         uses: actions/setup-node@v3
         with:
-          python-version: '18'
+          node-version: '18'
 
       - name: Installation de NPM dans le projet
         run: npm install
 
       - name: Lancement de docker
-        run: npm run docker & sleep 10
+        run: npm run docker & sleep 80
 
       - name: Lancement des tests API
         run: npm run test

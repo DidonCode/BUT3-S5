@@ -145,8 +145,7 @@
 				"pseudo" => $user['pseudo'],
 				"image" => Settings::$STORAGE_HOST_NAME.$user['image'],
 				"banner" => Settings::$STORAGE_HOST_NAME.$user['banner'],
-				"public" => $user['public'],
-				"subscription" => $user['subscription']
+				"public" => $user['public']
 			);
 		}
 

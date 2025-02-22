@@ -123,7 +123,6 @@ describe("Tests de l'API Butify (user)", () => {
 
 		const data = await response.json();
 		soundId = data['id'];
-		console.log(data);
 		expect(Sound.toClass(data).isValid()).toBe(true);
 	});
 

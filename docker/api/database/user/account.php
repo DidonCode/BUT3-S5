@@ -96,7 +96,7 @@
 				
 				if(count($userData) == 0) throw new Exception("Error to get user account after creation.", 400);
 
-				$user = User::toClass($userData, null);
+				$user = User::toClass($userData[0], null);
 
 				$token = DatabaseUserAccount::generateToken();
 				DatabaseUserAccount::updateToken($user->toString(), $token);
@@ -308,7 +308,7 @@
 				$request = $pdoDatabase->prepare($sql);
 				$request->execute($values);
 				
-				return User::toClass($user)->toString();
+				return User::toClass($user, DatabaseUserSubscription::get($user))->toString();
 			} catch(PDOException $e){
 				throw new Exception("Error to edit user ".$user['id'].". ".$e->getMessage(), 400);
 			}
