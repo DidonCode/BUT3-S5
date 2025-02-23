@@ -2,6 +2,11 @@
 	const firstSong = document.getElementById('first-song');
 	const dislikeBtn = document.getElementById('dislike-swipe');
 	const likeBtn = document.getElementById('like-swipe');
+    const popupConfirmation = document.getElementById('add-to-swipe-playlist-confirmation');
+    const closeConfirmation = document.getElementById('close-confirmation');
+    const secondSong = document.getElementById('second-song')
+    // Bouton de test de confirmation d'ajout d'une musique à la playlist Swipe
+    const testBtn = document.getElementById('test-popup');
 
 	/*
     <div id="caca">
@@ -38,9 +43,13 @@
 		if (isLiked) {
 			firstSong.classList.remove('unliked-song');
 			firstSong.classList.add('liked-song');
+            secondSong.classList.remove('appear-to-right');
+			secondSong.classList.add('appear-to-left');
 		} else {
 			firstSong.classList.remove('liked-song');
 			firstSong.classList.add('unliked-song');
+            secondSong.classList.remove('appear-to-left');
+			secondSong.classList.add('appear-to-right');
 			// ajoute à la playlist "Matched"
 			// Affiche une alert pour préciser à l'utilisateur qu'elle a été envoyé dans la playlist "Matched"
 		}
@@ -54,4 +63,18 @@
 	likeBtn.onclick = function () {
 		remove(1);
 	};
+
+    testBtn.onclick = function () {
+        popupConfirmation.style.display = 'block';
+        setTimeout(hideConfirmation, 5000);
+    }
+
+    closeConfirmation.onclick = function () {
+        hideConfirmation();
+    }
+
+    function hideConfirmation() {
+        popupConfirmation.style.display = 'none';
+    }
+    
 })();
