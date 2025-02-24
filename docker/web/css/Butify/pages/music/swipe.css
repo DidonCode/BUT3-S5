@@ -8,8 +8,13 @@
 	border-radius: 20px;
 	width: 225px;
 	height: 225px;
+	
+}
+
+#first-song {
 	position: relative;
 }
+
 .secondSong {
 	position: absolute;
 	z-index: -1;

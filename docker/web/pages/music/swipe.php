@@ -1,6 +1,6 @@
-<div class="mx-auto">
+<div id="main-container" class="mx-auto">
     <h2 class="text-center mb-3" id="song-title">Titre</h2>
-    <div class="mx-auto swipe-img-container">
+    <div id="card-container" class="mx-auto swipe-img-container">
         <img class="rounded-img" src="/web/images/Tests/viva-la-vida.jpg" alt="Image de couverture musique Viva la vida" id="first-song">
         <img class="rounded-img secondSong text-center" src="/web/images/Tests/birds-of-feather.jpg" alt="Image de couverture musique Birds of feather" id="second-song">
     </div>
