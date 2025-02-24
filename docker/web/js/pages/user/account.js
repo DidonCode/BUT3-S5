@@ -26,17 +26,17 @@
 		subscriptionDescription.innerText = user['subscription']['updateAt'];
 
 		subscriptionCancel.onclick = function () {
-			console.log("oui");
+			console.log('oui');
 			let formData = new FormData();
 
 			formData.append('action', 1);
 			formData.append('token', token);
 
-			apiCall("/api/user/subscription", formData, async function(data) {
+			apiCall('/api/user/subscription', formData, async function (data) {
 				if (data != '') {
 					const parsedData = JSON.parse(data);
-	
-					if(parsedData) subscription.remove();
+
+					if (parsedData) subscription.remove();
 				}
 			});
 		};

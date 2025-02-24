@@ -8,7 +8,6 @@
 	border-radius: 20px;
 	width: 225px;
 	height: 225px;
-	
 }
 
 #first-song {
@@ -42,27 +41,67 @@
 }
 
 @keyframes appearToRight {
-	0%   {left:0px; top:0px;}
-  	80%  {left:10%; top:0px; transform: rotate(10deg);}
-	100% {opacity: 100%; width: 100%; height: 100%;}
+	0% {
+		left: 0px;
+		top: 0px;
+	}
+	80% {
+		left: 10%;
+		top: 0px;
+		transform: rotate(10deg);
+	}
+	100% {
+		opacity: 100%;
+		width: 100%;
+		height: 100%;
+	}
 }
 
 @keyframes appearToLeft {
-	0%   {left:0px; top:0px;}
-  	80%  {left:-10%; top:0px; transform: rotate(-10deg);}
-	100% {opacity: 100%; width: 100%; height: 100%;}
+	0% {
+		left: 0px;
+		top: 0px;
+	}
+	80% {
+		left: -10%;
+		top: 0px;
+		transform: rotate(-10deg);
+	}
+	100% {
+		opacity: 100%;
+		width: 100%;
+		height: 100%;
+	}
 }
 
 @keyframes toRight {
-	0%   {left:0px; top:0px;}
-  	80%  {left:100%; top:0px; transform: rotate(10deg);}
-	100% {opacity: 0}
+	0% {
+		left: 0px;
+		top: 0px;
+	}
+	80% {
+		left: 100%;
+		top: 0px;
+		transform: rotate(10deg);
+	}
+	100% {
+		opacity: 0;
+	}
 }
 
 @keyframes toLeft {
-	0%   {left:0px; top:0px;}
-  	80%  {left:-100%; top:0px; transform: rotate(-10deg);}
-	100% {opacity: 0}
+	0% {
+		left: 0px;
+		top: 0px;
+	}
+	80% {
+		left: -100%;
+		top: 0px;
+		transform: rotate(-10deg);
+	}
+	100% {
+		opacity: 0;
+	}
 }
 
 .cancel-color {
