@@ -7,10 +7,10 @@
 
 	function createCard(card, i) {
 		sound = document.createElement('img');
-		sound.classList.add('rounded-img', 'firstSong');
+		sound.classList.add('rounded-img', 'firstSound');
 
 		if (i < 0) {
-			sound.classList.add('secondSong');
+			sound.classList.add('secondSound');
 		}
 
 		sound.alt = `Image de couverture de musique : ${card.title} `;
@@ -117,9 +117,9 @@
 			const firstCard = cardContainer.children[0];
 
 			if (isLiked) {
-				firstCard.classList.add('liked-song');
+				firstCard.classList.add('liked-sound');
 			} else {
-				firstCard.classList.add('unliked-song');
+				firstCard.classList.add('unliked-sound');
 			}
 
 			await new Promise((resolve) => {
@@ -128,9 +128,9 @@
 
 			firstCard.remove();
 			if (cardContainer.children.length > 0) {
-				cardContainer.children[0].id = 'first-song';
+				cardContainer.children[0].id = 'first-sound';
 
-				cardContainer.children[0].classList.remove('secondSong');
+				cardContainer.children[0].classList.remove('secondSound');
 			}
 		}
 	};

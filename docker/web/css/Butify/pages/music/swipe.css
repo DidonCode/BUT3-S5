@@ -6,72 +6,27 @@
 
 .rounded-img {
 	border-radius: 20px;
-	width: 225px;
-	height: 225px;
+	width: 350px;
+	height: 350px;
 }
 
-#first-song {
+#first-sound {
 	position: relative;
 }
 
-.secondSong {
+.secondSound {
 	position: absolute;
 	z-index: -1;
-	width: 70%;
-	height: 70%;
-	opacity: 50%;
 	top: 0;
 	left: 0;
 }
 
-.liked-song {
-	animation: toRight 2s forwards ease-in-out;
+.liked-sound {
+	animation: toRight 1s forwards ease-in-out;
 }
 
-.unliked-song {
-	animation: toLeft 2s forwards ease-in-out;
-}
-
-.appear-to-right {
-	animation: appearToRight 2s forwards ease-in-out;
-}
-
-.appear-to-left {
-	animation: appearToLeft 2s forwards ease-in-out;
-}
-
-@keyframes appearToRight {
-	0% {
-		left: 0px;
-		top: 0px;
-	}
-	80% {
-		left: 10%;
-		top: 0px;
-		transform: rotate(10deg);
-	}
-	100% {
-		opacity: 100%;
-		width: 100%;
-		height: 100%;
-	}
-}
-
-@keyframes appearToLeft {
-	0% {
-		left: 0px;
-		top: 0px;
-	}
-	80% {
-		left: -10%;
-		top: 0px;
-		transform: rotate(-10deg);
-	}
-	100% {
-		opacity: 100%;
-		width: 100%;
-		height: 100%;
-	}
+.unliked-sound {
+	animation: toLeft 1s forwards ease-in-out;
 }
 
 @keyframes toRight {
@@ -114,5 +69,9 @@
 
 .swipe-img-container {
 	position: relative;
-	width: 225px;
+	width: 350px;
+}
+
+.background-cover {
+	background-repeat: no-repeat; background-size: cover;
 }
