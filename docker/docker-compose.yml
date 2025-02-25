@@ -1,4 +1,4 @@
-name: 'BUTIFY'
+name: 'butify'
 services:
     web:
         build: .
