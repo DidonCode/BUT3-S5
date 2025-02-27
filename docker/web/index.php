@@ -119,6 +119,7 @@
 		<?php
 			include_once('widgets/sound/sound_setting.php');
 			include_once('widgets/playlist/playlist_popup.php');
+			include_once('widgets/report_popup.php');
 		?>
 	</body>
 </html>
@@ -151,7 +152,9 @@
 <script src="js/widgets/playlist/playlist_card.js"></script>
 <script src="js/widgets/playlist/playlist_popup.js"></script>
 
+
 <script src="js/widgets/artist/artist_card.js"></script>
 
 <script src="js/components/side_bar.js"></script>
 <script src="js/components/nav_bar.js"></script>
+<script src="js/widgets/report_popup.js"></script>

@@ -4,10 +4,22 @@
 	background-color: #f7cbcb;
 }
 
-.rounded-img {
-	border-radius: 20px;
-	width: 350px;
-	height: 350px;
+@media screen and (min-width: 433px) {
+	.rounded-img {
+		border-radius: 20px;
+		width: 350px;
+		height: 350px;
+		object-fit: cover;
+	}
+}
+
+@media screen and (max-width: 432px) {
+	.rounded-img {
+		border-radius: 20px;
+		width: 200px;
+		height: 200px;
+		object-fit: cover;
+	}
 }
 
 #first-sound {
@@ -67,11 +79,16 @@
 	color: #e80000;
 }
 
-.swipe-img-container {
-	position: relative;
-	width: 350px;
+@media screen and (min-width: 433px) {
+	.swipe-img-container {
+		position: relative;
+		width: 350px;
+	}
 }
 
-.background-cover {
-	background-repeat: no-repeat; background-size: cover;
+@media screen and (max-width: 432px) {
+	.swipe-img-container {
+		position: relative;
+		width: 200px;
+	}
 }

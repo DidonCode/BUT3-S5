@@ -23,7 +23,7 @@ describe("Tests de l'API Butify (global)", () => {
 
 		const data = await response.json();
 
-		if(data['database'].length == 0) expect(true).toBe(true);
+		if (data['database'].length == 0) expect(true).toBe(true);
 		expect(Artist.toClass(data['database'][0]).isValid()).toBe(true);
 	});
 
