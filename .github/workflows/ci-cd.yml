@@ -1,36 +1,36 @@
 name: CI/CD Tests
 
 on:
-  push:
-    branches:
-      - dev
+    push:
+        branches:
+            - dev
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
 
-      - name: Initialisation de NPM
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+            - name: Initialisation de NPM
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '18'
 
-      - name: Installation des packages
-        run: chmod -R 777 ./ & npm install
+            - name: Installation des packages
+              run: chmod -R 777 ./ & npm install
 
-      - name: Lancement de docker
-        run: npm run docker & sleep 50
+            - name: Lancement de docker
+              run: npm run docker & sleep 50
 
-      - name: Insertion des données
-        run: mysql -h 127.0.0.1 -u root -pbutify butify < ./docker/example.sql
+            - name: Insertion des données
+              run: mysql -h 127.0.0.1 -u root -pbutify butify < ./docker/example.sql
 
-      - name: Insertion d'une clé API Youtube
-        run: mysql -h 127.0.0.1 -u root -pbutify butify -e "INSERT INTO youtube (value, exedeed, date) VALUES ('${{ secrets.YOUTUBE_KEY }}', 0, '2025-01-01');"
+            - name: Insertion d'une clé API Youtube
+              run: mysql -h 127.0.0.1 -u root -pbutify butify -e "INSERT INTO youtube (value, exedeed, date) VALUES ('${{ secrets.YOUTUBE_KEY }}', 0, '2025-01-01');"
 
-      - name: Lancement des tests API
-        run: npm run test
+            - name: Lancement des tests API
+              run: npm run test
 
-      - name: Arrêt de Docker
-        run: docker compose -f ./docker/docker-compose.yml down -v
+            - name: Arrêt de Docker
+              run: docker compose -f ./docker/docker-compose.yml down -v
