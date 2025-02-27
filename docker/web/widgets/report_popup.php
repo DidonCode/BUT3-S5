@@ -10,20 +10,20 @@
 
             <div class="modal-body secondary">
                 <h6>Raison du signalement :</h6>
-                <form class="flex-column mx-auto" id="audio-form" style="display: flex">
+                <form class="flex-column mx-auto" id="report-form" style="display: flex">
                     <label class="checkWrap">
                         <span class="check-label-report">Nom déplacé ou à connotation négative</span>
-                        <input id="artist" type="checkbox" hidden>
+                        <input id="negative-name" type="checkbox" hidden>
                         <span class="checkmark"></span>
                     </label>
                     <label class="checkWrap">
                         <span class="check-label-report">Musique dégradante</span>
-                        <input id="artist" type="checkbox" hidden>
+                        <input id="degrading-sound" type="checkbox" hidden>
                         <span class="checkmark"></span>
                     </label>
                     <label class="checkWrap">
                         <span class="check-label-report">Description méchante</span>
-                        <input id="artist" type="checkbox" hidden>
+                        <input id="mean-description" type="checkbox" hidden>
                         <span class="checkmark"></span>
                     </label>
                     <label class="checkWrap">
