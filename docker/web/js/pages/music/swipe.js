@@ -1,36 +1,39 @@
 (() => {
-	const contentContainer = document.getElementById('content-container');
+	const cardTitle = document.getElementById('sound-title');
 	const cardContainer = document.getElementById('card-container');
+	const sliderContainer = document.getElementById('slider-container');
 
 	const dislikeBtn = document.getElementById('dislike-swipe');
 	const likeBtn = document.getElementById('like-swipe');
 
-	function createCard(card, i) {
-		sound = document.createElement('img');
-		sound.classList.add('rounded-img', 'firstSound');
+	const play = document.getElementById('swipe-play');
+	const pause = document.getElementById('swipe-pause');
 
-		if (i < 0) {
-			sound.classList.add('secondSound');
-		}
+	const volume = document.getElementById('swipe-volume');
 
-		sound.alt = `Image de couverture de musique : ${card.title} `;
-		sound.src = card.image;
-		sound.style.zIndex = i;
-
-		cardTitle = document.createElement('h2');
-		cardTitle.classList.add('text-center', 'mb-3');
-		cardTitle.innerText = card.title;
-
-		cardContainer.appendChild(sound);
+	const progress = document.getElementById('swipe-progress-bar');
+	
+	if (!sessionExist()) {
+		sessionDestroy();
+		return;
 	}
 
-	/*
+	/*if (user['subscription'] == null || user['subscription']['type'] != 'premium') {
+		window.history.pushState({}, '', '/web/subscription');
+		handleLocation();
+	}
+		*/
+
     async function sounds() {
-        let soundsFormData = new FormData();
+        /*
+		let soundsFormData = new FormData();
 
         soundsFormData.append('type','sounds')
         soundsFormData.append('token', token)
         await apiCall("api/user/activity", soundsFormData, async function(data) {
+		*/
+
+		await apiCall("api/sound?playlist=1", null, async function(data) {
             if(data != "") {
                 const parsedData = JSON.parse(data);
 
@@ -42,75 +45,30 @@
                         if(parsedData.lenth == 0) return;
 
                         let i = 0;
-                        for(card in parsedData) {
-                            createCard(card, i)
-                            i++
+                        for(card of parsedData) {
+                            soundCard = document.createElement('img');
+							soundCard.classList.add('rounded-img', 'card');
+
+							if(i == 0) {
+								cardTitle.innerText = card.title;
+							}
+							soundCard.id = card.id
+							soundCard.alt = `${card.title}`;
+							soundCard.src = card.image;
+							soundCard.setAttribute("data-link", card.link);
+
+							cardContainer.appendChild(soundCard);
+							i++
                         }
+
+						if(cardContainer.children.length > 0) {
+							loadButifyPlayer(cardContainer.children[0]);
+						}
                     }
                 }
             }
         })
     }
-        */
-
-	const test = [
-		{
-			id: '1',
-			title: 'Test',
-			artist: '1',
-			type: '1',
-			image: 'http://localhost:8081/storage/sound/image/1.jpg',
-			link: 'http://localhost:8081/storage/sound/file/1.mp3',
-		},
-		{
-			id: '5',
-			title: 'Test',
-			artist: '1',
-			type: '1',
-			image: 'http://localhost:8081/storage/sound/image/5.png',
-			link: 'http://localhost:8081/storage/sound/file/1.mp3',
-		},
-		{
-			id: '20',
-			title: 'Test',
-			artist: '1',
-			type: '1',
-			image: 'http://localhost:8081/storage/sound/image/20.jpg',
-			link: 'http://localhost:8081/storage/sound/file/1.mp3',
-		},
-		{
-			id: '27',
-			title: 'Test',
-			artist: '1',
-			type: '1',
-			image: 'http://localhost:8081/storage/sound/image/27.png',
-			link: 'http://localhost:8081/storage/sound/file/1.mp3',
-		},
-		{
-			id: '28',
-			title: 'Test',
-			artist: '1',
-			type: '1',
-			image: 'http://localhost:8081/storage/sound/image/28.jpg',
-			link: 'http://localhost:8081/storage/sound/file/1.mp3',
-		},
-		{
-			id: '30',
-			title: 'Test',
-			artist: '1',
-			type: '1',
-			image: 'http://localhost:8081/storage/sound/image/30.png',
-			link: 'http://localhost:8081/storage/sound/file/1.mp3',
-		},
-	];
-
-	function generateCards(test) {
-		let i = 0;
-		for (card of test) {
-			createCard(card, i);
-			i--;
-		}
-	}
 
 	const remove = async (isLiked) => {
 		if (cardContainer.children.length > 0) {
@@ -118,8 +76,22 @@
 
 			if (isLiked) {
 				firstCard.classList.add('liked-sound');
+
+				let formData = new FormData();
+
+				formData.append("sound", firstCard.id);
+				formData.append("action", 3);
+				formData.append("token", token);
+
+				await apiCall('api/user/like', formData, async (data) => {
+					if (data != '') {
+						const parsedData = JSON.parse(data);
+		
+						if (parsedData['error'] != undefined) console.log(parsedData['error']);
+					}
+				})
 			} else {
-				firstCard.classList.add('unliked-sound');
+				firstCard.classList.add('unliked-sound');				
 			}
 
 			await new Promise((resolve) => {
@@ -128,12 +100,131 @@
 
 			firstCard.remove();
 			if (cardContainer.children.length > 0) {
-				cardContainer.children[0].id = 'first-sound';
+				let nextCard = cardContainer.children[0];
+				cardTitle.innerText = nextCard.alt;
+				
 
-				cardContainer.children[0].classList.remove('secondSound');
+				const player = document.getElementById('swipe-player');
+				const source = document.getElementById('swipe-source');
+
+           		player.pause();
+            	player.currentTime = 0;
+
+				source.src = '';
+
+				loadButifyPlayer(nextCard);
+				
 			}
 		}
 	};
+
+	function updateVolume(playerVolume) {
+		sessionStorage.setItem('player-volume', playerVolume);
+	}
+
+	function updateTimecode(timeCode, duration) {
+		time.innerText = formatTime(timeCode) + ' / ' + formatTime(duration);
+	
+		progress.max = duration;
+		progress.value = timeCode;
+	
+		const value = (timeCode / duration) * 100;
+		progress.style.setProperty('--progress', `${value}%`);
+	}
+
+	function loadButifyPlayer(video) {
+		const playerContainer = document.getElementById('player-container');
+	
+		let player = document.getElementById('swipe-player');
+		let source = document.getElementById('swipe-source');
+		volume.value = 25;
+	
+		source.src = video.getAttribute("data-link");
+	
+		player.autoplay = false;
+		player.muted = true;
+		player.load();
+		player.play();
+		player.muted = false;
+		player.volume = volume.value / 100;
+	
+		playerContainer.appendChild(player);
+		
+		
+
+		//-------------\\
+
+		player.onplaying = function () {
+			play.style.display = 'none';
+			pause.style.display = 'inline';
+		};
+	
+		player.onpause = function () {
+			pause.style.display = 'none';
+			play.style.display = 'inline';
+		};
+	
+		player.muted === true ? (mute.style.display = 'none') : (unmute.style.display = 'none');
+	
+		player.ontimeupdate = function () {
+			if (player == null) return;
+			updateTimecode(player.currentTime, player.duration);
+		};
+
+		//-------------\\
+
+		play.onclick = function () {
+			player.play();
+		};
+		pause.onclick = function () {
+			player.pause();
+		};
+	
+		mute.onclick = function () {
+			player.volume = 0;
+			volume.value = 0;
+	
+			mute.style.display = 'none';
+			unmute.style.display = '';
+			volume.style.display = 'none';
+		};
+
+		let hideTimeout;
+
+		mute.onmouseover = function () {
+			clearTimeout(hideTimeout);
+			volume.style.display = '';
+			volume.style.width = '';
+		};
+
+		mute.onmouseout = function () {
+			hideTimeout = setTimeout(() => {
+				volume.style.width = '0px';
+				setTimeout(() => {
+					volume.style.display = 'none';
+				}, 300);
+			}, 500);
+		};
+
+		unmute.onclick = function () {
+			volume.value = sessionStorage.getItem('player-volume');
+			player.volume = volume.value / 100;
+
+			unmute.style.display = 'none';
+			mute.style.display = '';
+			volume.style.display = '';
+		};
+
+		volume.oninput = function () {
+			player.volume = volume.value / 100;
+			updateVolume(volume.value);
+		};
+
+		progress.onchange = function () {
+			player.currentTime = progress.value;
+		};
+
+	}
 
 	dislikeBtn.onclick = function () {
 		remove(0);
@@ -143,5 +234,43 @@
 		remove(1);
 	};
 
-	generateCards(test);
+	let startX = 0;
+	let endX = 0;
+
+	sliderContainer.addEventListener('touchstart', (e) => {
+		startX = e.touches[0].clientX;
+	});
+
+	sliderContainer.addEventListener('touchend', (e) => {
+		endX = e.changedTouches[0].clientX;
+		detectSwipe();
+	});
+
+	sliderContainer.addEventListener('mousedown', (e) => {
+		startX = e.clientX;
+		console.log(startX);
+	})
+
+	sliderContainer.addEventListener('mouseup', (e) => {
+		endX = e.clientX;
+		console.log(endX);
+		detectSwipe();
+	})
+
+	function detectSwipe() {
+		const swipeDistance = endX - startX;
+		const minSwipeDistance = 75;
+
+		console.log("Swipe distance:", swipeDistance);
+
+		if (swipeDistance > minSwipeDistance) {
+			console.log("Swipe vers la droite");
+			remove(1); 
+		} else if (swipeDistance < -minSwipeDistance) {
+			console.log("Swipe vers la gauche");
+			remove(0); 
+		}
+	}
+
+	sounds();
 })();

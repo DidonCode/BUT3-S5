@@ -4,29 +4,21 @@
 	background-color: #f7cbcb;
 }
 
-@media screen and (min-width: 433px) {
-	.rounded-img {
-		border-radius: 20px;
-		width: 350px;
-		height: 350px;
-		object-fit: cover;
-	}
+.rounded-img {
+	border-radius: 20px;
+	width: 350px;
+	height: 350px;
+
+	-webkit-user-drag: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
 
-@media screen and (max-width: 432px) {
-	.rounded-img {
-		border-radius: 20px;
-		width: 200px;
-		height: 200px;
-		object-fit: cover;
-	}
-}
-
-#first-sound {
+#card-container .card:first-child {
 	position: relative;
 }
 
-.secondSound {
+#card-container .card:nth-child(n+2) {
 	position: absolute;
 	z-index: -1;
 	top: 0;
@@ -39,6 +31,139 @@
 
 .unliked-sound {
 	animation: toLeft 1s forwards ease-in-out;
+}
+
+#slider-container {
+	position: relative;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    width: fit-content;
+    margin: 0 auto; 
+}
+.swipe-volumeBar {
+	height: 8px;
+	width: 350px;
+    border-radius: 34px;
+    outline: none; 
+    accent-color: var(--action);
+
+	transform: rotate(-90deg);
+    transform-origin: center;
+    display: block;
+
+	position: absolute;
+	left: 100%;
+	top: 50%;
+	transform: translateY(-50%) rotate(-90deg); 
+    margin-left: -140px;
+}
+
+.swipe-volumeBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: var(--contrast);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.swipe-volumeBar::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: var(--contrast);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.swipe-volumeBar::-webkit-slider-thumb:hover,
+.swipe-volumeBar::-moz-range-thumb:hover {
+    transform: scale(1.2);
+}
+
+#progress-container {
+	margin: 30px 0px 30px 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#progress-container > #swipe-progress-bar::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 14px;
+	height: 14px;
+	background: var(--contrast);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#progress-container > #swipe-progress-bar::-moz-range-thumb {
+	width: 14px;
+	height: 14px;
+	background: var(--contrast);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#progress-container > #swipe-progress-bar::-ms-thumb {
+	width: 14px;
+	height: 14px;
+	background: var(--contrast);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#swipe-progress-bar {
+	width: 350px;
+	height: 4px;
+	border-radius: 34px;
+	-webkit-appearance: none;
+	outline: none;
+	background-color: var(--border);
+	cursor: pointer;
+	z-index: 2;
+}
+
+#swipe-progress-bar::-webkit-slider-runnable-track {
+	background: linear-gradient(to right, var(--action) 0%, var(--orange) var(--progress), var(--border) var(--progress), var(--border) 100%);
+	height: 4px;
+}
+
+#swipe-progress-bar::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 0;
+	height: 0;
+	margin-top: -6px;
+}
+
+#swipe-progress-bar::-moz-range-progress {
+	background: linear-gradient(90deg, var(--action), var(--orange));
+	height: 8px;
+}
+
+#swipe-progress-bar::-moz-range-track {
+	background-color: var(--border);
+	height: 8px;
+}
+
+#swipe-progress-bar::-moz-range-thumb {
+	width: 0;
+	height: 0;
+}
+
+#swipe-progress-bar::-ms-fill-lower {
+	background: linear-gradient(90deg, var(--action), var(--orange));
+	height: 2px;
+}
+
+#swipe-progress-bar::-ms-fill-upper {
+	background-color: var(--border);
+	height: 2px;
+}
+
+#swipe-progress-bar::-ms-thumb {
+	width: 0;
+	height: 0;
 }
 
 @keyframes toRight {
