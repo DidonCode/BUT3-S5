@@ -11,7 +11,10 @@
 	},
 	"scripts": {
 		"test": "jest /tests/api/ --coverage",
-		"docker": "docker compose -f ./docker/docker-compose.yml down -v & docker compose -f ./docker/docker-compose.yml up --build -d",
+		"postinstall": "npm run build",
+		"start": "docker compose -f ./docker/docker-compose.yml up -d",
+		"build": "docker compose -f ./docker/docker-compose.yml down -v & docker compose -f ./docker/docker-compose.yml up --build -d",
+		"stop": "docker compose -f ./docker/docker-compose.yml stop",
 		"prepare": "husky",
 		"format": "prettier --write ."
 	},
