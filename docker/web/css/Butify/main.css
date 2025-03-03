@@ -326,3 +326,7 @@ body {
 #reporting-popup .checkmark {
 	top: 0;
 }
+
+#reporting-popup .modal-footer {
+	justify-content: space-around; 
+}
