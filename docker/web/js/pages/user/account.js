@@ -6,14 +6,23 @@
 
 	const subscriptionContainer = document.getElementById('subscription-container');
 	const subscription = document.getElementById('subscription');
+	const subscriptionPopup = document.getElementById('subscription-confirmation-popup');
 
 	const url = window.location.search;
 	const urlParams = new URLSearchParams(url);
 	const checkout = urlParams.get('checkout');
+	
+	function popupDisapear() {
+		subscriptionPopup.classList.remove('smooth-apparition');
+		subscriptionPopup.classList.add('smooth-disapear');
+	}
 
 	if (checkout == 'completed') {
 		console.log("Bravo merci pour l'achat");
-		sessionToken();
+		subscriptionPopup.style.display = 'block';
+		subscriptionPopup.classList.add('smooth-apparition');
+		setTimeout(popupDisapear, 5000);
+		//sessionToken();
 	}
 
 	if (user['subscription'] != null) {

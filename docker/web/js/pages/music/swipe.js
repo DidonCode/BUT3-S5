@@ -12,7 +12,7 @@
 	const volume = document.getElementById('swipe-volume');
 
 	const progress = document.getElementById('swipe-progress-bar');
-	
+
 	if (!sessionExist()) {
 		sessionDestroy();
 		return;
@@ -24,8 +24,8 @@
 	}
 		*/
 
-    async function sounds() {
-        /*
+	async function sounds() {
+		/*
 		let soundsFormData = new FormData();
 
         soundsFormData.append('type','sounds')
@@ -33,42 +33,42 @@
         await apiCall("api/user/activity", soundsFormData, async function(data) {
 		*/
 
-		await apiCall("api/sound?playlist=1", null, async function(data) {
-            if(data != "") {
-                const parsedData = JSON.parse(data);
+		await apiCall('api/sound?playlist=1', null, async function (data) {
+			if (data != '') {
+				const parsedData = JSON.parse(data);
 
-                if(parsedData != null){
-                    if(parsedData['error'] != undefined) {
-                        routeError(parsedData['error']);
-                        return;
-                    } else {
-                        if(parsedData.lenth == 0) return;
+				if (parsedData != null) {
+					if (parsedData['error'] != undefined) {
+						routeError(parsedData['error']);
+						return;
+					} else {
+						if (parsedData.lenth == 0) return;
 
-                        let i = 0;
-                        for(card of parsedData) {
-                            soundCard = document.createElement('img');
+						let i = 0;
+						for (card of parsedData) {
+							soundCard = document.createElement('img');
 							soundCard.classList.add('rounded-img', 'card');
 
-							if(i == 0) {
+							if (i == 0) {
 								cardTitle.innerText = card.title;
 							}
-							soundCard.id = card.id
+							soundCard.id = card.id;
 							soundCard.alt = `${card.title}`;
 							soundCard.src = card.image;
-							soundCard.setAttribute("data-link", card.link);
+							soundCard.setAttribute('data-link', card.link);
 
 							cardContainer.appendChild(soundCard);
-							i++
-                        }
+							i++;
+						}
 
-						if(cardContainer.children.length > 0) {
+						if (cardContainer.children.length > 0) {
 							loadButifyPlayer(cardContainer.children[0]);
 						}
-                    }
-                }
-            }
-        })
-    }
+					}
+				}
+			}
+		});
+	}
 
 	const remove = async (isLiked) => {
 		if (cardContainer.children.length > 0) {
@@ -79,19 +79,19 @@
 
 				let formData = new FormData();
 
-				formData.append("sound", firstCard.id);
-				formData.append("action", 3);
-				formData.append("token", token);
+				formData.append('sound', firstCard.id);
+				formData.append('action', 3);
+				formData.append('token', token);
 
 				await apiCall('api/user/like', formData, async (data) => {
 					if (data != '') {
 						const parsedData = JSON.parse(data);
-		
+
 						if (parsedData['error'] != undefined) console.log(parsedData['error']);
 					}
-				})
+				});
 			} else {
-				firstCard.classList.add('unliked-sound');				
+				firstCard.classList.add('unliked-sound');
 			}
 
 			await new Promise((resolve) => {
@@ -102,18 +102,16 @@
 			if (cardContainer.children.length > 0) {
 				let nextCard = cardContainer.children[0];
 				cardTitle.innerText = nextCard.alt;
-				
 
 				const player = document.getElementById('swipe-player');
 				const source = document.getElementById('swipe-source');
 
-           		player.pause();
-            	player.currentTime = 0;
+				player.pause();
+				player.currentTime = 0;
 
 				source.src = '';
 
 				loadButifyPlayer(nextCard);
-				
 			}
 		}
 	};
@@ -124,33 +122,31 @@
 
 	function updateTimecode(timeCode, duration) {
 		time.innerText = formatTime(timeCode) + ' / ' + formatTime(duration);
-	
+
 		progress.max = duration;
 		progress.value = timeCode;
-	
+
 		const value = (timeCode / duration) * 100;
 		progress.style.setProperty('--progress', `${value}%`);
 	}
 
 	function loadButifyPlayer(video) {
 		const playerContainer = document.getElementById('player-container');
-	
+
 		let player = document.getElementById('swipe-player');
 		let source = document.getElementById('swipe-source');
 		volume.value = 25;
-	
-		source.src = video.getAttribute("data-link");
-	
+
+		source.src = video.getAttribute('data-link');
+
 		player.autoplay = false;
 		player.muted = true;
 		player.load();
 		player.play();
 		player.muted = false;
 		player.volume = volume.value / 100;
-	
+
 		playerContainer.appendChild(player);
-		
-		
 
 		//-------------\\
 
@@ -158,14 +154,14 @@
 			play.style.display = 'none';
 			pause.style.display = 'inline';
 		};
-	
+
 		player.onpause = function () {
 			pause.style.display = 'none';
 			play.style.display = 'inline';
 		};
-	
+
 		player.muted === true ? (mute.style.display = 'none') : (unmute.style.display = 'none');
-	
+
 		player.ontimeupdate = function () {
 			if (player == null) return;
 			updateTimecode(player.currentTime, player.duration);
@@ -179,11 +175,11 @@
 		pause.onclick = function () {
 			player.pause();
 		};
-	
+
 		mute.onclick = function () {
 			player.volume = 0;
 			volume.value = 0;
-	
+
 			mute.style.display = 'none';
 			unmute.style.display = '';
 			volume.style.display = 'none';
@@ -223,7 +219,6 @@
 		progress.onchange = function () {
 			player.currentTime = progress.value;
 		};
-
 	}
 
 	dislikeBtn.onclick = function () {
@@ -249,26 +244,26 @@
 	sliderContainer.addEventListener('mousedown', (e) => {
 		startX = e.clientX;
 		console.log(startX);
-	})
+	});
 
 	sliderContainer.addEventListener('mouseup', (e) => {
 		endX = e.clientX;
 		console.log(endX);
 		detectSwipe();
-	})
+	});
 
 	function detectSwipe() {
 		const swipeDistance = endX - startX;
 		const minSwipeDistance = 75;
 
-		console.log("Swipe distance:", swipeDistance);
+		console.log('Swipe distance:', swipeDistance);
 
 		if (swipeDistance > minSwipeDistance) {
-			console.log("Swipe vers la droite");
-			remove(1); 
+			console.log('Swipe vers la droite');
+			remove(1);
 		} else if (swipeDistance < -minSwipeDistance) {
-			console.log("Swipe vers la gauche");
-			remove(0); 
+			console.log('Swipe vers la gauche');
+			remove(0);
 		}
 	}
 

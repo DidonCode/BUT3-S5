@@ -14,7 +14,6 @@
 			closePopup.onclick = function () {
 				hidePopup();
 			};
-
 		}
 
 		otherChoice.onclick = function () {
@@ -24,14 +23,12 @@
 				reportComment.setAttribute('hidden', true);
 			}
 		};
-	
+
 		function hidePopup() {
 			reportingPopup.style.display = 'none';
 		}
 		function showPopup() {
 			reportingPopup.style.display = 'block';
 		}
-	}
-
-	
+	};
 })();

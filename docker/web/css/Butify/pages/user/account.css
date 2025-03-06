@@ -60,3 +60,48 @@
 		width: 80%;
 	}
 }
+
+#subscription-confirmation-popup .modal-header {
+	border-bottom: none;
+	color: green;
+	border-radius: var(--rounded1) var(--rounded1) var(--rounded1) var(--rounded1);
+	
+}
+
+#subscription-confirmation-popup .modal-dialog {
+	width: fit-content;
+}
+
+.smooth-apparition {
+	animation: toTop 1s ease forwards;
+}
+
+.smooth-disapear {
+	animation: smoothDisapear 1s ease forwards;
+}
+
+@keyframes toTop {
+	from {
+		top: 100%;
+		left: 70%;
+		opacity: .5;
+	}
+	to {
+		top: 80%;
+		left: 70%;
+		opacity: 1;
+	}
+}
+
+@keyframes smoothDisapear {
+	from {
+		top: 80%;
+		left: 70%;;
+		opacity: 1;
+	}
+	to {
+		top: 80%;
+		left: 70%;
+		opacity: 0
+	}
+}

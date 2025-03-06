@@ -8,7 +8,6 @@
                     <h4 class="modal-title d-inline">?</h4>
                     <button id="close-reporting-popup" type="button" class="close">&times;</button>
                 </div>
-
                 <div class="modal-body secondary contrast-text">
                     <h6>Raison du signalement :</h6>
                     <div class="flex-column mx-auto" style="display: flex">
@@ -39,9 +38,7 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0 primary">
-                    
-                        <button class="btn action clRounded1 clTextBtn pl-2 pt-2 mt-2 w-100">Signaler</button>
-                    
+                    <button class="btn action clRounded1 clTextBtn pl-2 pt-2 mt-2 w-100">Signaler</button>
                 </div>
         </form>
     </div>
