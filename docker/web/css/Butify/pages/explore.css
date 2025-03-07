@@ -1,0 +1,25 @@
+#button-swipe, #swipe-btn-container {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	background-color: var(--action);
+	border-radius: var(--rounded1);
+	border: none;
+	width: 60px;
+	height: 60px;
+	z-index: 5;
+}
+
+#button-swipe.disable {
+    background-color: gray;
+}
+
+#button-swipe i {
+	color: black;
+	font-size: 1.5em;
+	transition: scale 0.2s;
+}
+
+#button-swipe:hover > i {
+	scale: 1.2;
+}

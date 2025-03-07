@@ -65,7 +65,6 @@
 	border-bottom: none;
 	color: green;
 	border-radius: var(--rounded1) var(--rounded1) var(--rounded1) var(--rounded1);
-	
 }
 
 #subscription-confirmation-popup .modal-dialog {
@@ -84,7 +83,7 @@
 	from {
 		top: 100%;
 		left: 70%;
-		opacity: .5;
+		opacity: 0.5;
 	}
 	to {
 		top: 80%;
@@ -96,12 +95,12 @@
 @keyframes smoothDisapear {
 	from {
 		top: 80%;
-		left: 70%;;
+		left: 70%;
 		opacity: 1;
 	}
 	to {
 		top: 80%;
 		left: 70%;
-		opacity: 0
+		opacity: 0;
 	}
 }

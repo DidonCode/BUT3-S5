@@ -5,6 +5,9 @@
 	const profilImage = document.getElementById('profil-image');
 	const profilMenu = document.getElementById('profil-menu');
 
+	const publishBtn = document.getElementById('publishSound');
+	const manageBtn = document.getElementById('manageSounds');
+
 	window.addEventListener('click', function () {
 		profilMenu.style.display = 'none';
 	});
@@ -18,6 +21,11 @@
 			e.stopPropagation();
 			profilMenu.style.display === 'block' ? (profilMenu.style.display = 'none') : (profilMenu.style.display = 'block');
 		});
+		if (user["artist"] !== '1') {
+			publishBtn.style.display = 'none';
+			manageBtn.style.display = 'none'; 
+		}
+		
 	} else {
 		userConnected.setAttribute('hidden', '');
 	}

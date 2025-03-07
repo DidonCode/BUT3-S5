@@ -38,13 +38,13 @@
                                     <i class="fa-solid fa-user pr-3"></i>
                                     Compte
                                 </a>
-                                <a href="/web/upload" onclick="route(event)"
+                                <a href="/web/upload" onclick="route(event)" id="publishSound"
                                     class="dropdown-item contrast-text px-2 mb-2">
                                     <i class="fa-regular fa-file-import pr-3"></i>
                                     Publier
                                 </a>
                                 <a href="/web/musics" onclick="route(event)"
-                                    class="dropdown-item contrast-text px-2 mb-2">
+                                    class="dropdown-item contrast-text px-2 mb-2" id="manageSounds">
                                     <i class="fa-solid fa-list-check pr-3"></i>
                                     Gérer
                                 </a>

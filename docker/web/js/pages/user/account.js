@@ -11,7 +11,7 @@
 	const url = window.location.search;
 	const urlParams = new URLSearchParams(url);
 	const checkout = urlParams.get('checkout');
-	
+
 	function popupDisapear() {
 		subscriptionPopup.classList.remove('smooth-apparition');
 		subscriptionPopup.classList.add('smooth-disapear');
