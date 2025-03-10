@@ -1,15 +1,19 @@
-name: CI/CD Tests
+name: DEV
 
 on:
-    push:
-        branches:
-            - dev
+  push:
+    branches:
+      - dev
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
     test:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout repository
+            - name: Clonage du dépôt
               uses: actions/checkout@v3
 
             - name: Initialisation de NPM
@@ -17,11 +21,11 @@ jobs:
               with:
                   node-version: '18'
 
-            - name: Installation des packages
+            - name: Installation du projet
               run: chmod -R 777 ./ & npm install
 
-            - name: Lancement de docker
-              run: npm run docker & sleep 50
+            - name: Temporisation
+              run: sleep 10
 
             - name: Insertion des données
               run: mysql -h 127.0.0.1 -u root -pbutify butify < ./docker/example.sql
@@ -33,4 +37,4 @@ jobs:
               run: npm run test
 
             - name: Arrêt de Docker
-              run: docker compose -f ./docker/docker-compose.yml down -v
+              run: npm run stop
