@@ -70,13 +70,4 @@
       <button id="subscription-cancel">Annuler</button>
     </div>
   </div>
-
-  <div id="subscription-confirmation-popup" class="modal md" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h6 class="modal-title text-center">Votre abonnement est validé !</h6>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>

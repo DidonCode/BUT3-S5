@@ -170,6 +170,7 @@
 
 					if (parsedData != null) {
 						if (parsedData['error'] != undefined) {
+							makeToast("Désolé, une erreur est survenue !", "error");
 							console.log(parsedData['error']);
 						} else {
 							if (parsedData) {
@@ -296,6 +297,7 @@
 
 						if (parsedData != null) {
 							if (parsedData['error'] != undefined) {
+								makeToast("Désolé, une erreur est survenue !", "error");
 								console.log(parsedData['error']);
 							} else {
 								if (parsedData) removeSoundPlaylist(sound);
@@ -645,6 +647,7 @@
 
 					if (parsedData != null) {
 						if (parsedData['error'] != undefined) {
+							makeToast("Désolé, une erreur est survenue !", "error");
 							console.log(parsedData['error']);
 						}
 					}
@@ -686,6 +689,7 @@
 
 					if (parsedData != null) {
 						if (parsedData['error'] != undefined) {
+							makeToast("Désolé, une erreur est survenue !", "error");
 							console.log(parsedData['error']);
 						} else {
 							if ((action == 1 && parsedData) || (action == 2 && !parsedData)) {

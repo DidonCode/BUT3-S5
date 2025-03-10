@@ -10,7 +10,9 @@
 		<link rel="stylesheet" type="text/css" href="css/FontAwesome/css/all.css">
 
 		<link rel="stylesheet" type="text/css" href="css/Butify/main.css">
+
 		<link rel="stylesheet" type="text/css" href="css/Butify/components/nav_bar.css">
+		<link rel="stylesheet" type="text/css" href="css/Butify/components/toaster.css">
 
 		<link rel="stylesheet" type="text/css" href="css/Butify/player.css">
 		<link rel="stylesheet" type="text/css" href="css/Butify/error.css">
@@ -152,9 +154,10 @@
 <script src="js/widgets/playlist/playlist_card.js"></script>
 <script src="js/widgets/playlist/playlist_popup.js"></script>
 
-
 <script src="js/widgets/artist/artist_card.js"></script>
+
+<script src="js/widgets/report_popup.js"></script>
 
 <script src="js/components/side_bar.js"></script>
 <script src="js/components/nav_bar.js"></script>
-<script src="js/widgets/report_popup.js"></script>
+<script src="js/components/toaster.js"></script>

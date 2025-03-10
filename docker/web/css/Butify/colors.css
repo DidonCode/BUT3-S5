@@ -8,6 +8,8 @@
 	--border: #4f4f4f;
 	--orange: #ee964b;
 	--error: #cd3737;
+	--warning: #ee964b;
+	--success: #13a500;
 	--contrast: black;
 
 	/* Tailles des arondis des bordures */
@@ -27,6 +29,8 @@
 	--border: #4f4f4f;
 	--orange: #ee964b;
 	--error: #cd3737;
+	--warning: #ee964b;
+	--success: #13a500;
 	--contrast: white;
 
 	/* Tailles des arondis des bordures */
