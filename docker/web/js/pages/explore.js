@@ -30,6 +30,7 @@
 			sparkle.style.left = `${-borderSize}px`;
 		}
 
+		sparkle.style.zIndex = "6";
 		sparkle.style.opacity = '1';
 		sparkle.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
 		box.appendChild(sparkle);
@@ -48,8 +49,8 @@
 
 	async function disableSwipeBtn() {
 		if (user['subscription'] == null || user['subscription']['type'] != 'premium') {
-			swipeBtn.classList.add("disable");
-			swipeBtn.setAttribute("disabled", true);
+			swipeBtn.classList.add('disable');
+			swipeBtn.setAttribute('disabled', true);
 		}
 	}
 

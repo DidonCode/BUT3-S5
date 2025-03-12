@@ -21,11 +21,10 @@
 			e.stopPropagation();
 			profilMenu.style.display === 'block' ? (profilMenu.style.display = 'none') : (profilMenu.style.display = 'block');
 		});
-		if (user["artist"] !== '1') {
+		if (user['artist'] !== '1') {
 			publishBtn.style.display = 'none';
-			manageBtn.style.display = 'none'; 
+			manageBtn.style.display = 'none';
 		}
-		
 	} else {
 		userConnected.setAttribute('hidden', '');
 	}
