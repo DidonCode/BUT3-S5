@@ -250,7 +250,7 @@ body {
 	display: block;
 	position: relative;
 	padding-left: 35px;
-	margin: 8px 0px;
+	margin: 5px 0px;
 	cursor: pointer;
 	font-size: 22px;
 	-webkit-user-select: none;
@@ -262,18 +262,18 @@ body {
 
 .checkmark {
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 11px;
+	left: 6px;
 	height: 20px;
 	width: 20px;
-	background-color: #eee;
+	background-color: var(--primary-secondary);
 	border-radius: 2px;
-	border: solid 1px #eee;
+	border: solid 1px var(--primary-secondary);
 }
 
 .checkWrap:hover input ~ .checkmark {
-	background-color: #eee;
-	border: solid 1px #eee;
+	background-color: var(--primary-secondary);
+	border: solid 1px var(--primary-secondary);
 }
 
 .checkWrap input:checked ~ .checkmark {
@@ -283,9 +283,9 @@ body {
 
 .checkWrap .checkmark:after {
 	left: 7px;
-	top: 2px;
-	width: 5px;
-	height: 10px;
+	top: 3px;
+	width: 6px;
+	height: 11px;
 	border: solid white;
 	border-width: 0 2px 2px 0;
 	-webkit-transform: rotate(45deg);
@@ -293,12 +293,9 @@ body {
 	transform: rotate(45deg);
 }
 
-.check-label-artist,
-.check-label-report {
+.check-label {
 	font-size: 14px;
-	font-weight: 100;
-	line-height: 20px;
-	float: left;
+	font-weight: 400;
 }
 
 .check-label-artist:after {
@@ -321,12 +318,4 @@ body {
 
 .checkWrap input:checked ~ .checkmark:after {
 	display: block;
-}
-
-#reporting-popup .checkmark {
-	top: 0;
-}
-
-#reporting-popup .modal-footer {
-	justify-content: space-around;
 }

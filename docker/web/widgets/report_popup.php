@@ -1,46 +1,50 @@
-<div id="reporting-popup" class="modal md" role="dialog">
-    <div class="modal-dialog">
-        <form id="report-form">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title d-inline">Êtes vous sûr de vouloir signaler :</h4>
-                    <h4 id="reportName" class="modal-title d-inline"></h4>
-                    <h4 class="modal-title d-inline">?</h4>
-                    <button id="close-reporting-popup" type="button" class="close">&times;</button>
-                </div>
-                <div class="modal-body secondary contrast-text">
-                    <h6>Raison du signalement :</h6>
-                    <div class="flex-column mx-auto" style="display: flex">
-                        <label class="checkWrap">
-                            <span class="check-label-report">Nom déplacé ou à connotation négative</span>
-                            <input id="negative-name" type="checkbox" hidden>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkWrap">
-                            <span class="check-label-report">Musique dégradante</span>
-                            <input id="degrading-sound" type="checkbox" hidden>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkWrap">
-                            <span class="check-label-report">Description méchante</span>
-                            <input id="mean-description" type="checkbox" hidden>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkWrap">
-                            <span class="check-label-report">Autre</span>
-                            <input id="other-choice" type="checkbox" hidden>
-                            <span class="checkmark"></span>
-                        </label>
-                        <div class="textArea mb-3" id="report-comment" hidden>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                placeholder="Entrer la raison du signalement"></textarea>
+<div id="report-popup" class="modal" role="dialog">
+    <div class="modal-dialog bg-transparent">
+        <div class="modal-content">
+            <div class="modal-header border-0 primary">
+                <h4 id="report-title" class="modal-title contrast-text">Êtes vous sûr de vouloir signaler :</h4>
+                <button id="report-popup-close" type="button" class="close my-auto"><i class="fa-solid fa-xmark contrast-text"></i></button>
+            </div>
+            
+            <form id="report-form">  
+                <div class="modal-body secondary"> 
+                    <div class="mb-3">
+                        <h6 class="contrast-text">Raison du signalement :</h6> 
+                        <div class="d-flex flex-column mx-auto">
+                            <label class="checkWrap">
+                                <span class="check-label contrast-text">Nom déplacé ou à connotation négative</span>
+                                <input name="report-type" type="radio" value="Nom déplacé ou à connotation négative" hidden>
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkWrap">
+                                <span class="check-label contrast-text">Musique dégradante</span>
+                                <input name="report-type" type="radio" value="Musique dégradante" hidden>
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkWrap">
+                                <span class="check-label contrast-text">Description méchante</span>
+                                <input name="report-type" type="radio" value="Description méchante" hidden>
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="checkWrap">
+                                <span class="check-label contrast-text">Autre</span>
+                                <input id="report-other" name="report-type" type="radio" value="Autre" hidden>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div> 
+                    </div>
+
+                    <div class="mt-3" id="report-other-container" hidden>
+                        <h6 class="contrast-text">Raison du signalement :</h6> 
+                        <div class="textArea mb-3" id="report-comment">
+                            <textarea class="form-control" id="report-other-content" placeholder="Entrer la raison du signalement"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer border-0 primary">
-                    <button class="btn action clRounded1 clTextBtn pl-2 pt-2 mt-2 w-100">Signaler</button>
+                    <button id="report-submit" type="submit" class="btn action clRounded1 clBtnGrad mx-auto">Signaler</button>
                 </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 </div>

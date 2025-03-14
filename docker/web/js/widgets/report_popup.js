@@ -1,34 +1,45 @@
-(() => {
-	window.onload = function () {
-		const reportingPopup = document.getElementById('reporting-popup');
-		const closePopup = document.getElementById('close-reporting-popup');
-		const openPopupBtns = document.getElementsByClassName('open-reporting-popup');
-		const otherChoice = document.getElementById('other-choice');
-		const reportComment = document.getElementById('report-comment');
+const reportPopup = document.getElementById('report-popup');
+const reportPopupClose = document.getElementById('report-popup-close');
 
-		if (openPopupBtns != null) {
-			for (let i = 0; i < openPopupBtns.length; i++) {
-				openPopupBtns[i].addEventListener('click', showPopup, false);
+const reportTitle = document.getElementById('report-title');
+
+const reportTypes = document.getElementsByName('report-type');
+const reportOtherContainer = document.getElementById('report-other-container');
+const reportOtherContent = document.getElementById('report-other-content');
+
+const reportSubmit = document.getElementById('report-submit');
+const reportForm = document.getElementById('report-form');
+
+function makeReportPopup(callback){
+	reportPopup.style.display = 'block';
+	reportOtherContent.value = "";
+	reportOtherContainer.setAttribute("hidden", "");
+	reportTypes[0].checked = true;
+
+	reportPopupClose.onclick = function() {
+		reportPopup.style.display = 'none';
+	}
+
+	for(let i = 0; i < reportTypes.length; i++){
+		reportTypes[i].onchange = function() {
+			reportOtherContainer.setAttribute("hidden", "");
+			if(reportTypes[i].id === 'report-other') reportOtherContainer.removeAttribute("hidden");
+		}
+	}
+
+	reportForm.onsubmit = function (e) {
+		e.preventDefault();
+
+		reportPopup.style.display = 'none';
+
+		for(let i = 0; i < reportTypes.length; i++){
+			if(reportTypes[i].checked){
+				if(reportTypes[i].id === 'report-other') {
+					callback(reportOtherContent.value);
+				}else{
+					callback(reportTypes[i].value);
+				}
 			}
-
-			closePopup.onclick = function () {
-				hidePopup();
-			};
 		}
-
-		otherChoice.onclick = function () {
-			if (otherChoice.checked) {
-				reportComment.removeAttribute('hidden');
-			} else {
-				reportComment.setAttribute('hidden', true);
-			}
-		};
-
-		function hidePopup() {
-			reportingPopup.style.display = 'none';
-		}
-		function showPopup() {
-			reportingPopup.style.display = 'block';
-		}
-	};
-})();
+	}
+}

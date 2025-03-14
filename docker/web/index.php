@@ -26,6 +26,8 @@
 		<link rel="stylesheet" type="text/css" href="css/Butify/widgets/playlist/playlist_popup.css">
 
 		<link rel="stylesheet" type="text/css" href="css/Butify/widgets/artist/artist_card.css">
+
+		<link rel="stylesheet" type="text/css" href="css/Butify/widgets/report_popup.css">
 		
 		<script src="https://www.youtube.com/iframe_api"></script>
 		<script src="https://js.stripe.com/v3/"></script>
