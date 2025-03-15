@@ -1,4 +1,4 @@
-<table id="music-table" class="table contrast-text mt-3 w-75 mx-auto">
+<table id="music-table" class="table contrast-text mt-3 w-75 mx-auto" aria-label="Tableau de musique">
     <thead class="primary">
         <tr>
             <th scope="col">Image</th>
@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody id="music-table-result"></tbody>
-<table>
+</table>
 <div id="musicEdition" class="modal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -26,7 +26,7 @@
                             <i class="fa-solid fa-arrow-up-from-bracket contrast-text"></i>
                             <p class="contrast-text">Cliquez pour importer l'image</p>
                         </div>
-                        <img id="audio-image-preview" src="" style="display: none;">
+                        <img id="audio-image-preview" src="" style="display: none;" alt="Prévisualisation de l'image de couverture">
                     </div>
                     <input type="file" id="audio-audio-upload" name="audio" accept=".mp3" hidden>
                     <button class="btn action clRounded1 clTextBtn pl-2 pt-2">Modifier</button>

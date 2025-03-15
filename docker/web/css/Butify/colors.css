@@ -96,14 +96,6 @@
 	color: var(--border);
 }
 
-.logo-text {
-	/*color: var(--orange);*/
-	font-family: 'roboto';
-	background: -webkit-linear-gradient(90deg, var(--orange), var(--action));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-
 /* Bordures */
 .clRounded1 {
 	border-radius: var(--rounded1);
