@@ -17,7 +17,7 @@
 		*
 		* @brief Renvoie une réponse http
 		*/
-		static function sendResponse($statutCode, $data){
+		public static function sendResponse($statutCode, $data){
 			http_response_code($statutCode);
 			echo json_encode($data);
 		}
@@ -29,7 +29,7 @@
 		*
 		* @brief Renvoie une erreur http
 		*/
-		static function sendError($exception){
+		public static function sendError($exception){
 			Http::sendResponse($exception->getCode(), array("error" => array("error_message" => $exception->getMessage(), "error_code" => $exception->getCode())));
 		}
 
@@ -41,7 +41,7 @@
 		*
 		* @brief Renvoie une erreur http
 		*/
-		static function sendCustomError($exception, $exceptionCode){
+		public static function sendCustomError($exception, $exceptionCode){
 			Http::sendResponse($exceptionCode, array("error" => array("error_message" => $exception->getMessage(), "error_code" => $exception->getCode())));
 		}
 	}

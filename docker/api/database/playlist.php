@@ -17,7 +17,7 @@
 		* @exception Exception L'identifiant ne correspond à aucune playlist
 		* @exception PDOException La requête échoue
 		*/
-		static function byId($id){
+		public static function byId($id){
 			global $pdoDatabase;
 
 			try {
@@ -51,7 +51,7 @@
 		* @brief Renvoie les données de toutes les playlists qui sont publiques et ont un titre contenant le titre recherché
 		* @exception PDOException La requête échoue
 		*/
-		static function byTitle($title, $page, $perPage){
+		public static function byTitle($title, $page, $perPage){
 			global $pdoDatabase;
 
 			try {
@@ -93,7 +93,7 @@
 		* @brief Renvoie les données de toutes les playlists qui sont publiques et ont comme propriétaire l'utilisateur
 		* @exception PDOException La requête échoue
 		*/
-		static function byOwner($owner, $page, $perPage){
+		public static function byOwner($owner, $page, $perPage){
 			global $pdoDatabase;
 
 			try {

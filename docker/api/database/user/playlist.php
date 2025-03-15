@@ -20,7 +20,7 @@
 		* @exception Exception La playlist n'est pas retrouvée après sa création
 		* @exception PDOException La requête échoue
 		*/
-		static function create($user, $title, $description, $public){
+		public static function create($user, $title, $description, $public){
 			global $pdoDatabase;
 
 			try{
@@ -56,7 +56,7 @@
 		* @brief Renvoie les données de toutes les playlists de l'utilisateur avec celles où l'utilisateur est collaborateur
 		* @exception PDOException La requête échoue
 		*/
-		static function list($user){
+		public static function list($user){
 			global $pdoDatabase;
 
 			try{
@@ -113,7 +113,7 @@
 		* @exception Exception L'identifiant ne correspond à aucune playlist
 		* @exception PDOException La requête échoue
 		*/
-		static function get($user, $id){
+		public static function get($user, $id){
 			global $pdoDatabase;
 
 			try{
@@ -178,7 +178,7 @@
 		* @brief Ajoute une musique dans la playlist si elle appartient à l'utilisateur ou s'il a les permissions pour modifier
 		* @exception PDOException La requête échoue
 		*/
-		static function addSound($user, $id, $sound){
+		public static function addSound($user, $id, $sound){
 			global $pdoDatabase;
 
 			try{
@@ -221,7 +221,7 @@
 		* @exception Exception L'utilisateur n'est pas propriétaire
 		* @exception PDOException La requête échoue
 		*/
-		static function removeSound($user, $id, $sound){
+		public static function removeSound($user, $id, $sound){
 			global $pdoDatabase;
 
 			try{
@@ -261,7 +261,7 @@
 		* @exception Exception Si la poids de l'image de la playlist dépasse la limite autorisée
 		* @exception PDOException La requête échoue
 		*/
-		static function edit($user, $id, $title, $description, $public, $image){
+		public static function edit($user, $id, $title, $description, $public, $image){
 			global $pdoDatabase;
 
 			try{
@@ -340,7 +340,7 @@
 		* @brief Clonage des musiques d'une playlist vers une autre playlist
 		* @exception PDOException La requête échoue
 		*/
-		static function clone($user, $from, $to){
+		public static function clone($user, $from, $to){
 			global $pdoDatabase;
 
 			try{
@@ -370,7 +370,7 @@
 		* @exception Exception L'utilisateur n'est pas propriétaire
 		* @exception PDOException La requête échoue
 		*/
-		static function delete($user, $id){
+		public static function delete($user, $id){
 			global $pdoDatabase;
 
 			try{
@@ -408,7 +408,7 @@
 		* @exception L'utilisateur n'est pas propriétaire
 		* @exception La requête échoue
 		*/
-		static function addCollaborator($user, $id, $collaborator){
+		public static function addCollaborator($user, $id, $collaborator){
 			global $pdoDatabase;
 
 			try{
@@ -439,7 +439,7 @@
 		* @exception Exception L'utilisateur n'est pas propriétaire
 		* @exception PDOException La requête échoue
 		*/
-		static function editCollaborator($user, $id, $collaborator, $modify){
+		public static function editCollaborator($user, $id, $collaborator, $modify){
 			global $pdoDatabase;
 
 			try{
@@ -468,7 +468,7 @@
 		* @exception Exception L'utilisateur n'est pas propriétaire
 		* @exception PDOException La requête échoue
 		*/
-		static function getCollaborator($user, $id){
+		public static function getCollaborator($user, $id){
 			global $pdoDatabase;
 
 			try{
@@ -509,7 +509,7 @@
 		* @exception Exception L'utilisateur n'est pas propriétaire
 		* @exception PDOException La requête échoue
 		*/
-		static function removeCollaborator($user, $id, $collaborator){
+		public static function removeCollaborator($user, $id, $collaborator){
 			global $pdoDatabase;
 
 			try{

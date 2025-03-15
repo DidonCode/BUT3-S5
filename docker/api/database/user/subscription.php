@@ -17,7 +17,7 @@
 		* @exception PDOException La requête échoue
         * @exception \Stripe\Exception\ApiErrorException Erreur de l'api Stripe
 		*/
-        static function createSession($user, $name, $priceId){
+        public static function createSession($user, $name, $priceId){
             global $pdoDatabase;
 
             try {
@@ -58,7 +58,7 @@
 		* @brief Mise à jour des informations de l'abonnement après le paiement de l'utilisateur
 		* @exception PDOException La requête échoue
 		*/
-        static function create($type, $createdAt, $price, $updateAt, $sessionId, $paymentId, $subscriptionId){
+        public static function create($type, $createdAt, $price, $updateAt, $sessionId, $paymentId, $subscriptionId){
             global $pdoDatabase;
 
             try{
@@ -79,7 +79,7 @@
 		* @exception PDOException La requête échoue
         * @exception \Stripe\Exception\ApiErrorException Erreur de l'api Stripe
 		*/
-        static function cancel($user){
+        public static function cancel($user){
             global $pdoDatabase;
 
             try{
@@ -108,7 +108,7 @@
 		* @brief Renvoie l'abonnement en cours ou expiré de l'utilisateur
 		* @exception PDOException La requête échoue
 		*/
-        static function get($user){
+        public static function get($user){
             global $pdoDatabase;
 
             try{

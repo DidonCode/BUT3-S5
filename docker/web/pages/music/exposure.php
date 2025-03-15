@@ -1,7 +1,7 @@
 <div id="exposure-banner-container">
-    <img id="exposure-banner" src="/storage/user/banner/default.png">
+    <img id="exposure-banner" alt="Bannière de l'artiste" src="/storage/user/banner/default.png">
     <div class="d-flex">
-        <img id="exposure-image">
+        <img alt="Photo de l'artiste" id="exposure-image">
         <h2 id="exposure-pseudo" class="contrast-text my-auto ml-4"></h2>
 
         <button id="exposure-like" class="contrast-text ml-2 my-auto">

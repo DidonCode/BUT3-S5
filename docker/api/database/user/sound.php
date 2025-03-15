@@ -25,7 +25,7 @@
 		* @exception Exception Si le déplacement du fichier audio de la musique échoue
 		* @exception PDOException La requête échoue
 		*/
-		static function createAudio($user, $image, $title, $audio){
+		public static function createAudio($user, $image, $title, $audio){
 			global $pdoDatabase;
 
 			try{
@@ -97,7 +97,7 @@
 		* @exception Exception Si le déplacement du fichier vidéo de la musique échoue
 		* @exception PDOException La requête échoue
 		*/
-		static function createVideo($user, $image, $title, $video){
+		public static function createVideo($user, $image, $title, $video){
 			global $pdoDatabase;
 
 			try{
@@ -161,7 +161,7 @@
 		* @exception Exception L'identifiant d'une musique n'est pas valide
 		* @exception PDOException La requête échoue
 		*/
-		static function get($playlist){
+		public static function get($playlist){
 			global $pdoDatabase;
 
 			try{
@@ -197,7 +197,7 @@
 		* @brief Supprime la musique correspondante
 		* @exception PDOException La requête échoue
 		*/
-		static function delete($sound){
+		public static function delete($sound){
 			global $pdoDatabase;
 
 			try{

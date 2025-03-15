@@ -18,7 +18,7 @@
 		* @exception Exception L'identifiant d'une musique n'est pas valide
 		* @exception PDOException La requête échoue
 		*/
-        static function likedSound($user){
+        public static function likedSound($user){
 			global $pdoDatabase;
 
 			try{
@@ -57,7 +57,7 @@
 		* @exception Exception L'identifiant d'une la playlist n'est pas valide
 		* @exception PDOException La requête échoue
 		*/
-        static function likedPlaylist($user){
+        public static function likedPlaylist($user){
 			global $pdoDatabase;
 
 			try{
@@ -96,7 +96,7 @@
 		* @exception Exception L'identifiant d'un artiste n'est pas valide
 		* @exception PDOException La requête échoue
 		*/
-        static function likedArtist($user){
+        public static function likedArtist($user){
 			global $pdoDatabase;
 
 			try{
@@ -132,7 +132,7 @@
 		* @brief Renvoie les données des musiques les plus écoutées
 		* @exception PDOException La requête échoue
 		*/
-        static function mostListened(){
+        public static function mostListened(){
 			global $pdoDatabase;
 			
 			try{
@@ -162,7 +162,7 @@
 		* @brief Renvoie les données des musiques les moins écoutées
 		* @exception PDOException La requête échoue
 		*/
-		static function leastListened(){
+		public static function leastListened(){
 			global $pdoDatabase;
 
 			try{
@@ -196,7 +196,7 @@
 		* @brief Renvoie les données des musiques les plus aimées
 		* @exception PDOException La requête échoue
 		*/
-		static function mostLikedSound(){
+		public static function mostLikedSound(){
 			global $pdoDatabase;
 
 			try{
@@ -230,7 +230,7 @@
 		* @brief Renvoie les données des playlists les plus aimées
 		* @exception PDOException La requête échoue
 		*/
-		static function mostLikedPlaylist(){
+		public static function mostLikedPlaylist(){
 			global $pdoDatabase;
 
 			try{
@@ -264,7 +264,7 @@
 		* @brief Renvoie les données des artistes émergents
 		* @exception PDOException La requête échoue
 		*/
-		static function leastArtist(){
+		public static function leastArtist(){
 			global $pdoDatabase;
 
 			try{

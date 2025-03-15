@@ -18,7 +18,7 @@
 		* @exception Exception La playlist ne correspond à aucune playlist
 		* @exception PDOException La requête échoue
 		*/
-		static function byId($id){
+		public static function byId($id){
 
 			try{
 				$url			=	'https://www.googleapis.com/youtube/v3/playlists?&part=snippet&id='.urlencode($id);
@@ -65,7 +65,7 @@
 		* @exception Exception La playlist n'éxiste pas
 		* @exception PDOException La requête échoue
 		*/
-		static function byTitle($title, $page, $perPage){
+		public static function byTitle($title, $page, $perPage){
 
 			try{
 				$url			=	'https://www.googleapis.com/youtube/v3/search?type=playlist&maxResults='.$perPage.'&q='.urlencode($title);
@@ -112,7 +112,7 @@
 		* @exception Exception La playlist n'éxiste pas
 		* @exception PDOException La requête échoue
 		*/
-		static function byOwner($owner, $page, $perPage){
+		public static function byOwner($owner, $page, $perPage){
 
 			try{$url			=	'https://www.googleapis.com/youtube/v3/search?type=playlist&maxResults='.$perPage.'&channelId='.$owner;
 				$options		=	[	CURLOPT_URL				=>	$url,

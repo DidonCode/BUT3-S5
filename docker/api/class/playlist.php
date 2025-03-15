@@ -16,7 +16,7 @@
 		private $image;
 		private $public;
 
-		function __construct($id, $owner, $title, $description, $image, $public){
+		public function __construct($id, $owner, $title, $description, $image, $public){
 			$this->id = $id;
 			$this->owner = $owner;
 			$this->title = $title;
@@ -30,7 +30,7 @@
 		*
 		* @brief Renvoie l'identifiant de la playlist
 		*/
-		function getId(){
+		public function getId(){
 			return $this->id;
 		}
 
@@ -39,7 +39,7 @@
 		*
 		* @brief Renvoie l'identifiant de l'utilisateur qui a créé la playlist
 		*/
-		function getOwner(){
+		public function getOwner(){
 			return $this->owner;
 		}
 
@@ -48,7 +48,7 @@
 		*
 		* @brief Renvoie le titre de la playlist
 		*/
-		function getTitle(){
+		public function getTitle(){
 			return $this->title;
 		}
 
@@ -57,7 +57,7 @@
 		*
 		* @brief Renvoie la description de la playlist
 		*/
-		function getDescription(){
+		public function getDescription(){
 			return $this->description;
 		}
 
@@ -66,7 +66,7 @@
 		*
 		* @brief Renvoie l'image de la playlist
 		*/
-		function getImage(){
+		public function getImage(){
 			return $this->image;
 		}
 
@@ -75,7 +75,7 @@
 		*
 		* @brief Renvoie la visibilité de la playlist
 		*/
-		function isPublic(){
+		public function isPublic(){
 			return $this->public;
 		}
 
@@ -84,7 +84,7 @@
 		*
 		* @brief Renvoie les données de la playlist
 		*/
-		function toString(){
+		public function toString(){
 			return array(
 				"id" => $this->id,
 				"owner" => $this->owner,
@@ -100,7 +100,7 @@
 		*
 		* @brief Renvoie les données de la playlist
 		*/
-		function toArray(){
+		public function toArray(){
 			return array(
 				$this->id,
 				$this->owner,
@@ -118,7 +118,7 @@
 		*
 		* @brief Renvoie une nouvelle playlist à partir des données
 		*/
-		static function toClass($playlist){
+		public static function toClass($playlist){
 			return new Playlist(
 				$playlist['id'],
 				$playlist['owner'],

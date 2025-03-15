@@ -17,7 +17,7 @@
 		* @exception Exception L'identifiant ne correspond à aucune musique
 		* @exception PDOException La requête échoue
 		*/
-		static function byId($id){
+		public static function byId($id){
 			global $pdoDatabase;
 
 			try{
@@ -51,7 +51,7 @@
 		* @brief Renvoie les données de toutes les musiques qui ont un titre contenant le titre recherché
 		* @exception PDOException La requête échoue
 		*/
-		static function byTitle($title, $page, $perPage){
+		public static function byTitle($title, $page, $perPage){
 			global $pdoDatabase;
 
 			try{
@@ -93,7 +93,7 @@
 		* @brief Renvoie les données de toutes les musiques qui ont comme propriétaire l'artiste
 		* @exception PDOException La requête échoue
 		*/
-		static function byArtist($artist, $page, $perPage){
+		public static function byArtist($artist, $page, $perPage){
 			global $pdoDatabase;
 
 			try{
@@ -136,7 +136,7 @@
 		* @exception Exception La playlist n'est pas publique
 		* @exception PDOException La requête échoue
 		*/
-		static function byPlaylist($playlist){
+		public static function byPlaylist($playlist){
 			global $pdoDatabase;
 
 			try{

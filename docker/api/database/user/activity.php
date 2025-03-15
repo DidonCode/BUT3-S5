@@ -17,7 +17,7 @@
 		* @brief Ajoute la musique à l'activité de l'utilisateur
 		* @exception PDOException La requête échoue
 		*/
-		static function add($user, $sound){
+		public static function add($user, $sound){
 			global $pdoDatabase;
 
 			try{
@@ -40,7 +40,7 @@
 		* @exception Exception L'identifiant d'une musique n'est pas valide
 		* @exception PDOException La requête échoue
 		*/
-		static function getRecently($user){
+		public static function getRecently($user){
 			global $pdoDatabase;
 
 			try{
@@ -79,7 +79,7 @@
 		* @exception Exception L'identifiant d'une musique n'est pas valide
 		* @exception PDOException La requête échoue
 		*/
-		static function getLast($user){
+		public static function getLast($user){
 			global $pdoDatabase;
 
 			try{
@@ -118,7 +118,7 @@
 		* @brief Renvoie les données des derniers artistes aimés par l'utilisateur
 		* @exception PDOException La requête échoue
 		*/
-		static function getLastedArtistLikes($user){
+		public static function getLastedArtistLikes($user){
 			global $pdoDatabase;
 
 			try{
@@ -153,7 +153,7 @@
 		* @brief Renvoie les données des dernières playlists aimées par l'utilisateur
 		* @exception PDOException La requête échoue
 		*/
-		static function getLastedPlaylistLikes($user){
+		public static function getLastedPlaylistLikes($user){
 			global $pdoDatabase;
 
 			try{
@@ -188,7 +188,7 @@
 		* @brief Renvoie les données des dernières musiques aimées par l'utilisateur
 		* @exception PDOException La requête échoue
 		*/
-		static function getLastedSoundLikes($user){
+		public static function getLastedSoundLikes($user){
 			global $pdoDatabase;
 
 			try{
@@ -213,6 +213,28 @@
 				return $sounds;
 			} catch(PDOException $e){
 				throw new Exception("Error to get lasted sounds likes from user: ".$user['id']." .".$e->getMessage(), 500);
+			}
+		}
+
+		public static function getRecommendedSounds($user){
+			global $pdoDatabase;
+
+			try{
+				$request = $pdoDatabase->prepare("SELECT sound FROM like_sound WHERE user != ? AND ISNUMERIC(sound) LIMIT 10");
+				$request->execute(array($user['id']));
+				$soundsData = $request->fetchAll();
+
+				$sounds = array();
+
+				foreach($soundsData as &$row) {
+					array_push($sounds, DatabaseSound::byId($row['sound']));
+				}
+
+				unset($row);
+
+				return $sounds;
+			} catch(PDOException $e){
+				throw new Exception("Error to get recommended sounds from user: ".$user['id']." .".$e->getMessage(), 500);
 			}
 		}
 	}

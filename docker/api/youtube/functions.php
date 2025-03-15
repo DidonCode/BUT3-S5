@@ -11,11 +11,11 @@
 
 		/**
 		* @param $thumbnails Lien permettant d'avoir l'image de la musique 
-		* @return var qualite de l'image
+		* @return string qualite de l'image
 		*
 		* @brief Renvoie la meilleure qualité d'image possible
 		*/
-		static function imageQuality($thumbnails){
+		public static function imageQuality($thumbnails){
 			$image = "/storage/sound/image/default.png";
 		
 			foreach($thumbnails as &$qualite){ $image = $qualite;}
@@ -31,7 +31,7 @@
 		*
 		* @brief Renvoie si la musique est restricted (au dessus de 18 ans)
 		*/
-		static function ageRestricted($id){
+		public static function ageRestricted($id){
 
 			$url			=	'https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id='.$id;
 

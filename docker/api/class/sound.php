@@ -16,7 +16,7 @@
 		private $image;
 		private $link;
 
-		function __construct($id, $title, $artist, $type, $image, $link){
+		public function __construct($id, $title, $artist, $type, $image, $link){
 			$this->id = $id;
 			$this->title = $title;
 			$this->artist = $artist;
@@ -30,7 +30,7 @@
 		*
 		* @brief Renvoie l'identifiant de la musique
 		*/
-		function getId(){
+		public function getId(){
 			return $this->id;
 		}
 
@@ -39,7 +39,7 @@
 		*
 		* @brief Renvoie le titre de la musique
 		*/
-		function getTitle(){
+		public function getTitle(){
 			return $this->title;
 		}
 
@@ -48,7 +48,7 @@
 		*
 		* @brief Renvoie l'identifiant de l'artiste qui a créé la musique
 		*/
-		function getArtist(){
+		public function getArtist(){
 			return $this->artist;
 		}
 
@@ -57,7 +57,7 @@
 		*
 		* @brief Renvoie le type de la musique
 		*/
-		function getType(){
+		public function getType(){
 			return $this->type;
 		}
 
@@ -66,7 +66,7 @@
 		*
 		* @brief Renvoie l'image de la musique
 		*/
-		function getImage(){
+		public function getImage(){
 			return $this->image;
 		}
 
@@ -75,7 +75,7 @@
 		*
 		* @brief Renvoie le chemin du fichier de la musique
 		*/
-		function getLink(){
+		public function getLink(){
 			return $this->link;
 		}
 
@@ -84,7 +84,7 @@
 		*
 		* @brief Renvoie les données de la musiques
 		*/
-		function toString(){
+		public function toString(){
 			return array(
 				"id" => $this->id,
 				"title" => $this->title,
@@ -100,7 +100,7 @@
 		*
 		* @brief Renvoie les données de la musique
 		*/
-		function toArray(){
+		public function toArray(){
 			return array(
 				$this->id,
 				$this->title,
@@ -118,7 +118,7 @@
 		*
 		* @brief Renvoie une nouvelle musique à partir des données
 		*/
-        static function toClass($sound){
+        public static function toClass($sound){
             return new Sound(
                 $sound['id'],
                 $sound['title'],

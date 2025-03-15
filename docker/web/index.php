@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
 		<link rel="icon" type="image/x-icon" href="images/logos/logoButifyIcon.png">
 		
 		<link rel="stylesheet" type="text/css" href="css/Bootstrap/css/bootstrap.css">

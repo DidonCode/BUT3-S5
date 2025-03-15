@@ -120,8 +120,8 @@ describe("Tests de l'API Butify (user)", () => {
 
 	test('POST api/user/sound - Retourne un statut 201 et les informations de la musique uploadée', async () => {
 		const formData = new FormData();
-		formData.append('image', new Blob([fs.readFileSync('./tests/api/example/image.png')]), './tests/api/example/image.png');
-		formData.append('audio', new Blob([fs.readFileSync('./tests/api/example/audio.mp3')]), './tests/api/example/audio.mp3');
+		formData.append('image', new Blob([fs.readFileSync('/tests/api/example/image.png')]), '/tests/api/example/image.png');
+		formData.append('audio', new Blob([fs.readFileSync('/tests/api/example/audio.mp3')]), '/tests/api/example/audio.mp3');
 		formData.append('title', 'Test');
 		formData.append('token', token);
 
