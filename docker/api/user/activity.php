@@ -8,6 +8,7 @@
 	include_once("../class/sound.php");
 	include_once("../class/playlist.php");
 	include_once("../class/artist.php");
+	include_once("../class/subscription.php");
 
 	include_once("../database/sound.php");
 	include_once("../database/playlist.php");

@@ -149,6 +149,8 @@
 
 <script src="js/router.js"></script>
 
+<script src="js/effects.js"></script>
+
 <script src="js/widgets/card_list.js"></script>
 
 <script src="js/widgets/sound/sound_setting.js"></script>

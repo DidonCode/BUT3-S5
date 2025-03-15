@@ -220,7 +220,7 @@
 			global $pdoDatabase;
 
 			try{
-				$request = $pdoDatabase->prepare("SELECT sound FROM like_sound WHERE user != ? AND ISNUMERIC(sound) LIMIT 10");
+				$request = $pdoDatabase->prepare("SELECT DISTINCT(sound) FROM like_sound WHERE sound REGEXP '^[0-9]+$' AND sound NOT IN (SELECT sound FROM like_sound WHERE user = ?)");
 				$request->execute(array($user['id']));
 				$soundsData = $request->fetchAll();
 
