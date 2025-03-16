@@ -2313,7 +2313,7 @@ INSERT INTO `sound` (`id`, `title`, `artist`, `type`, `image`, `link`) VALUES
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `pseudo`, `grade`, `image`, `banner`, `public`, `artist`, `expire`, `token`) VALUES
-(1, 'perrier.richardj@gmail.com', '$2y$10$LNF1x8gdx65OBnwUw2QIAeHbVBYz/kWM9uqfOu9.xfmizXAcRQtFu', 'DidonCode', 1, '/storage/user/profile/1.jpg', '/storage/user/banner/1.jpg', 1, 1, '2025-02-07', 'd275e374e9064e5e916bad2c51f2abd1'),
+(1, 'admin@admin.com', '$2y$10$KIBo/8rMX7bJNPMu8Yv3hu3ARCumBSJvg5xoJNhVEnwO9UGyAAljm', 'Admin', 1, '/storage/user/profile/1.jpg', '/storage/user/banner/1.jpg', 1, 1, '2025-02-07', 'd275e374e9064e5e916bad2c51f2abd1'),
 (2, 'pseudo01@exemple.com', '$2y$10$oKmQ6eDS554n0Ir2zCwFA.LVTvjdvTaw2Z8YRnGrw9yDeWne8ESIG', 'pseudo01', 0, '/storage/user/profile/2.jpg', '/storage/user/banner/default.png', 1, 0, '2025-02-06', '81cd4cf57d99f2de556b0327ddf752c3'),
 (3, 'a@gmail.com', '$2y$10$ZtJjNpM93weuzVSt9dcd7Olm8..lMqKyn1.9dweEAvlWAXER4HlVu', 'Agathe', 1, '/storage/user/profile/3.jpg', '/storage/user/banner/default.png', 0, 0, '2025-02-06', NULL),
 (5, 'TheoLeBg@outlook.com', '$2y$10$EFydBrmVys6s/aINjIt0xOAm5tJfS5na8gKcvMHM0usxe65aZ56m2', 'Yanom', 1, '/storage/user/profile/5.png', '/storage/user/banner/default.png', 0, 0, '2025-02-05', '295b788d4fe073032f883f08fc29c3d3'),

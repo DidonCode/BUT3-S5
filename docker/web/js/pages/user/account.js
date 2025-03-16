@@ -1,4 +1,4 @@
-(() => {
+(async () => {
 	if (!sessionExist()) {
 		sessionDestroy();
 		return;
@@ -12,9 +12,8 @@
 	const checkout = urlParams.get('checkout');
 
 	if (checkout == 'completed') {
-		makeToast("Merci pour l'achat", "success");
-		console.log("Bravo merci pour l'achat");
-		//sessionToken();
+		makeToast("Merci de votre soutient", "success");
+		await sessionToken();
 	}
 
 	if (user['subscription'] != null) {
@@ -27,7 +26,6 @@
 		subscriptionDescription.innerText = user['subscription']['updateAt'];
 
 		subscriptionCancel.onclick = function () {
-			console.log('oui');
 			let formData = new FormData();
 
 			formData.append('action', 1);
@@ -37,7 +35,10 @@
 				if (data != '') {
 					const parsedData = JSON.parse(data);
 
-					if (parsedData) subscription.remove();
+					if (parsedData){
+						subscription.remove();
+						await sessionToken();
+					}
 				}
 			});
 		};

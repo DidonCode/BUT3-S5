@@ -107,16 +107,7 @@
 
                     $paymentId = $eventData['payment_intent'];
                     $subscriptionId = $eventData['subscription'];
-
-                    // $user = DatabaseUserAccount::byId($userId);
-                    // $subscription = DatabaseUserSubscription::get($user);
-
-                    // if($subscription->isChangeable()){
-                    //     //remboursement
-                    //     DatabaseUserSubscription::cancel($user);
-                        
-                    // }
-
+                    
                     DatabaseUserSubscription::create(
                         $productName,
                         $createdDate->format('Y-m-d H:i'), 

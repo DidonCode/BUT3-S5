@@ -1,10 +1,8 @@
 const fs = require('fs');
 
 const { User } = require('./class/user.js');
-const { Artist } = require('./class/artist.js');
 const { Playlist } = require('./class/playlist.js');
 const { Sound } = require('./class/sound.js');
-const { Member } = require('./class/member.js');
 
 function randomString(length) {
 	const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -120,8 +118,8 @@ describe("Tests de l'API Butify (user)", () => {
 
 	test('POST api/user/sound - Retourne un statut 201 et les informations de la musique uploadée', async () => {
 		const formData = new FormData();
-		formData.append('image', new Blob([fs.readFileSync('/tests/api/example/image.png')]), '/tests/api/example/image.png');
-		formData.append('audio', new Blob([fs.readFileSync('/tests/api/example/audio.mp3')]), '/tests/api/example/audio.mp3');
+		formData.append('image', new Blob([fs.readFileSync('/example/image.png')]), '/example/image.png');
+		formData.append('audio', new Blob([fs.readFileSync('/example/audio.mp3')]), '/example/audio.mp3');
 		formData.append('title', 'Test');
 		formData.append('token', token);
 

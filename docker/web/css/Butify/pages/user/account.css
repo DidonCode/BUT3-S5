@@ -28,6 +28,10 @@
 	font-size: 0.8em;
 }
 
+#subscription-cancel:hover{
+	text-decoration: underline;
+}
+
 #subscription-title {
 	font-size: 18px;
 	text-transform: uppercase;

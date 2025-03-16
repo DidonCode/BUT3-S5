@@ -216,6 +216,13 @@
 			}
 		}
 
+		/**
+		* @param $user Information de l'utilisateur
+		* @return array Une liste de classe sound sous la forme d'un tableau associatif
+		*
+		* @brief Renvoie les données des musiques recommandées pour l'utilisateur
+		* @exception PDOException La requête échoue
+		*/
 		public static function getRecommendedSounds($user){
 			global $pdoDatabase;
 
