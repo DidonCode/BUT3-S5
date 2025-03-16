@@ -61,6 +61,7 @@ const routes = {
 	'/web/explore': {
 		title: 'Explorer',
 		html: '/web/pages/explore.php',
+		css: '/web/css/Butify/pages/explore.css',
 		js: '/web/js/pages/explore.js',
 	},
 	'/web/library': {
@@ -168,7 +169,6 @@ async function loadedClear() {
 
 	dynamicallyLoadedScripts.forEach((script) => {
 		script.remove();
-		delete script;
 	});
 	dynamicallyLoadedScripts = [];
 }

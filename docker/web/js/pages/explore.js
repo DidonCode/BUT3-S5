@@ -1,5 +1,17 @@
 (async () => {
 	const contentContainer = document.getElementById('content-container');
+	const swipeBtn = document.getElementById('button-swipe');
+
+	
+	if (user && (user['subscription'] == null || user['subscription']['type'] != 'premium')) {
+		swipeBtn.classList.add('disable');
+		swipeBtn.onclick = function (e){
+			e.preventDefault();
+			makeToast("Cette fonctionnalité est réservé à ceux qui ont \nl'abonnement premium", "warning");
+		}
+	} else { 
+		createSparkle(swipeBtn, 500, 10);
+	}
 
 	async function mostListened() {
 		await apiCall('api/like?type=mostListened', null, async function (data) {

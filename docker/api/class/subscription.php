@@ -16,7 +16,7 @@
 		private $updateAt;
 		private $session;
 
-		function __construct($user, $type, $createdAt, $price, $updateAt, $session){
+		public function __construct($user, $type, $createdAt, $price, $updateAt, $session){
 			$this->user = $user;
             $this->type = $type;
 			$this->createdAt = new DateTime($createdAt);
@@ -30,7 +30,7 @@
 		*
 		* @brief Renvoie si l'abonnement est expiré
 		*/
-        function isExpired(){
+        public function isExpired(){
 			$now = new DateTime(date("Y-m-d H:m:s"));
             return $this->updateAt->getTimestamp() < $now->getTimestamp();
         }
@@ -40,7 +40,7 @@
 		*
 		* @brief Renvoie si l'abonnement peut être encore échangé
 		*/
-        function isChangeable(){
+        public function isChangeable(){
 			$now = new DateTime(date("Y-m-d H:m:s"));
             return $this->createdAt->getTimestamp() < $now->getTimestamp() + 3600;
         }
@@ -50,7 +50,7 @@
 		*
 		* @brief Renvoie l'identifiant de l'utilisateur
 		*/
-		function getUser(){
+		public function getUser(){
 			return $this->user;
 		}
 
@@ -59,7 +59,7 @@
 		*
 		* @brief Renvoie le type
 		*/
-		function getType(){
+		public function getType(){
 			return $this->type;
 		}
 
@@ -68,7 +68,7 @@
 		*
 		* @brief Renvoie la date de création
 		*/
-		function getCreatedAt(){
+		public function getCreatedAt(){
 			return $this->createdAt;
 		}
 
@@ -77,7 +77,7 @@
 		*
 		* @brief Renvoie le prix d'achat
 		*/
-		function getPrice(){
+		public function getPrice(){
 			return $this->price;
 		}
 
@@ -86,7 +86,7 @@
 		*
 		* @brief Renvoie la date de renouvellement
 		*/
-		function getUpdateAt(){
+		public function getUpdateAt(){
 			return $this->updateAt;
 		}
 
@@ -95,7 +95,7 @@
 		*
 		* @brief Renvoie l'identifiant de la session d'achat
 		*/
-		function getSession(){
+		public function getSession(){
 			return $this->session;
 		}
 
@@ -104,7 +104,7 @@
 		*
 		* @brief Renvoie les données de l'abonnement
 		*/
-		function toString(){
+		public function toString(){
 			return array(
 				"type" => $this->type,
 				"createdAt" => $this->createdAt->format("Y-m-d H:i:s"),
@@ -117,7 +117,7 @@
 		*
 		* @brief Renvoie les données de l'abonnement
 		*/
-		function toArray(){
+		public function toArray(){
 			return array(
 				$this->user,
 				$this->type,
@@ -135,7 +135,7 @@
 		*
 		* @brief Renvoie un nouvel abonnement à partir des données
 		*/
-        static function toClass($subscription){
+        public static function toClass($subscription){
             return new Subscription(
                 $subscription['user'],
                 $subscription['type'],

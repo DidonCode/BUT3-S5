@@ -24,6 +24,7 @@ function makeSoundSetting(callback) {
 			const parsedData = JSON.parse(data);
 
 			if (parsedData['error'] !== undefined) {
+				makeToast("Désolé, une erreur est survenue !", "error");
 				console.log(parsedData['error']);
 			} else {
 				soundSettingPlaylist.innerHTML = '';

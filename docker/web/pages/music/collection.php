@@ -3,7 +3,7 @@
         <div class="col-4">
             <div class="text-center">
                 <div id="collection-image-container" class="mx-auto">
-                    <img id="collection-image" src="/storage/playlist/default.png">
+                    <img id="collection-image" alt="Photo de la playlist" src="/storage/playlist/default.png">
                     <button id="collection-image-edit" style="display: none;">
                         <i class="fa-light fa-pen contrast-text"></i>
                     </button>
@@ -11,7 +11,7 @@
                 </div>
                 <h3 id="collection-title" class="contrast-text"></h3>
                 <div style="margin: 10px 0 20px;">
-                    <img id="collection-owner-image" src="">
+                    <img id="collection-owner-image" alt="Photo de profil du propriétaire" src="">
                     <a id="collection-owner" class="contrast-text"></a>
                 </div>
                 <p id="collection-description" class="contrast-text"></p>

@@ -1,10 +1,17 @@
 const fs = require('fs');
 
 const { User } = require('./class/user.js');
-const { Artist } = require('./class/artist.js');
 const { Playlist } = require('./class/playlist.js');
 const { Sound } = require('./class/sound.js');
-const { Member } = require('./class/member.js');
+
+function randomString(length) {
+	const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	let result = '';
+	for (let i = 0; i < length; i++) {
+		result += chars.charAt(Math.floor(Math.random() * chars.length));
+	}
+	return result;
+}
 
 describe("Tests de l'API Butify (user)", () => {
 	const apiUrl = 'http://localhost:8082/';
@@ -15,8 +22,10 @@ describe("Tests de l'API Butify (user)", () => {
 
 	test('POST api/user/account - Retourne un statut 201 et les informations du compte suivies de son token', async () => {
 		const formData = new FormData();
-		formData.append('email', 'perrier.richardj@gmail.com');
-		formData.append('password', 'a');
+		formData.append('email', randomString(20) + '@' + randomString(5) + '.com');
+		formData.append('pseudo', randomString(20));
+		formData.append('password', 'butify');
+		formData.append('artist', 1);
 
 		const response = await fetch(apiUrl + 'api/user/account', {
 			method: 'POST',
@@ -109,9 +118,9 @@ describe("Tests de l'API Butify (user)", () => {
 
 	test('POST api/user/sound - Retourne un statut 201 et les informations de la musique uploadée', async () => {
 		const formData = new FormData();
-		formData.append('image', new Blob([fs.readFileSync('./tests/api/example/image.png')]), './tests/api/example/image.png');
-		formData.append('audio', new Blob([fs.readFileSync('./tests/api/example/audio.mp3')]), './tests/api/example/audio.mp3');
-		formData.append('title', "C'est un sacré docker");
+		formData.append('image', new Blob([fs.readFileSync('/example/image.png')]), '/example/image.png');
+		formData.append('audio', new Blob([fs.readFileSync('/example/audio.mp3')]), '/example/audio.mp3');
+		formData.append('title', 'Test');
 		formData.append('token', token);
 
 		const response = await fetch(apiUrl + 'api/user/sound', {
@@ -123,7 +132,6 @@ describe("Tests de l'API Butify (user)", () => {
 
 		const data = await response.json();
 		soundId = data['id'];
-		console.log(data);
 		expect(Sound.toClass(data).isValid()).toBe(true);
 	});
 

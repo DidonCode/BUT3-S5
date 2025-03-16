@@ -1,2 +1,4 @@
-npx changeset version
+npx eslint 
 npm run format
+npx changeset add
+npx changeset version

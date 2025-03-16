@@ -66,6 +66,7 @@
 				const parsedData = JSON.parse(data);
 
 				if (parsedData['error'] != undefined) {
+					makeToast("Désolé, une erreur est survenue !", "error");
 					console.log(parsedData['error']);
 
 					exposureBanner.src = user.banner;
@@ -96,6 +97,7 @@
 				const parsedData = JSON.parse(data);
 
 				if (parsedData['error'] != undefined) {
+					makeToast("Désolé, une erreur est survenue !", "error");
 					console.log(parsedData['error']);
 				} else {
 					if (parsedData) {

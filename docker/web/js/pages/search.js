@@ -27,6 +27,7 @@
 				const parsedData = JSON.parse(data);
 
 				if (parsedData['error']) {
+					makeToast("Désolé, une erreur est survenue !", "error");
 					console.log(parsedData['error']);
 				} else {
 					const loader = soundsResult.parentNode.getElementsByClassName('loader')[0];
@@ -64,6 +65,7 @@
 				const parsedData = JSON.parse(data);
 
 				if (parsedData['error']) {
+					makeToast("Désolé, une erreur est survenue !", "error");
 					console.log(parsedData['error']);
 				} else {
 					const loader = playlistsResult.parentNode.getElementsByClassName('loader')[0];
@@ -101,6 +103,7 @@
 				const parsedData = JSON.parse(data);
 
 				if (parsedData['error']) {
+					makeToast("Désolé, une erreur est survenue !", "error");
 					console.log(parsedData['error']);
 				} else {
 					const loader = artistsResult.parentNode.getElementsByClassName('loader')[0];

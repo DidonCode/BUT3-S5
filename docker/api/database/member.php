@@ -17,7 +17,7 @@
 		* @exception Exception L'identifiant ne correspond à aucun utilisateur
 		* @exception PDOException La requête échoue
 		*/
-		static function byId($id){
+		public static function byId($id){
 			global $pdoDatabase;
 
 			try {
@@ -42,7 +42,7 @@
 		* @brief Renvoie les données de toutes les utilisateur qui ont un pseudo contenant le pseudo recherché
 		* @exception PDOException La requête échoue
 		*/
-		static function byPseudo($pseudo, $page, $perPage){
+		public static function byPseudo($pseudo, $page, $perPage){
 			global $pdoDatabase;
 
 			try {

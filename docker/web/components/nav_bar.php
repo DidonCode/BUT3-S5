@@ -28,7 +28,7 @@
 
                 <div id="user-connected" class="my-auto" hidden>
                     <div class="dropdown">
-                        <img src="/storage/user/profile/default.png" id="profil-image" class="clGrey2 rounded-circle"
+                        <img src="/storage/user/profile/default.png" id="profil-image" alt="Photo de profil" class="clGrey2 rounded-circle"
                             type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
 
                         <div id="profil-menu" class="dropdown-menu primary-secondary mt-3 p-2">
@@ -38,13 +38,13 @@
                                     <i class="fa-solid fa-user pr-3"></i>
                                     Compte
                                 </a>
-                                <a href="/web/upload" onclick="route(event)"
+                                <a href="/web/upload" onclick="route(event)" id="publish-sound"
                                     class="dropdown-item contrast-text px-2 mb-2">
                                     <i class="fa-regular fa-file-import pr-3"></i>
                                     Publier
                                 </a>
                                 <a href="/web/musics" onclick="route(event)"
-                                    class="dropdown-item contrast-text px-2 mb-2">
+                                    class="dropdown-item contrast-text px-2 mb-2" id="manage-sounds">
                                     <i class="fa-solid fa-list-check pr-3"></i>
                                     Gérer
                                 </a>

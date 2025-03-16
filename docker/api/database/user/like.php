@@ -17,7 +17,7 @@
 		* @brief Ajoute l'artiste au like de l'utilisateur si celui-ci n'est pas déjà liké
 		* @exception PDOException La requête échoue
 		*/
-		static function addArtist($user, $artist){
+		public static function addArtist($user, $artist){
 			global $pdoDatabase;
 
 			try{
@@ -43,7 +43,7 @@
 		* @brief Renvoie si l'utilisateur a liké l'artiste
 		* @exception PDOException La requête échoue
 		*/
-		static function getArtist($user, $artist){
+		public static function getArtist($user, $artist){
 			global $pdoDatabase;
 
 			try{
@@ -65,7 +65,7 @@
 		* @exception Exception L'identifiant d'un artist n'est pas valide
 		* @exception PDOException La requête échoue
 		*/
-		static function listArtist($user){
+		public static function listArtist($user){
 			global $pdoDatabase;
 
 			try{
@@ -102,7 +102,7 @@
 		* @brief Supprime l'artiste des likes de l'utilisateur
 		* @exception PDOException La requête échoue
 		*/
-		static function removeArtist($user, $artist){
+		public static function removeArtist($user, $artist){
 			global $pdoDatabase;
 
 			try{
@@ -124,7 +124,7 @@
 		* @brief Ajoute de la musique au like de l'utilisateur si celui-ci ne la pas déjà liké
 		* @exception PDOException La requête échoue
 		*/
-		static function addSound($user, $sound){
+		public static function addSound($user, $sound){
 			global $pdoDatabase;
 
 			try{
@@ -148,7 +148,7 @@
 		* @brief Renvoie si l'utilisateur a liké la musique
 		* @exception PDOException La requête échoue
 		*/
-		static function getSound($user, $sound){
+		public static function getSound($user, $sound){
 			global $pdoDatabase;
 
 			try{
@@ -170,7 +170,7 @@
 		* @exception Exception L'identifiant d'une musique n'est pas valide
 		* @exception PDOException La requête échoue
 		*/
-		static function listSound($user){
+		public static function listSound($user){
 			global $pdoDatabase;
 
 			try{
@@ -207,7 +207,7 @@
 		* @brief Supprime la musique des likes de l'utilisateur
 		* @exception PDOException La requête échoue
 		*/
-		static function removeSound($user, $sound){
+		public static function removeSound($user, $sound){
 			global $pdoDatabase;
 
 			try{
@@ -229,7 +229,7 @@
 		* @brief Ajoute la playlist au like de l'utilisateur si celui-ci ne la pas déjà liké
 		* @exception PDOException La requête échoue
 		*/
-		static function addPlaylist($user, $playlist){
+		public static function addPlaylist($user, $playlist){
 			global $pdoDatabase;
 
 			try{
@@ -254,7 +254,7 @@
 		* @brief Renvoie si l'utilisateur a liké la playlist
 		* @exception PDOException La requête échoue
 		*/
-		static function getPlaylist($user, $playlist){
+		public static function getPlaylist($user, $playlist){
 			global $pdoDatabase;
 
 			try{
@@ -276,7 +276,7 @@
 		* @exception Exception L'identifiant d'une playlists n'est pas valide
 		* @exception PDOException La requête échoue
 		*/
-		static function listPlaylist($user){
+		public static function listPlaylist($user){
 			global $pdoDatabase;
 
 			try{
@@ -313,7 +313,7 @@
 		* @brief Supprime la playlist des likes de l'utilisateur
 		* @exception PDOException La requête échoue
 		*/
-		static function removePlaylist($user, $playlist){
+		public static function removePlaylist($user, $playlist){
 			global $pdoDatabase;
 
 			try{

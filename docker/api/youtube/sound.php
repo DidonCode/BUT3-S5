@@ -18,7 +18,7 @@
 		* @exception Exception L'identifiant ne correspond à aucune musique
 		* @exception PDOException La requête échoue
 		*/
-		static function byId($id){
+		public static function byId($id){
 			
 			try{
 				if(YoutubeFunction::ageRestricted($id)) throw new Exception("Error this sound is restricted : ".$id.".", 400);
@@ -65,7 +65,7 @@
 		* @exception Exception Le titre ne correspond à aucune musique
 		* @exception PDOException La requête échoue
 		*/
-		static function byTitle($title, $page, $perPage){
+		public static function byTitle($title, $page, $perPage){
 
 			try{
 
@@ -131,7 +131,7 @@
 		* @exception Exception L'artiste ne correspond à aucun compte
 		* @exception PDOException La requête échoue
 		*/
-		static function byArtist($artist, $page, $perPage){
+		public static function byArtist($artist, $page, $perPage){
 
 			try{
 				$url			=	'https://www.googleapis.com/youtube/v3/search?part=snippet&videoCategoryId=10&maxResults='.$perPage.'&type=video&videoDuration=medium&channelId='.$artist;
@@ -195,7 +195,7 @@
 		* @exception Exception La playlist ne correspond à aucune playlist
 		* @exception PDOException La requête échoue
 		*/
-		static function byPlaylist($playlist){
+		public static function byPlaylist($playlist){
 
 			try{
 				$url			=	'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&type=video&videoDuration=medium&playlistId='.$playlist;

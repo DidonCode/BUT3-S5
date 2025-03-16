@@ -5,8 +5,10 @@
     </div>
     <div class="d-flex justify-content-between">
       <div>
-        <img id="idProfileImg" src="/storage/user/profile/default.png" alt="Photo de profil" style="width:100px; aspect-ratio:1" class="rounded-circle">
-        <button id="profileImg-editBtn" class="btn px-3 py-2 rounded-circle contrast-text" style="height:50px; width:50px; background-color:transparent">
+        <img id="idProfileImg" src="/storage/user/profile/default.png" alt="Photo de profil"
+          style="width:100px; aspect-ratio:1" class="rounded-circle">
+        <button id="profileImg-editBtn" class="btn px-3 py-2 rounded-circle contrast-text"
+          style="height:50px; width:50px; background-color:transparent">
           <i class="fa-light fa-pen"></i>
         </button>
         <input id="profileImg-editInp" type="file" hidden>
@@ -18,19 +20,19 @@
         </div>
         <label class="littleSwitch">
           <input id="visibility" type="checkbox">
-          <span class="littleSlider round"></span> 
+          <span class="littleSlider round"></span>
         </label>
         <div>
-        <button id="profile-exposure" class="btn action clRounded1 me-2" style="width: 100px;">Profil</button>
+          <button id="profile-exposure" class="btn action clRounded1 me-2" style="width: 100px;">Profil</button>
         </div>
       </div>
     </div>
-    
+
     <form id="updateForm">
       <div>
         <h5 class="contrast-text my-3">Mes informations</h5>
       </div>
-      <div>     
+      <div>
         <div>
           <div class="mb-3 mt-3">
             <label for="pseudo" class="form-label contrast-text">Pseudonyme :</label>
@@ -58,13 +60,14 @@
     <div>
       <h3 class="contrast-text mb-4">Mon Abonnement</h3>
     </div>
-    
+
     <div id="subscription">
-        <i class="fa-thin fa-headphones"></i>
-        <div>
-            <h3 id="subscription-title">Premium</h3>
-            <h6 id="subscription-description" class="contrast-text">expire le: 15-01-3435</h6>
-        </div>
-        <button id="subscription-cancel">Annuler</button>
+      <i class="fa-thin fa-headphones"></i>
+      <div>
+        <h3 id="subscription-title">Premium</h3>
+        <h6 id="subscription-description" class="contrast-text">expire le: 15-01-3435</h6>
+      </div>
+      <button id="subscription-cancel">Annuler</button>
     </div>
+  </div>
 </div>

@@ -93,6 +93,7 @@ class SoundCard {
 						const parsedData = JSON.parse(data);
 
 						if (parsedData['error'] != undefined) {
+							makeToast("Désolé, une erreur est survenue !", "error");
 							console.log(parsedData['error']);
 						}
 					}
@@ -112,6 +113,7 @@ class SoundCard {
 				const parsedData = JSON.parse(data);
 
 				if (parsedData['error'] != undefined) {
+					makeToast("Désolé, une erreur est survenue !", "error");
 					console.log(parsedData['error']);
 				} else {
 					this.soundCardDescription.innerText += ' • ';
@@ -179,6 +181,7 @@ class SoundCard {
 				const parsedData = JSON.parse(data);
 
 				if (parsedData['error'] != undefined) {
+					makeToast("Désolé, une erreur est survenue !", "error");
 					console.log(parsedData['error']);
 				} else {
 					if ((action == 1 && parsedData) || (action == 2 && !parsedData)) {

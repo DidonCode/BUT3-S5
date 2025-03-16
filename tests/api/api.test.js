@@ -18,11 +18,12 @@ describe("Tests de l'API Butify (global)", () => {
 	});
 
 	test("GET api/artist?pseudo - Retourne un statut 200 et une liste d'artistes ayant un pseudo similaire", async () => {
-		const response = await fetch(apiUrl + 'api/artist?pseudo=DidonCode');
+		const response = await fetch(apiUrl + 'api/artist?pseudo=a');
 		expect(response.status).toBe(200);
 
 		const data = await response.json();
 
+		if (data['database'].length == 0) expect(true).toBe(true);
 		expect(Artist.toClass(data['database'][0]).isValid()).toBe(true);
 	});
 

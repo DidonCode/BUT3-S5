@@ -11,16 +11,24 @@
 	},
 	"scripts": {
 		"test": "jest /tests/api/ --coverage",
-		"docker": "docker-compose -f ./docker/docker-compose.yml down -v & docker-compose -f ./docker/docker-compose.yml up --build -d",
+		"postinstall": "npm run build",
+		"start": "docker compose -f ./docker/docker-compose.yml up -d",
+		"build": "docker compose -f ./docker/docker-compose.yml down -v & docker compose -f ./docker/docker-compose.yml up --build -d",
+		"stop": "docker compose -f ./docker/docker-compose.yml stop",
+		"scan": "npx eslint & sonar-scanner",
 		"prepare": "husky",
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.12",
+		"@eslint/js": "^9.21.0",
+		"eslint": "^9.21.0",
+		"globals": "^16.0.0",
 		"husky": "^9.1.7",
 		"prettier": "3.5.1"
 	},
 	"dependencies": {
-		"jest": "^29.7.0"
+		"jest": "^29.7.0",
+		"sonarqube-scanner": "^4.2.8"
 	}
 }

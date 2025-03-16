@@ -11,7 +11,7 @@
 			<i class="fa-solid fa-arrow-up-from-bracket contrast-text"></i>
 			<p class="contrast-text">Cliquez pour importer l'image</p>
 		</div>
-		<img id="audio-image-preview" src="" style="display: none;">
+		<img id="audio-image-preview" alt="Photo d'aperçu de la musique" src="" style="display: none;">
 	</div>
 	<input type="file" id="audio-audio-upload" name="audio" accept=".mp3" hidden>
 	<div id="audio-audio-click">
@@ -32,7 +32,7 @@
 			<i class="fa-solid fa-arrow-up-from-bracket contrast-text"></i>
 			<p class="contrast-text">Cliquez pour importer l'image</p>
 		</div>
-		<img id="video-image-preview" src="" style="display: none;">
+		<img id="video-image-preview" alt="Photo d'aperçu de la video" src="" style="display: none;">
 	</div>
 	<input type="file" id="video-video-upload" name="video" accept=".mp4" hidden>
 	<div id="video-video-click">

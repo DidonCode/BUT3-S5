@@ -18,7 +18,7 @@
 		* @exception Exception L'artiste ne correspond à aucun artiste
 		* @exception PDOException La requête échoue
 		*/
-		static function byId($id){
+		public static function byId($id){
 
 			try{
 				$url			=	'https://www.googleapis.com/youtube/v3/channels?videoCategoryId=10&part=snippet&id='.$id;
@@ -76,7 +76,7 @@
 		* @exception Exception Le pseudo ne correspond à aucun Artiste
 		* @exception PDOException La requête échoue
 		*/
-		static function byPseudo($pseudo, $page, $perPage){
+		public static function byPseudo($pseudo, $page, $perPage){
 
 			try{
 				$url			=	'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults='.$perPage.'&type=channel&q='.urlencode($pseudo);

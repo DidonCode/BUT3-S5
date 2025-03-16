@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
 		<link rel="icon" type="image/x-icon" href="images/logos/logoButifyIcon.png">
 		
 		<link rel="stylesheet" type="text/css" href="css/Bootstrap/css/bootstrap.css">
@@ -10,7 +11,9 @@
 		<link rel="stylesheet" type="text/css" href="css/FontAwesome/css/all.css">
 
 		<link rel="stylesheet" type="text/css" href="css/Butify/main.css">
+
 		<link rel="stylesheet" type="text/css" href="css/Butify/components/nav_bar.css">
+		<link rel="stylesheet" type="text/css" href="css/Butify/components/toaster.css">
 
 		<link rel="stylesheet" type="text/css" href="css/Butify/player.css">
 		<link rel="stylesheet" type="text/css" href="css/Butify/error.css">
@@ -24,6 +27,8 @@
 		<link rel="stylesheet" type="text/css" href="css/Butify/widgets/playlist/playlist_popup.css">
 
 		<link rel="stylesheet" type="text/css" href="css/Butify/widgets/artist/artist_card.css">
+
+		<link rel="stylesheet" type="text/css" href="css/Butify/widgets/report_popup.css">
 		
 		<script src="https://www.youtube.com/iframe_api"></script>
 		<script src="https://js.stripe.com/v3/"></script>
@@ -119,6 +124,7 @@
 		<?php
 			include_once('widgets/sound/sound_setting.php');
 			include_once('widgets/playlist/playlist_popup.php');
+			include_once('widgets/report_popup.php');
 		?>
 	</body>
 </html>
@@ -143,6 +149,8 @@
 
 <script src="js/router.js"></script>
 
+<script src="js/effects.js"></script>
+
 <script src="js/widgets/card_list.js"></script>
 
 <script src="js/widgets/sound/sound_setting.js"></script>
@@ -153,5 +161,8 @@
 
 <script src="js/widgets/artist/artist_card.js"></script>
 
+<script src="js/widgets/report_popup.js"></script>
+
 <script src="js/components/side_bar.js"></script>
 <script src="js/components/nav_bar.js"></script>
+<script src="js/components/toaster.js"></script>

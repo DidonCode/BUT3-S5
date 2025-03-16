@@ -19,7 +19,7 @@
 		private $artist;
 		private $subscription;
 
-		function __construct($id, $email, $pseudo, $grade, $image, $banner, $public, $artist, $subscription){
+		public function __construct($id, $email, $pseudo, $grade, $image, $banner, $public, $artist, $subscription){
 			$this->id = $id;
 			$this->email = $email;
 			$this->pseudo = $pseudo;
@@ -36,7 +36,7 @@
 		*
 		* @brief Renvoie l'identifiant de l'utilisateur
 		*/
-		function getId(){
+		public function getId(){
 			return $this->id;
 		}
 
@@ -45,7 +45,7 @@
 		*
 		* @brief Renvoie l'adresse mail de l'utilisateur
 		*/
-		function getEmail(){
+		public function getEmail(){
 			return $this->email;
 		}
 
@@ -54,7 +54,7 @@
 		*
 		* @brief Renvoie le pseudo de l'utilisateur
 		*/
-		function getPseudo(){
+		public function getPseudo(){
 			return $this->pseudo;
 		}
 
@@ -63,7 +63,7 @@
 		*
 		* @brief Renvoie le grade de l'utilisateur
 		*/
-		function getGrade(){
+		public function getGrade(){
 			return $this->grade;
 		}
 
@@ -72,7 +72,7 @@
 		*
 		* @brief Renvoie l'image de profil de l'utilisateur
 		*/
-		function getImage(){
+		public function getImage(){
 			return $this->image;
 		}
 
@@ -81,7 +81,7 @@
 		*
 		* @brief Renvoie la bannière de l'utilisateur
 		*/
-		function getBanner(){
+		public function getBanner(){
 			return $this->banner;
 		}
 
@@ -90,7 +90,7 @@
 		*
 		* @brief Renvoie la visibilité de l'utilisateur
 		*/
-		function isPublic(){
+		public function isPublic(){
 			return $this->public;
 		}
 
@@ -99,7 +99,7 @@
 		*
 		* @brief Renvoie le statut artiste de l'utilisateur
 		*/
-		function getArtist(){
+		public function getArtist(){
 			return $this->artist;
 		}
 
@@ -108,7 +108,7 @@
 		*
 		* @brief Renvoie l'abonnement de l'utilisateur
 		*/
-		function getSubscription(){
+		public function getSubscription(){
 			return $this->subscription;
 		}
 
@@ -117,7 +117,7 @@
 		*
 		* @brief Renvoie les données de l'utilisateur
 		*/
-		function toString(){
+		public function toString(){
 			return array(
 				"id" => $this->id,
 				"email" => $this->email,
@@ -138,15 +138,14 @@
 		*
 		* @brief Renvoie les données filtrées de l'utilisateur
 		*/
-		static function toFilter($user){
+		public static function toFilter($user){
 			return array(
 				"id" => $user['id'],
 				"email" => $user['email'],
 				"pseudo" => $user['pseudo'],
 				"image" => Settings::$STORAGE_HOST_NAME.$user['image'],
 				"banner" => Settings::$STORAGE_HOST_NAME.$user['banner'],
-				"public" => $user['public'],
-				"subscription" => $user['subscription']
+				"public" => $user['public']
 			);
 		}
 
@@ -155,7 +154,7 @@
 		*
 		* @brief Renvoie les données de l'utilisateur
 		*/
-		function toArray(){
+		public function toArray(){
 			return array(
 				$this->id,
 				$this->email,
@@ -176,7 +175,7 @@
 		*
 		* @brief Renvoie un nouvel utilisateur à partir des données
 		*/
-		static function toClass($user, $subscription){
+		public static function toClass($user, $subscription){
 			return new User(
 				$user['id'],
 				$user['email'],

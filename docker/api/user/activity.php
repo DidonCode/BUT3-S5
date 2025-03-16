@@ -8,6 +8,7 @@
 	include_once("../class/sound.php");
 	include_once("../class/playlist.php");
 	include_once("../class/artist.php");
+	include_once("../class/subscription.php");
 
 	include_once("../database/sound.php");
 	include_once("../database/playlist.php");
@@ -18,6 +19,7 @@
 	include_once("../youtube/artist.php");
 
 	include_once("../database/user/account.php");
+	include_once("../database/user/subscription.php");
 	include_once("../database/user/activity.php");
 
 	include_once("../settings.php");
@@ -30,9 +32,9 @@
 
 	if(count(array_keys($_POST)) == 2 AND isset($_POST['type'], $_POST['token'])){
 
-		if(empty($_POST['token'])) return;
-
 		try {
+			if(empty($_POST['token'])) throw new Exception("Argument not valid", 400);
+
 			$user = DatabaseUserAccount::get($_POST['token']);
 
 			if(!isset($user)) throw new Exception("Invalid token", 403);
@@ -59,6 +61,13 @@
 				$result = DatabaseUserActivity::getLastedSoundLikes($user);
 			}
 
+			if($_POST["type"] == "swipe"){
+				$subscription = DatabaseUserSubscription::get($user);
+				if(!isset($subscription) || $subscription->getType() != "premium") throw new Exception("This functionality is reserved for premium subscription",400);
+				
+				$result = DatabaseUserActivity::getRecommendedSounds($user);
+			}
+
 			Http::sendResponse(200, $result);
 		} catch(Exception $e){
 			Http::sendError($e);
@@ -69,9 +78,9 @@
 
 	if(count(array_keys($_POST)) == 2 AND isset($_POST['sound'], $_POST['token'])){
 
-		if(empty($_POST['token'])) return;
-
 		try {
+			if(empty($_POST['token'])) throw new Exception("Argument not valid", 400);
+
 			$user = DatabaseUserAccount::get($_POST['token']);
 
 			if(!isset($user)) throw new Exception("Invalid token", 403);

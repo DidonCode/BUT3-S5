@@ -3,6 +3,7 @@
 .husky
 coverage
 node_modules
+README.md
 
 docker/docs
 docker/api/libs

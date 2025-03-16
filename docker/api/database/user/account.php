@@ -17,7 +17,7 @@
 		* @brief Renvoie les données de l'utilisateur avec son token de connexion ou null si aucun compte n'est trouvé
 		* @exception PDOException La requête échoue
 		*/
-		static function connect($email, $password){
+		public static function connect($email, $password){
 			global $pdoDatabase;
 
 			try{
@@ -64,7 +64,7 @@
 		* @exception Exception Le compte n'est pas retrouvé après sa création
 		* @exception PDOException La requête échoue
 		*/
-		static function create($pseudo, $email, $password, $artist){
+		public static function create($pseudo, $email, $password, $artist){
 			global $pdoDatabase;
 
 			try{
@@ -96,7 +96,7 @@
 				
 				if(count($userData) == 0) throw new Exception("Error to get user account after creation.", 400);
 
-				$user = User::toClass($userData, null);
+				$user = User::toClass($userData[0], null);
 
 				$token = DatabaseUserAccount::generateToken();
 				DatabaseUserAccount::updateToken($user->toString(), $token);
@@ -117,7 +117,7 @@
 		* @brief Renvoie les données de l'utilisateur qui correspondent au token ou null
 		* @exception PDOException La requête échoue
 		*/
-		static function get($token){
+		public static function get($token){
 			global $pdoDatabase;
 
 			try{
@@ -147,7 +147,7 @@
 		* @brief Renvoie les données de l'utilisateur qui correspondant à l'identifiant ou null
 		* @exception PDOException La requête échoue
 		*/
-		static function byId($id){
+		public static function byId($id){
 			global $pdoDatabase;
 
 			try{
@@ -171,7 +171,7 @@
 		* @brief Change le token de l'utilisateur par celui donné
 		* @exception PDOException La requête échoue
 		*/
-		static function updateToken($user, $token){
+		public static function updateToken($user, $token){
 			global $pdoDatabase;
 
 			try{
@@ -205,7 +205,7 @@
 		* @exception Exception Si la poids de la bannière du profil dépasse la limite autorisée
 		* @exception PDOException La requête échoue
 		*/
-		static function edit($user, $pseudo, $email, $password, $image, $public, $banner){
+		public static function edit($user, $pseudo, $email, $password, $image, $public, $banner){
 			global $pdoDatabase;
 
 			try{
@@ -308,7 +308,7 @@
 				$request = $pdoDatabase->prepare($sql);
 				$request->execute($values);
 				
-				return User::toClass($user)->toString();
+				return User::toClass($user, DatabaseUserSubscription::get($user))->toString();
 			} catch(PDOException $e){
 				throw new Exception("Error to edit user ".$user['id'].". ".$e->getMessage(), 400);
 			}
@@ -321,7 +321,7 @@
 		* @brief Modifie le token de l'utilisateur a null
 		* @exception PDOException La requête échoue
 		*/
-		static function disconnect($user){
+		public static function disconnect($user){
 			global $pdoDatabase;
 
 			try{
@@ -336,7 +336,7 @@
 		*
 		* @brief Genere un token basé sur une chaîne de caractères aléatoire et hashé avec le timestamp de la demande
 		*/
-		static function generateToken(){
+		public static function generateToken(){
 			$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 			$charactersLength = strlen($characters);
 			$randomString = '';

@@ -15,7 +15,7 @@
         private $banner;
         private $public;
 
-        function __construct($id, $pseudo, $image, $banner, $public){
+        public function __construct($id, $pseudo, $image, $banner, $public){
             $this->id = $id;
             $this->pseudo = $pseudo;
             $this->image = $image;
@@ -28,7 +28,7 @@
 		*
 		* @brief Renvoie l'identifiant de l'artiste
 		*/
-        function getId(){
+        public function getId(){
             return $this->id;
         }
 
@@ -37,7 +37,7 @@
 		*
 		* @brief Renvoie le pseudo de l'artiste
 		*/
-        function getPseudo(){
+        public function getPseudo(){
             return $this->pseudo;
         }
 
@@ -46,7 +46,7 @@
 		*
 		* @brief Renvoie l'image de l'artiste
 		*/
-        function getImage(){
+        public function getImage(){
             return $this->image;
         }
 
@@ -55,7 +55,7 @@
 		*
 		* @brief Renvoie la bannière de l'artiste
 		*/
-        function getBanner(){
+        public function getBanner(){
             return $this->banner;
         }
 
@@ -64,7 +64,7 @@
 		*
 		* @brief Renvoie la visibilité de l'artiste
 		*/
-        function isPublic(){
+        public function isPublic(){
             return $this->public;
         }
 
@@ -73,7 +73,7 @@
 		*
 		* @brief Renvoie les données de l'artiste
 		*/
-		function toString(){
+		public function toString(){
 			return array(
 				"id" => $this->id,
 				"pseudo" => $this->pseudo,
@@ -88,7 +88,7 @@
 		*
 		* @brief Renvoie les données de l'artiste
 		*/
-        function toArray(){
+        public function toArray(){
             return array(
                 $this->id,
                 $this->pseudo,
@@ -105,7 +105,7 @@
 		*
 		* @brief Renvoie un nouvel artiste à partir des données
 		*/
-        static function toClass($artist){
+        public static function toClass($artist){
             return new Artist(
                 $artist['id'],
                 $artist['pseudo'],

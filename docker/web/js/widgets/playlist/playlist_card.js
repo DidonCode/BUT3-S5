@@ -103,6 +103,7 @@ class PlaylistCard {
 				const parsedData = JSON.parse(data);
 
 				if (parsedData['error'] != undefined) {
+					makeToast("Désolé, une erreur est survenue !", "error");
 					console.log(parsedData['error']);
 				} else {
 					if ((action == 1 && parsedData) || (action == 2 && !parsedData)) {
