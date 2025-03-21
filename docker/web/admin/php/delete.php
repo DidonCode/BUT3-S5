@@ -83,6 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user'])) {
         $stmt = $pdoDatabase->prepare('DELETE FROM user WHERE id = ?');
         $stmt->execute(array($_POST['delete_user']));
 
+        $stmt = $pdoDatabase->prepare('DELETE FROM report_artist WHERE artist = ?');
+        $stmt->execute(array($_POST['delete_user']));
+
         $pdoDatabase->commit();
         header('Location: ../utilisateur');
 
@@ -115,6 +118,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_playlist'])) {
         $stmt->execute(array($_POST['delete_playlist']));
 
         $stmt = $pdoDatabase->prepare('DELETE FROM playlist WHERE id = ?');
+        $stmt->execute(array($_POST['delete_playlist']));
+
+        $stmt = $pdoDatabase->prepare('DELETE FROM report_playlist WHERE playlist = ?');
         $stmt->execute(array($_POST['delete_playlist']));
 
         $pdoDatabase->commit();
@@ -151,10 +157,65 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_sound'])) {
         $stmt = $pdoDatabase->prepare('DELETE FROM sound WHERE id = ?');
         $stmt->execute(array($_POST['delete_sound']));
 
+        $stmt = $pdoDatabase->prepare('DELETE FROM report_sound WHERE sound = ?');
+        $stmt->execute(array($_POST['delete_sound']));
+
         $pdoDatabase->commit();
         header('Location: ../titre');
     } catch (PDOException $e) {
         die("Erreur lors de la suppression de la musique : " . $e->getMessage());
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_report_sound'])) {
+    $deleteReport = $_POST['delete_report_sound'];
+
+    try {
+        $pdoDatabase->beginTransaction();
+
+        $stmt = $pdoDatabase->prepare('DELETE FROM report_sound WHERE id = ?');
+        $stmt->execute(array($_POST['delete_report_sound']));
+        $soundData = $stmt->fetchAll();
+
+        $pdoDatabase->commit();
+        header('Location: ../report_sound');
+    } catch (PDOException $e) {
+        die("Erreur lors de la suppression du report : " . $e->getMessage());
+    }
+
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_report_playlist'])) {
+    $deleteReport = $_POST['delete_report_playlist'];
+
+    try {
+        $pdoDatabase->beginTransaction();
+
+        $stmt = $pdoDatabase->prepare('DELETE FROM report_playlist WHERE id = ?');
+        $stmt->execute(array($_POST['delete_report_playlist']));
+        $soundData = $stmt->fetchAll();
+
+        $pdoDatabase->commit();
+        header('Location: ../report_playlist');
+    } catch (PDOException $e) {
+        die("Erreur lors de la suppression du report : " . $e->getMessage());
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_report_artist'])) {
+    $deleteReport = $_POST['delete_report_artist'];
+    try {
+        $pdoDatabase->beginTransaction();
+
+        $stmt = $pdoDatabase->prepare('DELETE FROM report_artist WHERE id = ?');
+        $stmt->execute(array($_POST['delete_report_artist']));
+        $soundData = $stmt->fetchAll();
+
+        $pdoDatabase->commit();
+        header('Location: ../report_artist');
+    } catch (PDOException $e) {
+        die("Erreur lors de la suppression du report : " . $e->getMessage());
+    }
+}
+
 ?>

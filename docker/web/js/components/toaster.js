@@ -1,40 +1,40 @@
 function makeToast(message, type) {
-    const toast = document.createElement("div");
-    toast.classList.add("toast");
-     
-    setTimeout(function() {
-        toast.remove();
-    }, 3000);
-    
-    let icon = null;
+	const toast = document.createElement('div');
+	toast.classList.add('toast');
 
-    switch(type) {
-        case "error":
-            icon = document.createElement("i");
-            icon.classList.add("fa-light", "fa-circle-exclamation", "my-auto");
+	setTimeout(function () {
+		toast.remove();
+	}, 3000);
 
-            toast.classList.add("toast-error");
-            break;
+	let icon = null;
 
-        case "warning":
-            icon = document.createElement("i");
-            icon.classList.add("fa-light", "fa-triangle-exclamation", "my-auto");
+	switch (type) {
+		case 'error':
+			icon = document.createElement('i');
+			icon.classList.add('fa-light', 'fa-circle-exclamation', 'my-auto');
 
-            toast.classList.add("toast-warning");
-            break;
+			toast.classList.add('toast-error');
+			break;
 
-        case "success":
-            icon = document.createElement("i");
-            icon.classList.add("fa-light", "fa-circle-check", "my-auto");
+		case 'warning':
+			icon = document.createElement('i');
+			icon.classList.add('fa-light', 'fa-triangle-exclamation', 'my-auto');
 
-            toast.classList.add("toast-success");
-            break;
-    }
+			toast.classList.add('toast-warning');
+			break;
 
-    const text = document.createElement("p");
-    text.innerText = message;
+		case 'success':
+			icon = document.createElement('i');
+			icon.classList.add('fa-light', 'fa-circle-check', 'my-auto');
 
-    toast.append(icon);
-    toast.append(text);
-    document.body.append(toast);
+			toast.classList.add('toast-success');
+			break;
+	}
+
+	const text = document.createElement('p');
+	text.innerText = message;
+
+	toast.append(icon);
+	toast.append(text);
+	document.body.append(toast);
 }

@@ -15,6 +15,7 @@ $soundsData = $request_sound_table->fetchAll();
 
 <div class="table-container">
     <table id="table_title" class="table contrast-text mt-3 admin_tab">
+        <caption> </caption>
         <thead class="admin_head">
             <tr>
                 <th class="contrast-text" scope="col">ID</th>
@@ -38,7 +39,7 @@ $soundsData = $request_sound_table->fetchAll();
 
                 <tr>
                     <td class="contrast-text"><?php echo $sound['id']; ?></td>
-                    <td class="contrast-text"><img class="image_album" src="<?php echo $HOST_NAME.$sound['image']; ?>"></td>
+                    <td class="contrast-text"><img class="image_album" alt="" src="<?php echo $HOST_NAME.$sound['image']; ?>"></td>
                     <td class="contrast-text"><?php echo $sound['title']; ?></td>
                     <td class="contrast-text"><?php echo $sound['type']; ?></td>
                     <td class="contrast-text">

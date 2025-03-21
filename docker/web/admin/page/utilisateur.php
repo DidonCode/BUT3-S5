@@ -15,6 +15,7 @@ $searchQuery = isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';
 
 <div class="table-container">
     <table id="table_user" class="table contrast-text mt-3 admin_tab">
+        <caption> </caption>
         <thead class="admin_head">
             <tr>
                 <th class="contrast-text" scope="col">ID</th>
@@ -43,7 +44,7 @@ $searchQuery = isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';
             ?>
                 <tr>
                     <td class="contrast-text"><?php echo htmlspecialchars($user['id']); ?></td>
-                    <td class="contrast-text"><img class="image_album" src="<?php echo $HOST_NAME.$user['image']; ?>"></td>
+                    <td class="contrast-text"><img class="image_album" alt="" src="<?php echo $HOST_NAME.$user['image']; ?>"></td>
                     <td class="contrast-text"><?php echo htmlspecialchars($user['pseudo']); ?></td>
                     <td class="contrast-text"><?php echo htmlspecialchars($user['email']); ?></td>
                     <td class="contrast-text"><?php echo $user['public'] == 1 ? 'Public' : 'Privée'; ?></td>

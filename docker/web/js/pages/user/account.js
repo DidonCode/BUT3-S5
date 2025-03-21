@@ -12,7 +12,7 @@
 	const checkout = urlParams.get('checkout');
 
 	if (checkout == 'completed') {
-		makeToast("Merci de votre soutient", "success");
+		makeToast('Merci de votre soutient', 'success');
 		await sessionToken();
 	}
 
@@ -35,7 +35,7 @@
 				if (data != '') {
 					const parsedData = JSON.parse(data);
 
-					if (parsedData){
+					if (parsedData) {
 						subscription.remove();
 						await sessionToken();
 					}

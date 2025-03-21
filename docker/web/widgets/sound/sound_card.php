@@ -1,7 +1,7 @@
 <a class="sound-card">
     <div class="sound-card-image-container">
         <i class="sound-card-badge fa-solid fa-badge-check" hidden></i>
-        <img class="sound-card-image">
+        <img alt="" class="sound-card-image">
         <div class="sound-card-image-skeleton"></div>
     </div>
     <div class="sound-card-detail">
@@ -27,6 +27,11 @@
             <button class="sound-card-like contrast-text">
                 <i class="fa-regular fa-heart my-auto"></i>
                 Aimer
+            </button>
+
+            <button class="sound-card-report contrast-text" data_type="musique">
+                <i class="fa-solid fa-flag my-auto"></i>
+                Signaler
             </button>
         </div>
     </div>

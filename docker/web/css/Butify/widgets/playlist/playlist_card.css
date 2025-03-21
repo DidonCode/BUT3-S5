@@ -97,10 +97,6 @@
 	animation: loading 1s infinite ease-in-out;
 }
 
-.playlist-card-plus {
-	position: relative;
-}
-
 .playlist-card-plus button {
 	background: none;
 	border: none;
@@ -113,6 +109,69 @@
 .playlist-card-skeleton .playlist-card-plus button,
 .playlist-card-skeleton .playlist-card-plus button i {
 	animation: loading 1s infinite ease-in-out;
+}
+
+.playlist-card-plus-popup {
+	position: absolute;
+	display: none;
+	flex-direction: column;
+	background-color: var(--primary);
+	border: 1px solid var(--border);
+	border-radius: var(--rounded1);
+	width: 180px;
+	bottom: 100%;
+	right: 15px;
+	z-index: 1;
+}
+
+.playlist-card-plus-popup button {
+	display: flex;
+	border: none;
+	padding: 10px;
+	text-align: left;
+	background-color: transparent;
+}
+
+.playlist-card-colunm .playlist-card-plus-popup {
+	bottom: 40px;
+}
+
+.playlist-card-plus-popup:hover {
+	display: flex;
+	transition: 2s;
+	animation: 3s;
+}
+
+.playlist-card-plus-button:hover + .playlist-card-plus-popup {
+	display: flex;
+	transition: 2s;
+}
+
+.playlist-card-plus-button:focus {
+	outline: none;
+}
+
+.playlist-card-plus-popup button i {
+	color: var(--constrast);
+	margin-right: 10px;
+}
+
+.playlist-card-plus-popup button:hover {
+	background-color: var(--secondary);
+}
+
+.playlist-card-plus-popup button:first-child:hover {
+	background-color: var(--secondary);
+	border-radius: var(--rounded1) var(--rounded1) 0 0;
+}
+
+.playlist-card-plus-popup button:last-child:hover {
+	background-color: var(--secondary);
+	border-radius: 0 0 var(--rounded1) var(--rounded1);
+}
+
+.playlist-card-plus-popup button:active {
+	outline: none;
 }
 
 .playlist-card-badge {

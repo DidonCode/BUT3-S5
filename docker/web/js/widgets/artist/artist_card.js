@@ -21,6 +21,7 @@ class ArtistCard {
 
 		this.artistCardLike = html.getElementsByClassName('artist-card-like')[0];
 		this.artistCardUnlike = html.getElementsByClassName('artist-card-unlike')[0];
+		this.artistCardReport = html.getElementsByClassName('artist-card-report')[0];
 
 		if (this.column) {
 			this.artistCardDetail.append(this.artistCardPlus);
@@ -28,7 +29,10 @@ class ArtistCard {
 			this.artistCard.classList.add('artist-card-colunm');
 		}
 
-		if (isNaN(parseInt(this.id)) || parseInt(this.id) != this.id) this.artistCardBadge.remove();
+		if (isNaN(parseInt(this.id)) || parseInt(this.id) != this.id) {
+			this.artistCardBadge.remove();
+			this.artistCardReport.remove();
+		}
 	}
 
 	async makeCard(list = null, finishCallback = null) {
@@ -43,18 +47,52 @@ class ArtistCard {
 		};
 
 		this.artistCardImage.src = this.image;
+		this.artistCardImage.alt = this.title;
 		this.artistCardTitle.innerText = this.pseudo;
 
 		this.like(null, 2);
+		if (!(isNaN(parseInt(this.id)) || parseInt(this.id) != this.id)) {
+			this.report(this.id).then((exist) => {
+				exist ? this.artistCardReport.setAttribute('hidden', '') : this.artistCardReport.removeAttribute('hidden');
+			});
+		}
 
 		this.artistCardLike.onclick = (e) => this.like(e, 3);
-		this.artistCardUnlike.onclick = (e) => this.popup(e, 1);
+		this.artistCardUnlike.onclick = (e) => this.like(e, 1);
 
 		this.artistCardBadge.removeAttribute('hidden');
 		this.artistCard.classList.remove('artist-card-skeleton');
 
 		clearTimeout(loadTimeout);
 		if (list !== null || finishCallback !== null) finishCallback(list, this);
+
+		this.artistCardReport.onclick = (e) => {
+			const id = this.id;
+
+			function report(reason) {
+				let formData = new FormData();
+
+				formData.append('artist', id);
+				formData.append('reason', reason);
+				formData.append('token', token);
+
+				apiCall('api/user/report', formData, function (data) {
+					if (data != '') {
+						const parsedData = JSON.parse(data);
+						if (parsedData['error'] != undefined) {
+							makeToast('Désolé, une erreur est survenue !', 'error');
+							console.log(parsedData['error']);
+						} else {
+							if (parsedData) {
+								makeToast('Merci de votre signalement !', 'success');
+							}
+						}
+					}
+				});
+			}
+
+			makeReportPopup(report);
+		};
 	}
 
 	async getSkeleton() {
@@ -91,7 +129,7 @@ class ArtistCard {
 				const parsedData = JSON.parse(data);
 
 				if (parsedData['error'] != undefined) {
-					makeToast("Désolé, une erreur est survenue !", "error");
+					makeToast('Désolé, une erreur est survenue !', 'error');
 					console.log(parsedData['error']);
 				} else {
 					if ((action == 1 && parsedData) || (action == 2 && !parsedData)) {
@@ -105,6 +143,26 @@ class ArtistCard {
 					}
 				}
 			}
+		});
+	}
+
+	async report(id) {
+		let formData = new FormData();
+
+		formData.append('artist', id);
+		formData.append('token', token);
+
+		return await apiCall('api/user/report', formData, async function (data) {
+			if (data != '') {
+				const parsedData = JSON.parse(data);
+				if (parsedData['error'] != undefined) {
+					makeToast('Désolé, une erreur est survenue !', 'error');
+					console.log(parsedData['error']);
+				} else {
+					return parsedData;
+				}
+			}
+			return false;
 		});
 	}
 }

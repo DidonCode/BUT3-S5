@@ -37,6 +37,18 @@ const routes = {
 		title: 'Accueil',
 		page: '/web/admin/page/permission.php',
 	},
+	'/web/admin/report_sound': {
+		title: 'Accueil',
+		page: '/web/admin/page/report_sound.php',
+	},
+	'/web/admin/report_playlist': {
+		title: 'Accueil',
+		page: '/web/admin/page/report_playlist.php',
+	},
+	'/web/admin/report_artist': {
+		title: 'Accueil',
+		page: '/web/admin/page/report_artist.php',
+	},
 };
 
 function routeError(error) {

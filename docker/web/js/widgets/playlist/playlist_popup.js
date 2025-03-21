@@ -151,7 +151,7 @@ function makeCollaboratorPopup(id, callback) {
 
 					if (parsedData != null) {
 						if (parsedData['error'] != undefined) {
-							makeToast("Désolé, une erreur est survenue !", "error");
+							makeToast('Désolé, une erreur est survenue !', 'error');
 							console.log(parsedData['error']);
 						} else {
 							modifyInput.checked = parsedData;
@@ -177,7 +177,7 @@ function makeCollaboratorPopup(id, callback) {
 
 					if (parsedData != null) {
 						if (parsedData['error'] != undefined) {
-							makeToast("Désolé, une erreur est survenue !", "error");
+							makeToast('Désolé, une erreur est survenue !', 'error');
 							console.log(parsedData['error']);
 						} else {
 							if (parsedData) card.remove();
@@ -212,7 +212,7 @@ function makeCollaboratorPopup(id, callback) {
 
 				if (parsedData != null) {
 					if (parsedData['error'] != undefined) {
-						makeToast("Désolé, une erreur est survenue !", "error");
+						makeToast('Désolé, une erreur est survenue !', 'error');
 						console.log(parsedData['error']);
 					} else {
 						if (parsedData.length == 0) {
@@ -266,7 +266,7 @@ function makeCollaboratorPopup(id, callback) {
 
 			if (parsedData != null) {
 				if (parsedData['error'] != undefined) {
-					makeToast("Désolé, une erreur est survenue !", "error");
+					makeToast('Désolé, une erreur est survenue !', 'error');
 					console.log(parsedData['error']);
 				} else {
 					parsedData.forEach((collaborator) => {

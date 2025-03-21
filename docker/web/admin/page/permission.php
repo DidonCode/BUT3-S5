@@ -16,6 +16,7 @@ require_once("../php/setting.php");
 
 <div class="table-container">
     <table id="table_user" class="table contrast-text mt-3 admin_tab">
+        <caption> </caption>
         <thead class="admin_head">
             <tr>
                 <th class="contrast-text" scope="col">ID</th>

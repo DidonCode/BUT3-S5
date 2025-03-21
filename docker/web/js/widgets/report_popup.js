@@ -10,21 +10,21 @@ const reportOtherContent = document.getElementById('report-other-content');
 const reportSubmit = document.getElementById('report-submit');
 const reportForm = document.getElementById('report-form');
 
-function makeReportPopup(callback){
+function makeReportPopup(callback) {
 	reportPopup.style.display = 'block';
-	reportOtherContent.value = "";
-	reportOtherContainer.setAttribute("hidden", "");
+	reportOtherContent.value = '';
+	reportOtherContainer.setAttribute('hidden', '');
 	reportTypes[0].checked = true;
 
-	reportPopupClose.onclick = function() {
+	reportPopupClose.onclick = function () {
 		reportPopup.style.display = 'none';
-	}
+	};
 
-	for(let i = 0; i < reportTypes.length; i++){
-		reportTypes[i].onchange = function() {
-			reportOtherContainer.setAttribute("hidden", "");
-			if(reportTypes[i].id === 'report-other') reportOtherContainer.removeAttribute("hidden");
-		}
+	for (let i = 0; i < reportTypes.length; i++) {
+		reportTypes[i].onchange = function () {
+			reportOtherContainer.setAttribute('hidden', '');
+			if (reportTypes[i].id === 'report-other') reportOtherContainer.removeAttribute('hidden');
+		};
 	}
 
 	reportForm.onsubmit = function (e) {
@@ -32,14 +32,14 @@ function makeReportPopup(callback){
 
 		reportPopup.style.display = 'none';
 
-		for(let i = 0; i < reportTypes.length; i++){
-			if(reportTypes[i].checked){
-				if(reportTypes[i].id === 'report-other') {
+		for (let i = 0; i < reportTypes.length; i++) {
+			if (reportTypes[i].checked) {
+				if (reportTypes[i].id === 'report-other') {
 					callback(reportOtherContent.value);
-				}else{
+				} else {
 					callback(reportTypes[i].value);
 				}
 			}
 		}
-	}
+	};
 }

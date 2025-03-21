@@ -2,14 +2,14 @@
 	const contentContainer = document.getElementById('content-container');
 	const swipeBtn = document.getElementById('button-swipe');
 
-	swipeBtn.onclick = function (e){
+	swipeBtn.onclick = function (e) {
 		e.preventDefault();
-		makeToast("Cette fonctionnalité est réservé à ceux qui ont \nl'abonnement premium", "warning");
-	}
+		makeToast("Cette fonctionnalité est réservé à ceux qui ont \nl'abonnement premium", 'warning');
+	};
 
-	if(sessionExist() && user['subscription'] != null && user['subscription']['type'] === 'premium') {
+	if (sessionExist() && user['subscription'] != null && user['subscription']['type'] === 'premium') {
 		swipeBtn.onclick = null;
-		swipeBtn.classList.remove("disable");
+		swipeBtn.classList.remove('disable');
 		createSparkle(swipeBtn, 500, 10);
 	}
 

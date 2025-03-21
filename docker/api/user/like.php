@@ -165,11 +165,6 @@
 
 			if($_POST['type'] == "sound"){
 				$likes = DatabaseUserLike::listSound($user);
-				// $likes = array();
-
-				// for($i = 0; $i < 20; $i++){
-				// 	array_push($likes, DatabaseSound::byId(1));
-				// }
 			}
 
 			if($_POST['type'] == "artist"){

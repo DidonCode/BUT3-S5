@@ -92,10 +92,6 @@
 	text-align: center;
 }
 
-.artist-card-plus {
-	position: relative;
-}
-
 .artist-card-plus button {
 	background: none;
 	border: none;
@@ -108,6 +104,68 @@
 .artist-card-skeleton .artist-card-plus button,
 .artist-card-skeleton .artist-card-plus button i {
 	animation: loading 1s infinite ease-in-out;
+}
+
+.artist-card-plus-popup {
+	position: absolute;
+	display: none;
+	flex-direction: column;
+	background-color: var(--primary);
+	border: 1px solid var(--border);
+	border-radius: var(--rounded1);
+	width: 200px;
+	bottom: 100%;
+	right: 15px;
+	z-index: 1;
+}
+
+.artist-card-plus-popup button {
+	display: flex;
+	border: none;
+	padding: 10px;
+	text-align: left;
+	background-color: transparent;
+}
+
+.artist-card-colunm .artist-card-plus-popup {
+	bottom: 30px;
+}
+
+.artist-card-plus-popup:hover {
+	display: flex;
+	transition: 2s;
+}
+
+.artist-card-plus-button:hover + .artist-card-plus-popup {
+	display: flex;
+	transition: 2s;
+}
+
+.artist-card-plus-button:focus {
+	outline: none;
+}
+
+.artist-card-plus-popup button i {
+	color: var(--constrast);
+	margin-right: 10px;
+}
+
+.artist-card-plus-popup button:hover {
+	background-color: var(--secondary);
+}
+
+.artist-card-plus-popup button:first-child:hover {
+	background-color: var(--secondary);
+	border-radius: var(--rounded1) var(--rounded1) 0 0;
+}
+
+.artist-card-plus-popup button:last-child:hover {
+	background-color: var(--secondary);
+	border-radius: 0 0 var(--rounded1) var(--rounded1);
+}
+
+.artist-card-plus-popup button:active {
+	outline: none;
 }
 
 .artist-card-badge {

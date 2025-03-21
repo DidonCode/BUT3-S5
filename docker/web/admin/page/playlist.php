@@ -17,6 +17,7 @@ $playlistsData = $request_playlist_table->fetchAll();
 
 <div class="table-container">
     <table class="table contrast-text mt-3 admin_tab" id="table_playlist">
+        <caption> </caption>
         <thead class="admin_head">
             <tr>
                 <th class="contrast-text" scope="col">ID</th>

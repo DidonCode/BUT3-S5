@@ -1,10 +1,10 @@
 #report-popup #report-other-content {
-    background-color: var(--primary-secondary);
-    resize: none;
-    border: none;
-    color: var(--contrast);
+	background-color: var(--primary-secondary);
+	resize: none;
+	border: none;
+	color: var(--contrast);
 }
 
 #report-popup #report-other-content:focus {
-    outline: none;
+	outline: none;
 }

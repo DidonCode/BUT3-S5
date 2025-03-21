@@ -28,6 +28,7 @@ class SoundCard {
 
 		this.soundCardLike = html.getElementsByClassName('sound-card-like')[0];
 		this.soundCardUnlike = html.getElementsByClassName('sound-card-unlike')[0];
+		this.soundCardReport = html.getElementsByClassName('sound-card-report')[0];
 		this.soundCardPlaylist = html.getElementsByClassName('sound-card-playlist')[0];
 
 		if (this.column) {
@@ -37,6 +38,7 @@ class SoundCard {
 			div.append(this.soundCardImage);
 			div.append(this.soundCardImageSkeleton);
 			div.append(this.soundCardPlus);
+			div.append(this.soundCardBadge);
 
 			this.soundCardImageContainer.remove();
 
@@ -45,7 +47,10 @@ class SoundCard {
 			this.soundCard.classList.add('sound-card-colunm');
 		}
 
-		if (isNaN(parseInt(this.id)) || parseInt(this.id) != this.id) this.soundCardBadge.remove();
+		if (isNaN(parseInt(this.id)) || parseInt(this.id) != this.id) {
+			this.soundCardBadge.remove();
+			this.soundCardReport.remove();
+		}
 	}
 
 	async makeCard(list = null, finishCallback = null) {
@@ -61,6 +66,8 @@ class SoundCard {
 		};
 
 		this.soundCardImage.src = this.image;
+		this.soundCardImage.alt = this.title;
+
 		this.soundCardTitle.innerText = this.title;
 		this.soundCardDescription.innerText = this.type === 0 ? 'Titre' : 'Video';
 
@@ -93,7 +100,7 @@ class SoundCard {
 						const parsedData = JSON.parse(data);
 
 						if (parsedData['error'] != undefined) {
-							makeToast("Désolé, une erreur est survenue !", "error");
+							makeToast('Désolé, une erreur est survenue !', 'error');
 							console.log(parsedData['error']);
 						}
 					}
@@ -105,15 +112,49 @@ class SoundCard {
 
 		this.like(null, 2);
 
+		if (!(isNaN(parseInt(this.id)) || parseInt(this.id) != this.id)) {
+			this.report(this.id).then((exist) => {
+				exist ? this.soundCardReport.setAttribute('hidden', '') : this.soundCardReport.removeAttribute('hidden');
+			});
+		}
+
 		this.soundCardLike.onclick = (e) => this.like(e, 3);
 		this.soundCardUnlike.onclick = (e) => this.like(e, 1);
+
+		this.soundCardReport.onclick = (e) => {
+			const id = this.id;
+
+			function report(reason) {
+				let formData = new FormData();
+
+				formData.append('sound', id);
+				formData.append('reason', reason);
+				formData.append('token', token);
+
+				apiCall('api/user/report', formData, function (data) {
+					if (data != '') {
+						const parsedData = JSON.parse(data);
+						if (parsedData['error'] != undefined) {
+							makeToast('Désolé, une erreur est survenue !', 'error');
+							console.log(parsedData['error']);
+						} else {
+							if (parsedData) {
+								makeToast('Merci de votre signalement !', 'success');
+							}
+						}
+					}
+				});
+			}
+
+			makeReportPopup(report);
+		};
 
 		await apiCall('api/artist?id=' + this.artist, null, async (data) => {
 			if (data != '') {
 				const parsedData = JSON.parse(data);
 
 				if (parsedData['error'] != undefined) {
-					makeToast("Désolé, une erreur est survenue !", "error");
+					makeToast('Désolé, une erreur est survenue !', 'error');
 					console.log(parsedData['error']);
 				} else {
 					this.soundCardDescription.innerText += ' • ';
@@ -148,13 +189,6 @@ class SoundCard {
 		return this.soundCard;
 	}
 
-	popup(e, close) {
-		e.preventDefault();
-		e.stopPropagation();
-
-		close === false ? this.soundCardPlusPopup.removeAttribute('hidden') : this.soundCardPlusPopup.setAttribute('hidden', '');
-	}
-
 	like(e, action) {
 		if (e !== null) {
 			e.preventDefault();
@@ -181,7 +215,7 @@ class SoundCard {
 				const parsedData = JSON.parse(data);
 
 				if (parsedData['error'] != undefined) {
-					makeToast("Désolé, une erreur est survenue !", "error");
+					makeToast('Désolé, une erreur est survenue !', 'error');
 					console.log(parsedData['error']);
 				} else {
 					if ((action == 1 && parsedData) || (action == 2 && !parsedData)) {
@@ -195,6 +229,26 @@ class SoundCard {
 					}
 				}
 			}
+		});
+	}
+
+	async report(id) {
+		let formData = new FormData();
+
+		formData.append('sound', id);
+		formData.append('token', token);
+
+		return await apiCall('api/user/report', formData, async function (data) {
+			if (data != '') {
+				const parsedData = JSON.parse(data);
+				if (parsedData['error'] != undefined) {
+					makeToast('Désolé, une erreur est survenue !', 'error');
+					console.log(parsedData['error']);
+				} else {
+					return parsedData;
+				}
+			}
+			return false;
 		});
 	}
 }

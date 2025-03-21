@@ -1,13 +1,13 @@
 name: DEV
 
 on:
-  push:
-    branches:
-      - dev
+    push:
+        branches:
+            - dev
 
 permissions:
-  contents: write
-  pull-requests: write
+    contents: write
+    pull-requests: write
 
 jobs:
     test:

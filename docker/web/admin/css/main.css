@@ -49,7 +49,6 @@
 		1px -1px black,
 		-1px 1px black;
 	color: var(--clrOrange);
-	font-family: 'shareTechMono';
 }
 
 /* Background Image */
@@ -306,4 +305,31 @@ body {
 	height: 40px;
 	padding: 0px 10px;
 	color: var(--contrast);
+}
+
+.report-menu {
+	text-align: center;
+}
+
+.report-menu-text {
+	color: var(--contrast);
+}
+
+.report-menu-text:hover {
+	color: var(--contrast);
+	text-decoration: none;
+}
+
+.report-menu-active {
+	color: var(--orange);
+}
+
+.report-menu-active:hover {
+	color: var(--orange);
+	text-decoration: none;
+}
+
+.table_colone_reason {
+	white-space: normal;
+	word-break: break-word;
 }
