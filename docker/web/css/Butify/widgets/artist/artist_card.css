@@ -108,7 +108,7 @@
 
 .artist-card-plus-popup {
 	position: absolute;
-	display: none;
+	visibility: hidden;
 	flex-direction: column;
 	background-color: var(--primary);
 	border: 1px solid var(--border);
@@ -128,17 +128,21 @@
 }
 
 .artist-card-colunm .artist-card-plus-popup {
-	bottom: 30px;
+	bottom: 50px;
 }
 
 .artist-card-plus-popup:hover {
-	display: flex;
+	visibility: visible;
 	transition: 2s;
+}
+
+.artist-card-plus-button + .artist-card-plus-popup {
+	transition: visibility 0s; transition-delay: 200ms;
 }
 
 .artist-card-plus-button:hover + .artist-card-plus-popup {
 	display: flex;
-	transition: 2s;
+	visibility: visible;
 }
 
 .artist-card-plus-button:focus {

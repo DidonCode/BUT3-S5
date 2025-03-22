@@ -113,7 +113,7 @@
 
 .playlist-card-plus-popup {
 	position: absolute;
-	display: none;
+	visibility: hidden;
 	flex-direction: column;
 	background-color: var(--primary);
 	border: 1px solid var(--border);
@@ -133,18 +133,22 @@
 }
 
 .playlist-card-colunm .playlist-card-plus-popup {
-	bottom: 40px;
+	bottom: 60px;
 }
 
 .playlist-card-plus-popup:hover {
 	display: flex;
 	transition: 2s;
 	animation: 3s;
+	visibility: visible;
+}
+
+.playlist-card-plus-button + .playlist-card-plus-popup {
+	transition: visibility 0s; transition-delay: 200ms;
 }
 
 .playlist-card-plus-button:hover + .playlist-card-plus-popup {
-	display: flex;
-	transition: 2s;
+	visibility: visible;
 }
 
 .playlist-card-plus-button:focus {

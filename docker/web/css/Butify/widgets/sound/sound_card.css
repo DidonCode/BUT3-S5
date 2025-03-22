@@ -106,7 +106,7 @@
 }
 
 .sound-card-plus {
-	position: relative;
+	position: static !important;
 }
 
 .sound-card-colunm .sound-card-plus {
@@ -148,13 +148,19 @@
 	right: 5px;
 }
 
+.sound-card-plus-button {
+	position: static !important;
+	top: 5px;
+	right: 5px;
+}
+
 .sound-card-colunm .sound-card-plus-button i {
 	text-shadow: 0 0 4px black;
 }
 
 .sound-card-plus-popup {
 	position: absolute;
-	display: none;
+	visibility: hidden;
 	flex-direction: column;
 	background-color: var(--primary);
 	border: 1px solid var(--border);
@@ -181,11 +187,16 @@
 .sound-card-plus-popup:hover {
 	display: flex;
 	transition: 2s;
+	animation: 3s;
+	visibility: visible;
+}
+
+.sound-card-plus-button + .sound-card-plus-popup {
+	transition: visibility 0s; transition-delay: 200ms;
 }
 
 .sound-card-plus-button:hover + .sound-card-plus-popup {
-	display: flex;
-	transition: 2s;
+	visibility: visible;
 }
 
 .sound-card-plus-button:focus {
@@ -230,4 +241,19 @@
 
 .sound-card-colunm .sound-card-badge {
 	font-size: 1.8em;
+}
+
+@keyframes disapearingPopup {
+	0% {
+		display: flex;
+		opacity: 1;
+		transition: 2s;
+	}
+	50% {
+		display: flex;
+		opacity: 0;
+	}
+	100% {
+		display: none;
+	}
 }

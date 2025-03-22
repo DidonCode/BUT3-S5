@@ -37,8 +37,8 @@ class SoundCard {
 
 			div.append(this.soundCardImage);
 			div.append(this.soundCardImageSkeleton);
-			div.append(this.soundCardPlus);
 			div.append(this.soundCardBadge);
+			div.append(this.soundCardPlus);
 
 			this.soundCardImageContainer.remove();
 

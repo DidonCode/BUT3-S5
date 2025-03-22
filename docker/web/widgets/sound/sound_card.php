@@ -4,12 +4,11 @@
         <img alt="" class="sound-card-image">
         <div class="sound-card-image-skeleton"></div>
     </div>
-    <div class="sound-card-detail">
-        <p class="sound-card-title"></p>
-        <p class="sound-card-description"></p>
-    </div>
-
-    <div class="sound-card-plus">
+    <div class="d-flex justify-content-between w-100">
+        <div class="sound-card-detail">
+            <p class="sound-card-title"></p>
+            <p class="sound-card-description"></p>    
+        </div>
         <button class="sound-card-plus-button contrast-text">
             <i class="fa-solid fa-ellipsis-vertical"></i>
         </button>
@@ -35,4 +34,8 @@
             </button>
         </div>
     </div>
+    <div class="sound-card-plus">
+        
+        
+    </di>
 </a>
