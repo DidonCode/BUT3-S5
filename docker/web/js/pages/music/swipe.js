@@ -257,5 +257,18 @@
 		}
 	}
 
+	document.body.onkeyup = function(e) {
+		console.log("Touche pressée :", e.key);
+		if(e.key === "ArrowLeft") {
+			let activeCard = cardContainer.children[0];
+			activeCard.classList.add('unliked-sound');
+			activeCard.onanimationend = () => remove(0);
+		} if(e.key === "ArrowRight") {
+			let activeCard = cardContainer.children[0];
+			activeCard.classList.add('liked-sound');
+			activeCard.onanimationend = () => remove(1);
+		} 
+	}
+
 	await getSounds();
 })();

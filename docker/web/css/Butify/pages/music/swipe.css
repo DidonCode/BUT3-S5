@@ -1,9 +1,11 @@
-#content-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+#swipe {
+	width: 70%;
+	position: relative;
+	margin: auto;
+	height: 100%;
+	align-content: center;
 }
+
 
 .like-swipe {
 	border-radius: 100%;
@@ -13,6 +15,8 @@
 
 .rounded-img {
 	border-radius: 20px;
+	aspect-ratio: 1;
+	object-fit: cover;
 
 	-webkit-user-drag: none;
 	-moz-user-select: none;
@@ -46,18 +50,19 @@
 	font-size: clamp(10px, 3vw, 40px);
 }
 
+.card {
+	width: 100%;
+}
+
 #card-container .card:first-child {
 	position: relative;
 	width: 100%;
-	height: auto;
 	z-index: 3;
 }
 
 #card-container {
 	position: relative;
 	width: 40%;
-	height: auto;
-	aspect-ratio: 1;
 	margin-left: 40px;
 }
 
@@ -68,7 +73,6 @@
 
 #card-container .card:nth-child(n + 2) {
 	position: absolute;
-	width: 100%;
 	bottom: -10px;
 	left: -10px;
 }

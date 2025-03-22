@@ -11,7 +11,7 @@ class DatabaseUserReport {
 			
 			return true;
         } catch (PDOException $e) {
-            throw new Exception("Error to add report for sound : " .$sound."." . $e->getMessage(), 400);
+            throw new Exception("Error to add report for sound : ".$sound['id']."." . $e->getMessage(), 400);
         }
     }
 
@@ -19,14 +19,13 @@ class DatabaseUserReport {
 		global $pdoDatabase;
 		
 		try {
-
 			$request = $pdoDatabase->prepare("SELECT COUNT(id) FROM report_sound WHERE user = ? AND sound = ?");
 			$request->execute(array($user['id'], $sound['id']));
 			$alreadyReport = $request->fetchAll();
 
 			return $alreadyReport[0][0] > 0;
 		} catch (PDOException $e) {
-            throw new Exception("Error to machin report for sound : " .$sound."." . $e->getMessage(), 400);
+            throw new Exception("Error to get report for sound : ".$sound['id']."." . $e->getMessage(), 400);
         }
 	}
 
@@ -39,7 +38,7 @@ class DatabaseUserReport {
 			
 			return true;
         } catch (PDOException $e) {
-            throw new Exception("Error to add report for playlist : " .$playlist."." . $e->getMessage(), 400);
+            throw new Exception("Error to add report for playlist : ".$playlist['id']."." . $e->getMessage(), 400);
         }
     }
 
@@ -47,14 +46,13 @@ class DatabaseUserReport {
 		global $pdoDatabase;
 
 		try {
-
 			$request = $pdoDatabase->prepare("SELECT COUNT(id) FROM report_playlist WHERE user = ? AND playlist = ?");
 			$request->execute(array($user['id'], $playlist['id']));
 			$alreadyReport = $request->fetchAll();
 
 			return $alreadyReport[0][0] > 0;
 		} catch (PDOException $e) {
-            throw new Exception("Error to machin report for sound : " .$sound."." . $e->getMessage(), 400);
+            throw new Exception("Error to get report for sound : ".$playlist['id']."." . $e->getMessage(), 400);
         }
 	}
 
@@ -67,7 +65,7 @@ class DatabaseUserReport {
 			
 			return true;
         } catch (PDOException $e) {
-            throw new Exception("Error to add report for artist : " .$artist."." . $e->getMessage(), 400);
+            throw new Exception("Error to add report for artist : ".$artist['id']."." . $e->getMessage(), 400);
         }
     }
 
@@ -75,14 +73,13 @@ class DatabaseUserReport {
 		global $pdoDatabase;
 
 		try {
-
 			$request = $pdoDatabase->prepare("SELECT COUNT(id) FROM report_artist WHERE user = ? AND artist = ?");
 			$request->execute(array($user['id'], $artist['id']));
 			$alreadyReport = $request->fetchAll();
 
 			return $alreadyReport[0][0] > 0;
 		} catch (PDOException $e) {
-            throw new Exception("Error to machin report for sound : " .$sound."." . $e->getMessage(), 400);
+            throw new Exception("Error to get report for artist : ".$artist['id']."." . $e->getMessage(), 400);
         }
 	}
 }

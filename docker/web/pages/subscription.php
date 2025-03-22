@@ -85,7 +85,7 @@
                     <li>*</li>
                     <li>*</li>
                     <li>*</li>
-                    <li>Compte multiple</li>
+                    <li>Sans pub</li>
                     <li>-</li>
                 </ul>
             </div>
