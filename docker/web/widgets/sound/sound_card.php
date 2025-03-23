@@ -1,14 +1,15 @@
 <a class="sound-card">
     <div class="sound-card-image-container">
         <i class="sound-card-badge fa-solid fa-badge-check" hidden></i>
-        <img alt="" class="sound-card-image">
+        <img class="sound-card-image">
         <div class="sound-card-image-skeleton"></div>
     </div>
-    <div class="d-flex justify-content-between w-100">
-        <div class="sound-card-detail">
-            <p class="sound-card-title"></p>
-            <p class="sound-card-description"></p>    
-        </div>
+    <div class="sound-card-detail">
+        <p class="sound-card-title"></p>
+        <p class="sound-card-description"></p>
+    </div>
+
+    <div class="sound-card-plus">
         <button class="sound-card-plus-button contrast-text">
             <i class="fa-solid fa-ellipsis-vertical"></i>
         </button>
@@ -28,14 +29,10 @@
                 Aimer
             </button>
 
-            <button class="sound-card-report contrast-text" data_type="musique">
-                <i class="fa-solid fa-flag my-auto"></i>
+            <button class="sound-card-report contrast-text">
+                <i class="fa-regular fa-flag my-auto"></i>
                 Signaler
             </button>
         </div>
     </div>
-    <div class="sound-card-plus">
-        
-        
-    </di>
 </a>

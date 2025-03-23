@@ -97,7 +97,11 @@
 	animation: loading 1s infinite ease-in-out;
 }
 
-.playlist-card-plus button {
+.playlist-card-plus {
+	position: relative;
+}
+
+.playlist-card-plus-button {
 	background: none;
 	border: none;
 	background-color: transparent;
@@ -113,14 +117,15 @@
 
 .playlist-card-plus-popup {
 	position: absolute;
+	display: flex;
 	visibility: hidden;
 	flex-direction: column;
 	background-color: var(--primary);
 	border: 1px solid var(--border);
 	border-radius: var(--rounded1);
-	width: 180px;
-	bottom: 100%;
-	right: 15px;
+	width: 200px;
+	bottom: calc(100% + 20px);
+	right: -5px;
 	z-index: 1;
 }
 
@@ -130,10 +135,7 @@
 	padding: 10px;
 	text-align: left;
 	background-color: transparent;
-}
-
-.playlist-card-colunm .playlist-card-plus-popup {
-	bottom: 60px;
+	cursor: pointer;
 }
 
 .playlist-card-plus-popup:hover {
@@ -143,8 +145,9 @@
 	visibility: visible;
 }
 
-.playlist-card-plus-button + .playlist-card-plus-popup {
-	transition: visibility 0s; transition-delay: 200ms;
+.playlist-card-plus-button:not(:hover) + .playlist-card-plus-popup {
+	transition: visibility 0s;
+	transition-delay: 200ms;
 }
 
 .playlist-card-plus-button:hover + .playlist-card-plus-popup {

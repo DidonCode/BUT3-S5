@@ -25,6 +25,14 @@
 	position: relative;
 }
 
+.sound-card-colunm .sound-card-image-container {
+	height: 200px;
+	width: unset;
+	margin-right: unset;
+	max-width: unset;
+	position: static;
+}
+
 .sound-card-image,
 .sound-card-image-skeleton {
 	aspect-ratio: 1;
@@ -35,7 +43,6 @@
 
 .sound-card-skeleton .sound-card-image {
 	display: none;
-	/*    width: 200px !important;*/
 }
 
 .sound-card-colunm .sound-card-image {
@@ -106,19 +113,13 @@
 }
 
 .sound-card-plus {
-	position: static !important;
-}
-
-.sound-card-colunm .sound-card-plus {
-	position: absolute;
-	top: 5px;
-	right: 5px;
+	position: relative;
+	margin: auto;
 }
 
 .sound-card-skeleton .sound-card-plus-button,
 .sound-card-skeleton .sound-card-plus-button i {
 	animation: loading 1s infinite ease-in-out;
-	text-shadow: none;
 }
 
 .sound-card-plus-column {
@@ -142,24 +143,9 @@
 	margin: 0 5px;
 }
 
-.sound-card-colunm .sound-card-plus-button {
-	position: absolute;
-	top: 5px;
-	right: 5px;
-}
-
-.sound-card-plus-button {
-	position: static !important;
-	top: 5px;
-	right: 5px;
-}
-
-.sound-card-colunm .sound-card-plus-button i {
-	text-shadow: 0 0 4px black;
-}
-
 .sound-card-plus-popup {
 	position: absolute;
+	display: flex;
 	visibility: hidden;
 	flex-direction: column;
 	background-color: var(--primary);
@@ -167,8 +153,12 @@
 	border-radius: var(--rounded1);
 	width: 200px;
 	top: 100%;
-	right: 15px;
+	right: 5px;
 	z-index: 1;
+}
+
+.sound-card-colunm .sound-card-plus-popup {
+	bottom: calc(100% + 20px);
 }
 
 .sound-card-plus-popup button {
@@ -177,11 +167,7 @@
 	padding: 10px;
 	text-align: left;
 	background-color: transparent;
-}
-
-.sound-card-colunm .sound-card-plus-popup {
-	top: 30px;
-	right: 20px;
+	cursor: pointer;
 }
 
 .sound-card-plus-popup:hover {
@@ -191,8 +177,9 @@
 	visibility: visible;
 }
 
-.sound-card-plus-button + .sound-card-plus-popup {
-	transition: visibility 0s; transition-delay: 200ms;
+.sound-card-plus-button:not(:hover) + .sound-card-plus-popup {
+	transition: visibility 0s;
+	transition-delay: 200ms;
 }
 
 .sound-card-plus-button:hover + .sound-card-plus-popup {
@@ -241,19 +228,4 @@
 
 .sound-card-colunm .sound-card-badge {
 	font-size: 1.8em;
-}
-
-@keyframes disapearingPopup {
-	0% {
-		display: flex;
-		opacity: 1;
-		transition: 2s;
-	}
-	50% {
-		display: flex;
-		opacity: 0;
-	}
-	100% {
-		display: none;
-	}
 }

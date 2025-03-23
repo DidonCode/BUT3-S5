@@ -62,7 +62,8 @@
 }
 
 .artist-card-colunm .artist-card-detail {
-	display: flex; /* width: 100%;*/
+	display: flex;
+	width: 100%;
 }
 
 .artist-card-title {
@@ -92,7 +93,13 @@
 	text-align: center;
 }
 
-.artist-card-plus button {
+.artist-card-plus {
+	position: relative;
+	width: 0;
+	right: 25px;
+}
+
+.artist-card-plus-button {
 	background: none;
 	border: none;
 	background-color: transparent;
@@ -108,14 +115,15 @@
 
 .artist-card-plus-popup {
 	position: absolute;
+	display: flex;
 	visibility: hidden;
 	flex-direction: column;
 	background-color: var(--primary);
 	border: 1px solid var(--border);
 	border-radius: var(--rounded1);
 	width: 200px;
-	bottom: 100%;
-	right: 15px;
+	bottom: calc(100% + 20px);
+	right: -5px;
 	z-index: 1;
 }
 
@@ -125,23 +133,22 @@
 	padding: 10px;
 	text-align: left;
 	background-color: transparent;
-}
-
-.artist-card-colunm .artist-card-plus-popup {
-	bottom: 50px;
+	cursor: pointer;
 }
 
 .artist-card-plus-popup:hover {
-	visibility: visible;
+	display: flex;
 	transition: 2s;
+	animation: 3s;
+	visibility: visible;
 }
 
-.artist-card-plus-button + .artist-card-plus-popup {
-	transition: visibility 0s; transition-delay: 200ms;
+.artist-card-plus-button:not(:hover) + .artist-card-plus-popup {
+	transition: visibility 0s;
+	transition-delay: 200ms;
 }
 
 .artist-card-plus-button:hover + .artist-card-plus-popup {
-	display: flex;
 	visibility: visible;
 }
 

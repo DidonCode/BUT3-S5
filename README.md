@@ -12,6 +12,10 @@
   <img src="https://img.shields.io/badge/Status-Online-success">
 </p>
 
+## Membre:
+
+    Richard, Théo, Ebrotie    Agathe
+
 ## Installation:
 
     npm install

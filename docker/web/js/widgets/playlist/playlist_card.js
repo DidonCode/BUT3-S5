@@ -82,7 +82,6 @@ class PlaylistCard {
 
 		this.playlistCardLike.onclick = (e) => this.like(e, 3);
 		this.playlistCardUnlike.onclick = (e) => this.like(e, 1);
-		//this.soundCardUnlike.onclick = (e) => this.like(e, 1);
 
 		this.playlistCardBadge.removeAttribute('hidden');
 		this.playlistCard.classList.remove('playlist-card-skeleton');

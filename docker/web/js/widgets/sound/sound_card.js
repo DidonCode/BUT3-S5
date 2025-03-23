@@ -22,6 +22,7 @@ class SoundCard {
 		this.soundCardDescription = html.getElementsByClassName('sound-card-description')[0];
 		this.soundCardBadge = html.getElementsByClassName('sound-card-badge')[0];
 
+		this.soundCardDetail = html.getElementsByClassName('sound-card-detail')[0];
 		this.soundCardPlus = html.getElementsByClassName('sound-card-plus')[0];
 		this.soundCardPlusButton = html.getElementsByClassName('sound-card-plus-button')[0];
 		this.soundCardPlusPopup = html.getElementsByClassName('sound-card-plus-popup')[0];
@@ -33,16 +34,12 @@ class SoundCard {
 
 		if (this.column) {
 			const div = document.createElement('div');
-			div.classList.add('sound-card-plus-column');
+			div.classList.add('d-flex', 'w-100');
 
-			div.append(this.soundCardImage);
-			div.append(this.soundCardImageSkeleton);
-			div.append(this.soundCardBadge);
+			div.append(this.soundCardDetail);
 			div.append(this.soundCardPlus);
 
-			this.soundCardImageContainer.remove();
-
-			this.soundCard.insertBefore(div, this.soundCard.firstChild);
+			this.soundCard.append(div);
 
 			this.soundCard.classList.add('sound-card-colunm');
 		}
